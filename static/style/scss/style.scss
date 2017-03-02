@@ -1,0 +1,169 @@
+.section-about {
+
+	.profile {
+    	padding: 57px 50px 15px 50px;
+    	background-color: #FFF;
+		margin-top: 20px;
+
+		.row{
+			margin-bottom: 0;
+		}
+	}
+}
+
+.profile-photo {
+    img{
+	    width: 100%;
+	    display: block;
+    }
+}
+
+.section-about {
+    .profile-photo {
+	    margin-right: 10%;
+	    margin-bottom: 10px;
+	}
+
+	.profile-info {
+	    color: #3d4451;
+	    padding-bottom: 25px;
+	    margin-bottom: 25px;
+	    border-bottom: 1px solid #dedede;
+	}
+
+	.profile-title {
+	    font-size: 36px;
+	    line-height: 1.1;
+	    font-weight: 700;
+	    margin-bottom: 5px;
+
+	    span {
+    		font-weight: 300;
+		}
+	}
+
+	.profile-position {
+	    font-size: 18px;
+	    font-weight: 400;
+	    line-height: 1.1;
+	    margin-bottom: 0;
+	}
+}
+
+
+.profile-preword {
+    margin-bottom: 28px;
+
+    span {
+	    color: #fff;
+	    font-size: 14px;
+	    font-weight: 700;
+	    line-height: 1.1;
+	    display: inline-block;
+	    padding: 7px 12px;
+	    text-transform: uppercase;
+	    position: relative;
+	}
+
+}
+
+.profile-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+    	margin-bottom: 13px;
+	}
+}
+
+.profile-preword span:before {
+    content: '';
+    left: 0;
+    top: 100%;
+    position: absolute;   
+}
+
+
+
+
+.clearfix:before, .clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.profile-list {
+	.title {
+	    display: block;
+	    width: 120px;
+	    float: left;
+	    color: #333333;
+	    font-size: 12px;
+	    font-weight: 700;
+	    line-height: 20px;
+	    text-transform: uppercase;
+	}
+
+	.cont {
+	    display: block;
+	    margin-left: 125px;
+	    font-size: 15px;
+	    font-weight: 400;
+	    line-height: 20px;
+	    color: #9da0a7;
+	}
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.social {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+}
+
+.social li {
+    display: inline-block;
+    margin: 5px 15px;
+}
+
+.social li a {
+    width: 45px;
+    height: 45px;
+    position: relative;
+    display: inline-block;
+    background-color: transparent;
+    transition: transition, background-color 0.25s linear 0s;
+    backface-visibility: hidden;
+    border-radius: 50%;
+}
+
+.profile-social, .profile-preword span, .profile-preword span:before {
+    background-color: #07cb79;
+}
+
+.profile-preword span:before {
+	content: '';
+	width: 0;  
+	height: 0; 
+	border-top: 1px solid green;
+	border-bottom: 8px solid transparent;
+	border-left: 8px solid green;
+}
+
+*, *:before, *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.profile-social {
+    padding: 15px 0;
+}
+
+body{
+	background-color: #ddd;
+}
