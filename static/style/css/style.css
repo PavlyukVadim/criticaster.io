@@ -1,5 +1,5 @@
 body {
-  background-color: #dddddd; }
+  background-color: #efefef; }
 
 h2 {
   font-size: 22px;
@@ -7,11 +7,40 @@ h2 {
   margin-top: 0;
   margin-bottom: 36px; }
 
+h3 {
+  font-size: 24px; }
+
 h4 {
   font-size: 18px; }
 
 section {
   padding: 42px 12px; }
+
+.section-title {
+  color: #3d4451;
+  font-size: 34px;
+  line-height: 1.2;
+  font-weight: 600;
+  text-align: center; }
+
+input:not([type]), input[type=text], input[type=password], input[type=email], input[type=url], input[type=time], input[type=date], input[type=datetime], input[type=datetime-local], input[type=tel], input[type=number], input[type=search], textarea.materialize-textarea {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #9e9e9e;
+  border-radius: 0;
+  outline: none;
+  height: 3rem;
+  width: 100%;
+  font-size: 1rem;
+  margin: 0;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding: 0;
+  box-shadow: none;
+  box-sizing: content-box;
+  transition: all 0.3s; }
 
 #home .profile {
   padding: 57px 50px 15px 50px;
@@ -184,6 +213,11 @@ section {
     position: relative;
     float: left;
     margin-top: 39px; }
+    @media (max-width: 768px) {
+      #experience .experience-block .meta {
+        width: 60%;
+        float: right;
+        margin-top: 12px; } }
     #experience .experience-block .meta .year {
       display: block;
       background: #7c4dff;
@@ -212,6 +246,12 @@ section {
       position: absolute;
       top: 0;
       right: -10px; }
+      @media (max-width: 768px) {
+        #experience .experience-block .meta:after {
+          right: auto;
+          left: -10px;
+          border-width: 0px 10px 13px 0px;
+          border-color: transparent #7c4dff transparent transparent; } }
   #experience .experience-block .content {
     width: 60%;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -220,6 +260,11 @@ section {
     padding: 20px 30px;
     float: right;
     margin-top: 39px; }
+    @media (max-width: 768px) {
+      #experience .experience-block .content {
+        margin-top: 12px;
+        width: 80%;
+        padding: 10px 20px; } }
     #experience .experience-block .content h5 {
       margin-bottom: 6px; }
     #experience .experience-block .content p:last-of-type {
@@ -236,6 +281,12 @@ section {
       position: absolute;
       top: 0;
       left: -10px; }
+      @media (max-width: 768px) {
+        #experience .experience-block .content:after {
+          top: -10px;
+          left: 0px;
+          border-width: 10px 0px 0px 13px;
+          border-color: transparent transparent transparent white; } }
   #experience .experience-block .icon {
     display: block;
     width: 78px;
@@ -252,6 +303,10 @@ section {
     left: 30%;
     margin-left: -39px;
     z-index: 2; }
+    @media (max-width: 768px) {
+      #experience .experience-block .icon {
+        left: 0px;
+        margin-left: 0px; } }
   #experience .experience-block .ion-easel:before {
     content: "\f3c2"; }
   #experience .experience-block .line {
@@ -262,6 +317,9 @@ section {
     position: absolute;
     top: 0;
     left: 30%; }
+    @media (max-width: 768px) {
+      #experience .experience-block .line {
+        left: 38px; } }
     #experience .experience-block .line:after {
       display: table;
       content: " "; }
@@ -473,5 +531,41 @@ section {
     background: #7c4dff;
     color: #fff;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3); }
+
+#contact form {
+  background-color: #ffffff;
+  padding: 40px 50px; }
+  #contact form .materialize-textarea {
+    min-height: 100px; }
+#contact .contact-info {
+  background-color: #ffffff; }
+  #contact .contact-info .has-map {
+    position: relative;
+    padding-bottom: 266px; }
+  #contact .contact-info .section-box {
+    padding: 0; }
+  #contact .contact-info .contact-list {
+    list-style: none;
+    padding: 60px 50px 56px 50px;
+    margin: 0; }
+    #contact .contact-info .contact-list li {
+      margin-bottom: 10px; }
+      #contact .contact-info .contact-list li:before, #contact .contact-info .contact-list li:after {
+        content: " ";
+        display: table; }
+    #contact .contact-info .contact-list .clearfix:after {
+      clear: both; }
+    #contact .contact-info .contact-list strong {
+      font-size: 13px;
+      font-weight: 400;
+      text-transform: uppercase;
+      width: 85px;
+      float: left; }
+    #contact .contact-info .contact-list span {
+      font-size: 16px;
+      font-weight: 400; }
+  #contact .contact-info #map {
+    width: 100%;
+    height: 266px; }
 
 /*# sourceMappingURL=style.css.map */
