@@ -57,6 +57,18 @@ input:not([type]), input[type=text], input[type=password], input[type=email], in
     transition: all 0.3s;
 }
 
+
+nav.nav-extended {
+    .nav-content{
+        padding-top: 16px;
+    }
+}
+
+nav ul li {
+    float: right;
+}
+
+
 #home {    
   .profile {
   	padding: 57px 50px 15px 50px;
@@ -777,7 +789,33 @@ input:not([type]), input[type=text], input[type=password], input[type=email], in
     }                
 }
 
+footer{
+    text-align: center;
+    color: $white;
+    font-weight: 500;
 
+    .top {
+        background: #232323;
+        padding: 48px 0;
+    }
+
+    h4 {
+        color: $white;
+    }
+
+    .bottom {
+        background: #1c1c1c;
+        line-height: 50px;
+    }
+
+    .social {
+        background-color: transparent;
+
+        li {
+            margin: 5px 5px;
+        }
+    }  
+}
 
 
 

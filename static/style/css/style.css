@@ -42,6 +42,12 @@ input:not([type]), input[type=text], input[type=password], input[type=email], in
   box-sizing: content-box;
   transition: all 0.3s; }
 
+nav.nav-extended .nav-content {
+  padding-top: 16px; }
+
+nav ul li {
+  float: right; }
+
 #home .profile {
   padding: 57px 50px 15px 50px;
   background-color: #FFF;
@@ -567,5 +573,22 @@ input:not([type]), input[type=text], input[type=password], input[type=email], in
   #contact .contact-info #map {
     width: 100%;
     height: 266px; }
+
+footer {
+  text-align: center;
+  color: #ffffff;
+  font-weight: 500; }
+  footer .top {
+    background: #232323;
+    padding: 48px 0; }
+  footer h4 {
+    color: #ffffff; }
+  footer .bottom {
+    background: #1c1c1c;
+    line-height: 50px; }
+  footer .social {
+    background-color: transparent; }
+    footer .social li {
+      margin: 5px 5px; }
 
 /*# sourceMappingURL=style.css.map */
