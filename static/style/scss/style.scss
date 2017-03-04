@@ -2,6 +2,8 @@ $green: #07cb79;
 $white: #ffffff;
 $grey: #efefef;
 $blue: #337ab7;
+$lblue: #1047a9;
+$violet: #6a0aab;
 
 $grey-text: #666;
  
@@ -29,12 +31,33 @@ section {
     padding: 42px 12px;
 }
 
+.btn-floating:hover, .btn:hover, .btn-large:hover {
+    background-color: $blue;
+}
+
+.btn, .btn-large {
+    background-color: $lblue;
+}
+
 .section-title {
     color: #3d4451;
     font-size: 34px;
     line-height: 1.2;
     font-weight: 600;
     text-align: center;
+}
+
+.slick-prev:before, .slick-next:before {
+    font-size: 50px;
+    color: $violet;
+}
+
+.slick-prev {
+    left: -60px;
+}
+
+.slick-next {
+    right: -30px;
 }
 
 input:not([type]), input[type=text], input[type=password], input[type=email], input[type=url], input[type=time], input[type=date], input[type=datetime], input[type=datetime-local], input[type=tel], input[type=number], input[type=search], textarea.materialize-textarea {
@@ -59,6 +82,8 @@ input:not([type]), input[type=text], input[type=password], input[type=email], in
 
 
 nav.nav-extended {
+    background-color: $blue;
+
     .nav-content{
         padding-top: 16px;
     }
@@ -108,7 +133,7 @@ nav ul li {
     		    padding: 7px 12px;
     		    text-transform: uppercase;
     		    position: relative;
-    		    background-color: $green;
+    		    background-color: $violet;
 
     		    &:before {
     			    content: '';
@@ -117,10 +142,10 @@ nav ul li {
     			    position: absolute;
     				width: 0;  
     				height: 0; 
-    				border-top: 1px solid $green;
+    				border-top: 1px solid $violet;
     				border-bottom: 8px solid $white;
-    				border-left: 8px solid $green;
-    				background-color: $green;
+    				border-left: 8px solid $violet;
+    				background-color: $violet;
 
 				}
 			}
@@ -193,7 +218,7 @@ nav ul li {
   padding: 20px;
   list-style: none;
   text-align: center;
-	background-color: $green;
+	background-color: $lblue;
 
   li {
   	display: inline-block;
@@ -211,7 +236,7 @@ nav ul li {
 		}
 
 		.profile-social{
-			background-color: $green;
+			background-color: $blue;
 			padding: 15px 0;
 		}
 	}
@@ -292,6 +317,20 @@ nav ul li {
             }
         }
     }
+
+    .achievements{
+        a {
+            display: block;
+        }
+
+        p {
+            margin: 5px;
+        }
+
+        h2 {
+            margin-top: 50px;
+        }
+    }
 }
 
 #portfolio{
@@ -361,10 +400,14 @@ nav ul li {
             .social {
                 padding: 0;
                 background-color: transparent;
-
-                a {
-                    background-color: black;
-                }   
+                
+                .btn-floating {
+                    background-color: $blue;
+                    
+                    &:hover {
+                        background-color: $lblue;
+                    }
+                }
             }
         }
     }
@@ -396,7 +439,7 @@ nav ul li {
 
             .year {
                 display: block;
-                background: #7c4dff;
+                background: $violet;
                 color: #fff;
                 text-align: center;
                 font-size: 14px;
@@ -422,7 +465,7 @@ nav ul li {
                 height: 0;
                 border-style: solid;
                 border-width: 13px 10px 0 0;
-                border-color: #7c4dff transparent transparent transparent;
+                border-color: $violet transparent transparent transparent;
                 position: absolute;
                 top: 0;
                 right: -10px;
@@ -599,7 +642,7 @@ nav ul li {
                 width: 22px;
                 height: 22px;
                 background: #fff;
-                border: 6px solid #7c4dff;
+                border: 6px solid $violet;
                 position: absolute;
                 top: 0;
                 left: 50%;
@@ -738,7 +781,7 @@ nav ul li {
                 width: 14px;
                 height: 14px;
                 background: #fff;
-                border: 4px solid #7c4dff;
+                border: 4px solid $violet;
                 border-radius: 100%;
                 position: absolute;
                 left: -18px;
@@ -757,7 +800,7 @@ nav ul li {
                 width: 14px;
                 height: 14px;
                 background: #fff;
-                border: 4px solid #7c4dff;
+                border: 4px solid $violet;
                 border-radius: 100%;
                 position: absolute;
                 right: -18px;
@@ -790,7 +833,7 @@ nav ul li {
 
         &:hover{
             .icon {
-                background: #7c4dff;
+                background: $violet;
                 color: #fff;
                 box-shadow: 0 3px 6px rgba(0,0,0,.3);
             }
