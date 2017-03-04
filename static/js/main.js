@@ -56,4 +56,8 @@ $("ul.tabs").tabs({
 	 }
 });
     
-$('#works-slider').slick();
+if ($( window ).width() >= 768) {
+	$('#works-slider').slick();
+} else {
+	$('.slick-slide').css('display', 'block');
+}   

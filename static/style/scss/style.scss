@@ -71,8 +71,8 @@ nav ul li {
 
 #home {    
   .profile {
-  	padding: 57px 50px 15px 50px;
-  	background-color: #FFF;
+      	padding: 57px 50px 15px 50px;
+      	background-color: #FFF;
 		margin-top: 20px;
 
 		.row{
@@ -81,8 +81,8 @@ nav ul li {
 	}
 
   .profile-photo {
-    margin-right: 10%;
-    margin-bottom: 10px;
+        margin-right: 10%;
+        margin-bottom: 10px;
 
         img{
         	width: 100%;
@@ -91,36 +91,36 @@ nav ul li {
 	}
 
 	.profile-info {
-    color: #3d4451;
-    padding-bottom: 25px;
-    margin-bottom: 25px;
-    border-bottom: 1px solid #dedede;
+        color: #3d4451;
+        padding-bottom: 25px;
+        margin-bottom: 25px;
+        border-bottom: 1px solid #dedede;
 
-    .profile-preword {
-	    margin-bottom: 28px;
+        .profile-preword {
+    	    margin-bottom: 28px;
 
-	    span {
-		    color: #fff;
-		    font-size: 14px;
-		    font-weight: 700;
-		    line-height: 1.1;
-		    display: inline-block;
-		    padding: 7px 12px;
-		    text-transform: uppercase;
-		    position: relative;
-		    background-color: $green;
+    	    span {
+    		    color: #fff;
+    		    font-size: 14px;
+    		    font-weight: 700;
+    		    line-height: 1.1;
+    		    display: inline-block;
+    		    padding: 7px 12px;
+    		    text-transform: uppercase;
+    		    position: relative;
+    		    background-color: $green;
 
-		    &:before {
-			    content: '';
-			    left: 5px;
-			    top: 101%;
-			    position: absolute;
-					width: 0;  
-					height: 0; 
-					border-top: 1px solid $green;
-					border-bottom: 8px solid $white;
-					border-left: 8px solid $green;
-					background-color: $green;
+    		    &:before {
+    			    content: '';
+    			    left: 5px;
+    			    top: 101%;
+    			    position: absolute;
+    				width: 0;  
+    				height: 0; 
+    				border-top: 1px solid $green;
+    				border-bottom: 8px solid $white;
+    				border-left: 8px solid $green;
+    				background-color: $green;
 
 				}
 			}
@@ -128,13 +128,13 @@ nav ul li {
 	}
 
 	.profile-title {
-    font-size: 36px;
-    line-height: 1.1;
-    font-weight: 700;
-    margin-bottom: 5px;
+        font-size: 36px;
+        line-height: 1.1;
+        font-weight: 700;
+        margin-bottom: 5px;
 
-    span {
-  		font-weight: 300;
+        span {
+      		font-weight: 300;
 		}
 	}
 
@@ -155,23 +155,23 @@ nav ul li {
 		}
 
 		.title {
-	    display: block;
-	    width: 120px;
-	    float: left;
-	    color: #333333;
-	    font-size: 12px;
-	    font-weight: 700;
-	    line-height: 20px;
-	    text-transform: uppercase;
+    	    display: block;
+    	    width: 120px;
+    	    float: left;
+    	    color: #333333;
+    	    font-size: 12px;
+    	    font-weight: 700;
+    	    line-height: 20px;
+    	    text-transform: uppercase;
 		}
 
 		.cont {
-	    display: block;
-	    margin-left: 125px;
-	    font-size: 15px;
-	    font-weight: 400;
-	    line-height: 20px;
-	    color: #9da0a7;
+    	    display: block;
+    	    margin-left: 125px;
+    	    font-size: 15px;
+    	    font-weight: 400;
+    	    line-height: 20px;
+    	    color: #9da0a7;
 		}
 	}
 }
@@ -305,8 +305,10 @@ nav ul li {
  
     .row{
         
-        padding-left: 40px;
-        padding-right: 40px;
+        @media (min-width: 768px) {
+            padding-left: 40px;
+            padding-right: 40px;
+        }
 
         #works-slider{
             background-color: $white;

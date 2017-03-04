@@ -213,40 +213,41 @@ nav ul li {
   position: absolute;
   width: 100%;
   top: 0; }
-  #portfolio .row {
-    padding-left: 40px;
-    padding-right: 40px; }
-    #portfolio .row #works-slider {
-      background-color: #ffffff; }
-      #portfolio .row #works-slider .slick-slide {
-        outline: none !important; }
-      #portfolio .row #works-slider .work-title {
-        font-size: 30px;
-        font-weight: bold;
+  @media (min-width: 768px) {
+    #portfolio .row {
+      padding-left: 40px;
+      padding-right: 40px; } }
+  #portfolio .row #works-slider {
+    background-color: #ffffff; }
+    #portfolio .row #works-slider .slick-slide {
+      outline: none !important; }
+    #portfolio .row #works-slider .work-title {
+      font-size: 30px;
+      font-weight: bold;
+      font-family: 'Roboto', sans-serif;
+      text-align: center;
+      text-transform: uppercase; }
+    #portfolio .row #works-slider .row .tech-list li {
+      clear: both; }
+      #portfolio .row #works-slider .row .tech-list li .tech-logo {
+        height: 50px;
+        float: left; }
+      #portfolio .row #works-slider .row .tech-list li span {
+        line-height: 50px;
+        font-size: 22px;
         font-family: 'Roboto', sans-serif;
-        text-align: center;
-        text-transform: uppercase; }
-      #portfolio .row #works-slider .row .tech-list li {
-        clear: both; }
-        #portfolio .row #works-slider .row .tech-list li .tech-logo {
-          height: 50px;
-          float: left; }
-        #portfolio .row #works-slider .row .tech-list li span {
-          line-height: 50px;
-          font-size: 22px;
-          font-family: 'Roboto', sans-serif;
-          margin-left: 10px; }
-      #portfolio .row #works-slider iframe {
-        width: 100%;
-        height: 300px; }
-      #portfolio .row #works-slider .about-work {
-        font-family: 'Roboto', sans-serif;
-        margin-top: 30px; }
-      #portfolio .row #works-slider .social {
-        padding: 0;
-        background-color: transparent; }
-        #portfolio .row #works-slider .social a {
-          background-color: black; }
+        margin-left: 10px; }
+    #portfolio .row #works-slider iframe {
+      width: 100%;
+      height: 300px; }
+    #portfolio .row #works-slider .about-work {
+      font-family: 'Roboto', sans-serif;
+      margin-top: 30px; }
+    #portfolio .row #works-slider .social {
+      padding: 0;
+      background-color: transparent; }
+      #portfolio .row #works-slider .social a {
+        background-color: black; }
 
 #experience .experience-block {
   position: relative;
