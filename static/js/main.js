@@ -38,3 +38,22 @@ var marker;
 
 	map.setOptions({styles: styles});
 })();
+
+$("ul.tabs").tabs({
+	onShow: function(tab) { 
+		if (tab.selector === '#portfolio' ) {
+			$('#portfolio').css({
+				visibility: 'visible',
+				position: 'static'
+				
+			});
+		} else {
+			$('#portfolio').css({
+				visibility: 'hidden',
+				position: 'absolute'
+			});
+		}
+	 }
+});
+    
+$('#works-slider').slick();
