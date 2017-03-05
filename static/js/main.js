@@ -1,17 +1,17 @@
 var map;
 var marker;
 
-(function initMap() {
+function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 59.325, lng: 18.070},
-    zoom: 8
+    center: {lat: 50.448080, lng: 30.451475},
+    zoom: 12
   });
 
    marker = new google.maps.Marker({
     map: map,
     draggable: true,
     animation: google.maps.Animation.DROP,
-    position: {lat: 59.327, lng: 18.067}
+    position: {lat: 50.448080, lng: 30.451475}
   });
 
 	var styles = [
@@ -37,7 +37,8 @@ var marker;
 	];
 
 	map.setOptions({styles: styles});
-})();
+};
+
 
 $("ul.tabs").tabs({
 	onShow: function(tab) { 
@@ -53,6 +54,10 @@ $("ul.tabs").tabs({
 				position: 'absolute'
 			});
 		}
+
+		if (tab.selector === '#contact' ) {
+			initMap();
+		}		
 	 }
 });
     

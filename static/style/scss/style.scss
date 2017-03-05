@@ -49,7 +49,7 @@ section {
 
 .slick-prev:before, .slick-next:before {
     font-size: 50px;
-    color: $violet;
+    color: $blue;
 }
 
 .slick-prev {
@@ -164,22 +164,22 @@ nav ul li {
 	}
 
 	.profile-position {
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 1.1;
-    margin-bottom: 0;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 1.1;
+        margin-bottom: 0;
 	}
 
 	.profile-list {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+        margin: 0;
+        padding: 0;
+        list-style: none;
 
-    li {
-    	margin-bottom: 13px;
-		}
+        li {
+        	margin-bottom: 13px;
+    	}
 
-		.title {
+    	.title {
     	    display: block;
     	    width: 120px;
     	    float: left;
@@ -188,16 +188,16 @@ nav ul li {
     	    font-weight: 700;
     	    line-height: 20px;
     	    text-transform: uppercase;
-		}
+    	}
 
-		.cont {
+    	.cont {
     	    display: block;
     	    margin-left: 125px;
     	    font-size: 15px;
     	    font-weight: 400;
     	    line-height: 20px;
     	    color: #9da0a7;
-		}
+    	}
 	}
 }
 
@@ -305,6 +305,7 @@ nav ul li {
 
     .knowledge-list{
         li{
+            text-transform: uppercase;
             color: $grey-text;
             margin-top: 15px;
             font-size: 14px;
@@ -371,6 +372,7 @@ nav ul li {
                     li {
                         
                         clear: both;
+                        margin: 5px 0;
 
                         .tech-logo {
                             height: 50px;
@@ -548,6 +550,10 @@ nav ul li {
                 left: 0px;
                 margin-left: 0px;
             }
+
+            .fa {
+                font-size: 45px;
+            }
         }
         
         .ion-easel:before {
@@ -596,7 +602,7 @@ nav ul li {
             
 
         .item {
-            width: 25%;
+            width: 33.3%;
             float: left;
             position: relative;
             text-align: center;
@@ -682,6 +688,7 @@ nav ul li {
                 h4 {
                     line-height: 26px;
                     margin-bottom: 0;
+                    margin-top: 0;
                 }
 
                 &:after {
@@ -935,15 +942,3 @@ footer{
         }
     }  
 }
-
-
-
-
-
-
-
-
-
-
-
-

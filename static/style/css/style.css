@@ -31,7 +31,7 @@ section {
 
 .slick-prev:before, .slick-next:before {
   font-size: 50px;
-  color: #6a0aab; }
+  color: #337ab7; }
 
 .slick-prev {
   left: -60px; }
@@ -216,6 +216,7 @@ nav ul li {
       right: -20px;
       box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3); }
 #skill .knowledge-list li {
+  text-transform: uppercase;
   color: #666;
   margin-top: 15px;
   font-size: 14px;
@@ -252,7 +253,8 @@ nav ul li {
       text-align: center;
       text-transform: uppercase; }
     #portfolio .row #works-slider .row .tech-list li {
-      clear: both; }
+      clear: both;
+      margin: 5px 0; }
       #portfolio .row #works-slider .row .tech-list li .tech-logo {
         height: 50px;
         float: left; }
@@ -381,6 +383,8 @@ nav ul li {
       #experience .experience-block .icon {
         left: 0px;
         margin-left: 0px; } }
+    #experience .experience-block .icon .fa {
+      font-size: 45px; }
   #experience .experience-block .ion-easel:before {
     content: "\f3c2"; }
   #experience .experience-block .line {
@@ -412,7 +416,7 @@ nav ul li {
       margin: 18px 0;
       margin-bottom: 42px; } }
   #education .education .item {
-    width: 25%;
+    width: 33.3%;
     float: left;
     position: relative;
     text-align: center;
@@ -481,7 +485,8 @@ nav ul li {
         text-transform: uppercase; }
       #education .education .item .content h4 {
         line-height: 26px;
-        margin-bottom: 0; }
+        margin-bottom: 0;
+        margin-top: 0; }
       #education .education .item .content:after {
         content: '';
         width: 0;
