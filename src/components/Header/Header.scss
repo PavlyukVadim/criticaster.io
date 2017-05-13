@@ -1,8 +1,11 @@
-@import '../../index';
+@import '../../common';
 
 nav {
 	background-color: $blue;
+	
 	.nav-content {
-		@include translate(0, -100%);
+		position: absolute;
+	    right: 0;
+	    top: 0;
 	}
 }
