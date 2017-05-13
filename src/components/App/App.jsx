@@ -3,6 +3,7 @@ import Header from '../Header/Header.jsx';
 import Home from '../Home/Home.jsx';
 import Skill from '../Skill/Skill.jsx';
 import Experience from '../Experience/Experience.jsx';
+import Education from '../Education/Education.jsx';
 import Footer from '../Footer/Footer.jsx';
 import './App.scss';
 
@@ -14,6 +15,7 @@ class App extends Component {
         <Home />
         <Skill />
         <Experience />
+        <Education />
         <Footer />
       </div>
     );
