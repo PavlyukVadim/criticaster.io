@@ -1,0 +1,8 @@
+@import '../../index';
+
+nav {
+	background-color: $blue;
+	.nav-content {
+		@include translate(0, -100%);
+	}
+}
