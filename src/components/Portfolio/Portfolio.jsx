@@ -23,16 +23,16 @@ let projects = [{
   link: '',
   desc: (
          <div><span className="card-title grey-text text-darken-4">Card Title<i className="material-icons right">close</i></span>
-         <p>Here is some more information about this product that is only revealed once clicked on.</p></div>)
+         <p>Here is some more inhtmlFormation about this product that is only revealed once clicked on.</p></div>)
 },
 {
   title: 'Snakes',
   img: 'http://materializecss.com/images/office.jpg',
-  technologies: ['Angular 2', 'TypeScript', 'Node', 'Mongodb'],
+  technologies: ['Angular 2', 'TypeScript', 'Node.js', 'Mongodb'],
   link: '',
   desc: (
          <div><span className="card-title grey-text text-darken-4">Card Title<i className="material-icons right">close</i></span>
-         <p>Here is some more information about this product that is only revealed once clicked on.</p></div>)
+         <p>Here is some more inhtmlFormation about this product that is only revealed once clicked on.</p></div>)
 },
 {
   title: 'Clean Star',
@@ -41,7 +41,7 @@ let projects = [{
   link: '',
   desc: (<div>
          <span className="card-title grey-text text-darken-4">Card Title<i className="material-icons right">close</i></span>
-         <p>Here is some more information about this product that is only revealed once clicked on.</p></div>)
+         <p>Here is some more inhtmlFormation about this product that is only revealed once clicked on.</p></div>)
 },
 {
   title: 'Settory',
@@ -50,7 +50,7 @@ let projects = [{
   link: '',
   desc: (<div>
          <span className="card-title grey-text text-darken-4">Card Title<i className="material-icons right">close</i></span>
-         <p>Here is some more information about this product that is only revealed once clicked on.</p></div>)
+         <p>Here is some more inhtmlFormation about this product that is only revealed once clicked on.</p></div>)
 },
 {
   title: 'SMAK',
@@ -59,7 +59,7 @@ let projects = [{
   link: '',
   desc: (<div>
          <span className="card-title grey-text text-darken-4">Card Title<i className="material-icons right">close</i></span>
-         <p>Here is some more information about this product that is only revealed once clicked on.</p></div>)
+         <p>Here is some more inhtmlFormation about this product that is only revealed once clicked on.</p></div>)
 },
 {
   title: 'Royal optica',
@@ -68,7 +68,7 @@ let projects = [{
   link: '',
   desc: (<div>
          <span className="card-title grey-text text-darken-4">Card Title<i className="material-icons right">close</i></span>
-         <p>Here is some more information about this product that is only revealed once clicked on.</p></div>)
+         <p>Here is some more inhtmlFormation about this product that is only revealed once clicked on.</p></div>)
 },
 {
   title: 'Visio Lux',
@@ -77,7 +77,7 @@ let projects = [{
   link: '',
   desc: (<div>
          <span className="card-title grey-text text-darken-4">Card Title<i className="material-icons right">close</i></span>
-         <p>Here is some more information about this product that is only revealed once clicked on.</p></div>)
+         <p>Here is some more inhtmlFormation about this product that is only revealed once clicked on.</p></div>)
 },
 {
   title: 'KET',
@@ -86,7 +86,7 @@ let projects = [{
   link: '',
   desc: (<div>
          <span className="card-title grey-text text-darken-4">Card Title<i className="material-icons right">close</i></span>
-         <p>Here is some more information about this product that is only revealed once clicked on.</p></div>)
+         <p>Here is some more inhtmlFormation about this product that is only revealed once clicked on.</p></div>)
 }];
 
 let technologiesIcons = new Map();
@@ -98,7 +98,7 @@ technologiesIcons.set('jQuery', jqueryLogo);
 technologiesIcons.set('JavaScript', javaScriptLogo);
 technologiesIcons.set('Materialize', materializeLogo);
 technologiesIcons.set('Mongodb', mongodbLogo);
-technologiesIcons.set('Node', nodeLogo);
+technologiesIcons.set('Node.js', nodeLogo);
 technologiesIcons.set('React', reactLogo);
 technologiesIcons.set('Redux', reduxLogo);
 technologiesIcons.set('SASS', sassLogo);
@@ -106,11 +106,41 @@ technologiesIcons.set('TypeScript', tsLogo);
 technologiesIcons.set('Webpack', webpackLogo);
 technologiesIcons.set('WordPress', wordpressLogo);
 
+let arrayOfTechnologies = [{
+  title: 'JavaScript libraries',
+  technologies: ['jQuery', 'React', 'Redux']
+},
+{
+  title: 'JavaScript frameworks',
+  technologies: ['Angular', 'Angular 2']
+},
+{
+  title: 'Programming languages',
+  technologies: ['JavaScript', 'TypeScript']
+},
+{
+  title: 'CSS frameworks',
+  technologies: ['Bootstrap', 'Materialize']
+},
+{
+  title: 'Module bundlers',
+  technologies: ['Webpack']
+},
+{
+  title: 'CMS',
+  technologies: ['WordPress']
+},
+{
+  title: 'Other',
+  technologies: ['Express', 'Mongodb', 'Node.js', 'SASS']
+}];
+
 class Portfolio extends Component {
   
   constructor(props) {
     super(props);
     this.getProjects = this.getProjects.bind(this);
+    this.getCheckboxes = this.getCheckboxes.bind(this);
   }
 
   getProjects() {
@@ -122,7 +152,7 @@ class Portfolio extends Component {
                 </div>)
       })
 
-      return (<div className="col m4">
+      return (<div className="col m6 l4">
                 <div className="card hoverable">
                   <div className="card-image waves-effect waves-block waves-light">
                     <img className="activator" src={project.img}/>
@@ -141,6 +171,7 @@ class Portfolio extends Component {
               </div>)
     });
     let result = [];
+
     while(cards.length > 0) {
       result.push(
         <div className="row">
@@ -152,11 +183,39 @@ class Portfolio extends Component {
     return result;
   }
 
+  getCheckboxes() {
+    return arrayOfTechnologies.map((group) => {
+      let checkboxes = group.technologies.map((technology) => {
+        return (<p>
+                  <input type="checkbox" className="filled-in" id={`${technology}-checkbox`} defaultChecked/>
+                  <label htmlFor={`${technology}-checkbox`}>{technology}</label>
+                </p>);  
+      });
+
+      return (<div>
+                <h4>{group.title}</h4>
+                {checkboxes}
+              </div>);
+    });
+  }
+
   render() {
     return (
       <div id="portfolio" className="row">
-        <div className="col s3"></div>
-        <div className="col s9">
+        <div className="col m3 sidebar">
+          <form action="#">
+            <div className="switch">
+              <label>
+                Every
+                <input type="checkbox"/>
+                <span className="lever"></span>
+                None
+              </label>
+            </div>
+            {this.getCheckboxes()}
+          </form>
+        </div>
+        <div className="col m9 projects">
           {this.getProjects()}
         </div>
       </div>
