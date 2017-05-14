@@ -1,5 +1,3 @@
-
-
 var map;
 var marker;
 
