@@ -13,7 +13,7 @@ class Header extends Component {
             <ul className="side-nav" id="mobile-demo">
               <li><Link to="/">Home</Link></li>
               <li><Link to="/skills">Skills</Link></li>
-              <li><Link to="/">Portfolio</Link></li>
+              <li><Link to="/portfolio">Portfolio</Link></li>
               <li><Link to="/experience">Experience</Link></li>
               <li><Link to="/education">Education</Link></li>
               <li><Link to="/contact">Contact</Link></li>
@@ -23,7 +23,7 @@ class Header extends Component {
             <ul id="nav-mobile" className="right hide-on-med-and-down">
               <li><Link to="/">Home</Link></li>
               <li><Link to="/skills">Skills</Link></li>
-              <li><Link to="/">Portfolio</Link></li>
+              <li><Link to="/portfolio">Portfolio</Link></li>
               <li><Link to="/experience">Experience</Link></li>
               <li><Link to="/education">Education</Link></li>
               <li><Link to="/contact">Contact</Link></li>
