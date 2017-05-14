@@ -148,6 +148,12 @@ class Portfolio extends Component {
     this.resetCheckboxes = this.resetCheckboxes.bind(this);
   }
 
+  componentDidMount() {
+    this.sideBarStyle = {
+      'minHeight': this.filterForm.offsetHeight + 40 + 'px'
+    };
+  }
+
   getArrayOfTechnologiesWithoutGroups() {
     let arr = arrayOfTechnologies.map((group) => group.technologies);
     let i, arrLength = arr.length; 
@@ -208,28 +214,12 @@ class Portfolio extends Component {
     this.checkboxes = [];
     return arrayOfTechnologies.map((group) => {
       let checkboxes = group.technologies.map((technology) => {
-        let checkbox;
-        if (this.state.reset === 'every') {
-          checkbox = (<input type="checkbox" 
-                        className="filled-in" 
-                        onChange={(e) => {this.changeTechnologies(e)}}
-                        id={`${technology}-checkbox`}
-                        checked={true}
-                        defaultChecked/>);
-        } else if (this.state.reset === 'none') {
-          checkbox = (<input type="checkbox" 
-                        className="filled-in" 
-                        onChange={(e) => {this.changeTechnologies(e)}}
-                        id={`${technology}-checkbox`}
-                        checked={false}
-                        defaultChecked/>);
-        } else {
-          checkbox = (<input type="checkbox" 
-                        className="filled-in" 
-                        onChange={(e) => {this.changeTechnologies(e)}}
-                        id={`${technology}-checkbox`}
-                        defaultChecked/>);
-        }
+        let checkbox = (<input type="checkbox" 
+                               className="filled-in" 
+                               onChange={(e) => {this.changeTechnologies(e)}}
+                               id={`${technology}-checkbox`}
+                               checked={~this.state.technologies.indexOf(technology)}
+                               defaultChecked/>);
         return (<p>
                   {checkbox}
                   <label htmlFor={`${technology}-checkbox`}>{technology}</label>
@@ -244,8 +234,7 @@ class Portfolio extends Component {
 
   resetCheckboxes(e) {
     this.setState({
-      technologies: e.target.checked ? [] : this.getArrayOfTechnologiesWithoutGroups(),
-      reset: e.target.checked ? 'none' : 'every'
+      technologies: e.target.checked ? [] : this.getArrayOfTechnologiesWithoutGroups()
     });
   }
 
@@ -258,22 +247,23 @@ class Portfolio extends Component {
       technologies.push(technology);
     }
     this.setState({
-      technologies: technologies,
-      reset: undefined
+      technologies: technologies
     });
   }
 
   render() {
     return (
-      <div id="portfolio" className="row">
-        <div className="col m3 sidebar">
-          <form action="#">
+      <div id="portfolio" className="row"
+           style={this.sideBarStyle}>
+        <div className="col m3 sidebar"
+             style={this.sideBarStyle}>
+          <form action="#"
+                ref={(input) => { this.filterForm = input;}}>
             <div className="switch">
               <label>
                 Every
                 <input type="checkbox"
-                       onChange={(e) => this.resetCheckboxes(e)}
-                       defaultValue={undefined}/>
+                       onChange={(e) => this.resetCheckboxes(e)}/>
                 <span className="lever"></span>
                 None
               </label>
