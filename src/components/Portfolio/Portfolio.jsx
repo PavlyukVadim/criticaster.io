@@ -139,12 +139,33 @@ class Portfolio extends Component {
   
   constructor(props) {
     super(props);
+    this.state = {
+      technologies: this.getArrayOfTechnologiesWithoutGroups()
+    };
     this.getProjects = this.getProjects.bind(this);
     this.getCheckboxes = this.getCheckboxes.bind(this);
+    this.changeTechnologies = this.changeTechnologies.bind(this);
+    this.resetCheckboxes = this.resetCheckboxes.bind(this);
+  }
+
+  getArrayOfTechnologiesWithoutGroups() {
+    let arr = arrayOfTechnologies.map((group) => group.technologies);
+    let i, arrLength = arr.length; 
+    for (i = 0; i < arrLength; i++) {
+      arr = arr.concat(arr.shift());
+    }
+    return arr;
   }
 
   getProjects() {
-    let cards = projects.map((project) => {
+    let technologies = this.state.technologies;
+    let arrayOfProjects = projects.filter((project) => {
+      return project.technologies.some((technology) => {
+        return ~technologies.indexOf(technology);
+      })
+    });
+
+    let cards = arrayOfProjects.map((project) => {
       let technologies = project.technologies.map((technology) => {
         return (<div className="chip">
                   <img src={technologiesIcons.get(technology)} alt={technology}/>
@@ -183,19 +204,62 @@ class Portfolio extends Component {
     return result;
   }
 
-  getCheckboxes() {
+  getCheckboxes() {    
+    this.checkboxes = [];
     return arrayOfTechnologies.map((group) => {
       let checkboxes = group.technologies.map((technology) => {
+        let checkbox;
+        if (this.state.reset === 'every') {
+          checkbox = (<input type="checkbox" 
+                        className="filled-in" 
+                        onChange={(e) => {this.changeTechnologies(e)}}
+                        id={`${technology}-checkbox`}
+                        checked={true}
+                        defaultChecked/>);
+        } else if (this.state.reset === 'none') {
+          checkbox = (<input type="checkbox" 
+                        className="filled-in" 
+                        onChange={(e) => {this.changeTechnologies(e)}}
+                        id={`${technology}-checkbox`}
+                        checked={false}
+                        defaultChecked/>);
+        } else {
+          checkbox = (<input type="checkbox" 
+                        className="filled-in" 
+                        onChange={(e) => {this.changeTechnologies(e)}}
+                        id={`${technology}-checkbox`}
+                        defaultChecked/>);
+        }
         return (<p>
-                  <input type="checkbox" className="filled-in" id={`${technology}-checkbox`} defaultChecked/>
+                  {checkbox}
                   <label htmlFor={`${technology}-checkbox`}>{technology}</label>
                 </p>);  
       });
-
       return (<div>
                 <h4>{group.title}</h4>
                 {checkboxes}
               </div>);
+    });
+  }
+
+  resetCheckboxes(e) {
+    this.setState({
+      technologies: e.target.checked ? [] : this.getArrayOfTechnologiesWithoutGroups(),
+      reset: e.target.checked ? 'none' : 'every'
+    });
+  }
+
+  changeTechnologies(e) {
+    let technology = e.target.id.match(/.*-/)[0].slice(0, -1);
+    let technologies = [].concat(this.state.technologies);
+    if (~technologies.indexOf(technology)) {
+      technologies.splice(technologies.indexOf(technology), 1);
+    } else {
+      technologies.push(technology);
+    }
+    this.setState({
+      technologies: technologies,
+      reset: undefined
     });
   }
 
@@ -207,7 +271,9 @@ class Portfolio extends Component {
             <div className="switch">
               <label>
                 Every
-                <input type="checkbox"/>
+                <input type="checkbox"
+                       onChange={(e) => this.resetCheckboxes(e)}
+                       defaultValue={undefined}/>
                 <span className="lever"></span>
                 None
               </label>
