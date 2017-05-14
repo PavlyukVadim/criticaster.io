@@ -171,15 +171,15 @@ class Portfolio extends Component {
       })
     });
 
-    let cards = arrayOfProjects.map((project) => {
-      let technologies = project.technologies.map((technology) => {
-        return (<div className="chip">
+    let cards = arrayOfProjects.map((project, index) => {
+      let technologies = project.technologies.map((technology, index) => {
+        return (<div className="chip" key={index}>
                   <img src={technologiesIcons.get(technology)} alt={technology}/>
                     {technology}
                 </div>)
       })
 
-      return (<div className="col m6 l4">
+      return (<div className="col m6 l4" key={index}>
                 <div className="card hoverable">
                   <div className="card-image waves-effect waves-block waves-light">
                     <img className="activator" src={project.img}/>
@@ -201,7 +201,7 @@ class Portfolio extends Component {
     let numberOfProjectsInRow = window.innerWidth >= 992 ? 3 : 2;
     while(cards.length > 0) {
       result.push(
-        <div className="row">
+        <div className="row" key={cards.length}>
           {cards.slice(0, numberOfProjectsInRow)}
         </div>
       )
@@ -212,20 +212,20 @@ class Portfolio extends Component {
 
   getCheckboxes() {    
     this.checkboxes = [];
-    return arrayOfTechnologies.map((group) => {
-      let checkboxes = group.technologies.map((technology) => {
+    return arrayOfTechnologies.map((group, index) => {
+      let checkboxes = group.technologies.map((technology, index) => {
         let checkbox = (<input type="checkbox" 
                                className="filled-in" 
                                onChange={(e) => {this.changeTechnologies(e)}}
                                id={`${technology}-checkbox`}
                                checked={~this.state.technologies.indexOf(technology)}
                                defaultChecked/>);
-        return (<p>
+        return (<p key={index}>
                   {checkbox}
                   <label htmlFor={`${technology}-checkbox`}>{technology}</label>
                 </p>);  
       });
-      return (<div>
+      return (<div key={index}>
                 <h4>{group.title}</h4>
                 {checkboxes}
               </div>);

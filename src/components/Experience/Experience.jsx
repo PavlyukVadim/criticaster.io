@@ -35,7 +35,7 @@ class Experience extends Component {
                 <div className="icon">
                   <i className="fa fa-laptop" aria-hidden="true"></i>
                 </div>
-                <div className={itemIndex != arr.length - 1 && "line"}></div>
+                <div className={itemIndex !== arr.length - 1 && "line"}></div>
               </div>); 
     })
   }

@@ -8,16 +8,15 @@ import Portfolio from './components/Portfolio/Portfolio.jsx';
 import Experience from './components/Experience/Experience.jsx';
 import Education from './components/Education/Education.jsx';
 import Contact from './components/Contact/Contact.jsx';
-
 import './index.scss';
 
 ReactDOM.render(
 	<Router history={browserHistory}>
 		<Route path='/' component={App}>
-			<IndexRoute component={Home} />
-      <Route path='/skills' component={Skill} />
-      <Route path='/portfolio' component={Portfolio} />
-    	<Route path='/experience' component={Experience} />
+			<IndexRoute component={Home}/>
+      <Route path='/skills' component={Skill}/>
+      <Route path='/portfolio' component={Portfolio}/>
+    	<Route path='/experience' component={Experience}/>
       <Route path='/education' component={Education}/>
       <Route path='/contact' component={Contact}/>
   	</Route> 
