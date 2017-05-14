@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 import './Header.scss';
 
 class Header extends Component {
@@ -10,22 +11,22 @@ class Header extends Component {
             <a href="#" className="brand-logo">Logo</a>
             <a href="#" data-activates="mobile-demo" className="button-collapse"><i className="material-icons">menu</i></a>
             <ul className="side-nav" id="mobile-demo">
-              <li><a className="active" href="#test1">Home</a></li>
-              <li><a href="#test2">Skill</a></li>
-              <li><a href="#test2">Rortfolio</a></li>
-              <li><a href="#test2">Experience</a></li>
-              <li><a href="#test2">Education</a></li>
-              <li><a href="#test2">Contact</a></li>
+              <li><Link to="/">Home</Link></li>
+              <li><Link to="/skills">Skills</Link></li>
+              <li><Link to="/">Portfolio</Link></li>
+              <li><Link to="/experience">Experience</Link></li>
+              <li><Link to="/education">Education</Link></li>
+              <li><Link to="/contact">Contact</Link></li>
             </ul>
           </div>
-          <div className="right nav-content hide-on-med-and-down">
-            <ul className="tabs tabs-transparent">
-              <li className="tab"><a className="active" href="#test1">Home</a></li>
-              <li className="tab"><a href="#test2">Skill</a></li>
-              <li className="tab"><a href="#test2">Rortfolio</a></li>
-              <li className="tab"><a href="#test2">Experience</a></li>
-              <li className="tab"><a href="#test2">Education</a></li>
-              <li className="tab"><a href="#test2">Contact</a></li>
+          <div>
+            <ul id="nav-mobile" className="right hide-on-med-and-down">
+              <li><Link to="/">Home</Link></li>
+              <li><Link to="/skills">Skills</Link></li>
+              <li><Link to="/">Portfolio</Link></li>
+              <li><Link to="/experience">Experience</Link></li>
+              <li><Link to="/education">Education</Link></li>
+              <li><Link to="/contact">Contact</Link></li>
             </ul>
           </div>
         </nav>

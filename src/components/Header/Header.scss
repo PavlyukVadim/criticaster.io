@@ -3,9 +3,17 @@
 nav {
 	background-color: $blue;
 	
-	.nav-content {
+	#nav-mobile {
 		position: absolute !important;
 	    right: 0;
 	    top: 0;
+	}
+
+	ul li {
+		float: none !important;
+		
+		@media(min-width: 768px) {
+			display: inline-block;
+		}
 	}
 }
