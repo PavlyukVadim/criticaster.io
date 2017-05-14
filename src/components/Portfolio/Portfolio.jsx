@@ -198,14 +198,14 @@ class Portfolio extends Component {
               </div>)
     });
     let result = [];
-
+    let numberOfProjectsInRow = window.innerWidth >= 992 ? 3 : 2;
     while(cards.length > 0) {
       result.push(
         <div className="row">
-          {cards.slice(0, 3)}
+          {cards.slice(0, numberOfProjectsInRow)}
         </div>
       )
-      cards = cards.slice(3);
+      cards = cards.slice(numberOfProjectsInRow);
     }
     return result;
   }
