@@ -3,6 +3,34 @@ import GoogleMap from '../GoogleMap/GoogleMap.jsx';
 import './Contact.scss';
 
 class Contact extends Component {
+
+  constructor(props) {
+    super(props);
+    this.submitForm = this.submitForm.bind(this);
+  }
+
+  submitForm(e) {
+    e.preventDefault();
+    let hostname = window.location.origin;
+    let name = this.nameInput.value;
+    let mail = this.mailInput.value;
+    let text = this.textInput.value;
+    fetch(`${hostname}/mail`, {
+            method: 'POST',
+            credentials: 'same-origin',
+            headers: {
+              'Accept': 'application/json, text/plain, */*',
+              'Content-Type': 'application/json;charset=UTF-8'
+            },
+            body: JSON.stringify({
+              name,
+              mail,
+              text
+            })
+          }).then(() => {
+            alert('Message sent successfully');
+          });
+  }
   
   render() {
     return (
@@ -12,23 +40,26 @@ class Contact extends Component {
           <div className="row">
             <div className="col m6">
               <div className="row">
-                <form className="col s12">
+                <form className="col s12" onSubmit={(e) => {this.submitForm(e)}}>
                   <h3>Feel free to contact me</h3>
                   <div className="row">
                     <div className="input-field col s12">
-                      <input id="last_name" type="text" className="validate"/>
+                      <input id="last_name" type="text" className="validate"
+                             ref={(input) => {this.nameInput = input;}}/>
                       <label htmlFor="last_name">Name</label>
                     </div>
                   </div>
                   <div className="row">
                     <div className="input-field col s12">
-                      <input id="email" type="email" className="validate"/>
+                      <input id="email" type="email" className="validate"
+                             ref={(input) => {this.mailInput = input;}}/>
                       <label htmlFor="email">Email</label>
                     </div>
                   </div>
                   <div className="row">
                     <div className="input-field col s12">
-                      <textarea id="message" className="materialize-textarea"></textarea>
+                      <textarea id="message" className="materialize-textarea"
+                                ref={(input) => {this.textInput = input;}}></textarea>
                       <label htmlFor="message">Message</label>
                     </div>
                   </div>
