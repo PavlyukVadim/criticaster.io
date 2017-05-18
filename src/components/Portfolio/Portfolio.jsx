@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import angularLogo from '../../../static/img/angular-logo.png';
 import bootstrapLogo from '../../../static/img/bootstrap-logo.png';
 import expressLogo from '../../../static/img/expressjs-logo.png';
@@ -179,7 +180,7 @@ class Portfolio extends Component {
                 </div>)
       })
 
-      return (<div className="col m6 l4" key={index}>
+      return (<div className="col m6 l4" key={index}>                
                 <div className="card hoverable">
                   <div className="card-image waves-effect waves-block waves-light">
                     <img className="activator" src={project.img}/>
