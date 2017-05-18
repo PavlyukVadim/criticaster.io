@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import './Skill.scss';
 
 let arrayOfTechnicalSkills = [{ title: 'HTML/CSS', progress: '75%'},
@@ -22,11 +23,25 @@ class Skill extends Component {
     return arrayOfTechnicalSkills.map((item, itemIndex) => {
       return (<div key={itemIndex}>
                 <label className="progress-bar-label">{item.title}</label>
-                <div className="progress">
-                  <div className="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style={{width: item.progress}}>
-                    <span>{item.progress}</span>
+                  <div className="progress">
+                    <ReactCSSTransitionGroup
+                      transitionName="progress-animation"
+                      transitionAppear={true}
+                      transitionAppearTimeout={500 * itemIndex + 1500}
+                      transitionEnter={false}
+                      transitionLeave={false}>
+                        <div key={itemIndex} 
+                             className="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"
+                             style={
+                                    {
+                                     width: item.progress,
+                                     animationDelay: `${itemIndex * 0.5}s`  
+                                    }
+                                   }>
+                          <span>{item.progress}</span>
+                        </div>
+                    </ReactCSSTransitionGroup>
                   </div>
-                </div>
               </div>);
     })
   }
