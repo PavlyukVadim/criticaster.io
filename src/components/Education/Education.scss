@@ -1,6 +1,7 @@
 @import '../../common';
 
 #education{
+    
     .education {
         padding: 178px 0;
         margin: 72px 0;
@@ -248,6 +249,11 @@
             box-shadow: 0 2px 6px rgba(0,0,0,.25);
             margin-bottom: 24px;
             transition: .25s;
+        }
+
+        .material-icons {
+            font-size: 48px;
+            line-height: 2;
         }
 
         h6 {

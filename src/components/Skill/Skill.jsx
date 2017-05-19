@@ -6,10 +6,10 @@ let arrayOfTechnicalSkills = [{ title: 'HTML/CSS', progress: '75%'},
                               { title: 'JavaScript', progress: '92%'},
                               { title: 'React.JS', progress: '85%'},
                               { title: 'Node.JS', progress: '80%'},
-                              { title: 'Angular 2', progress: '73%'}];
+                              { title: 'Angular/Angular 2', progress: '73%'}];
 let arrayOfKnowledge = [['Network', 'HTTP', 'REST', 'SPA', 'OOP', 'Functional programming', 'Algorithms', 'Frameworks', 'CMS'],
                         ['Data structures', 'Linux', 'DATABASES', 'JSON', 'VCS', 'Cross-browser layout', 'Material design',
-                         'Web usability', 'Seo optimization']];
+                         'Module bundlers', 'Seo optimization']];
 
 class Skill extends Component {
   
@@ -87,9 +87,9 @@ class Skill extends Component {
             </div>
             <div className="col m4">
               <h4>Certifications</h4>
-              <a href="https://geekbrains.ru/certificates/184696.en"><i className="fa fa-file-text-o" aria-hidden="true"></i> JavaScript Advanced</a>
+              <a href="https://geekbrains.ru/certificates/184696.en" target="_blank"><i className="fa fa-file-text-o" aria-hidden="true"></i> JavaScript Advanced</a>
               <p>License:  0184696</p>
-              <a href="https://www.sololearn.com/Certificate/1024-727318/pdf"><i className="fa fa-file-text-o" aria-hidden="true"></i> Certificate of Completion: JavaScript course</a>
+              <a href="https://www.sololearn.com/Certificate/1024-727318/pdf" target="_blank"><i className="fa fa-file-text-o" aria-hidden="true"></i> Certificate of Completion: JavaScript course</a>
               <p>License: 1024-727318</p>
             </div>
             <div className="col m4">

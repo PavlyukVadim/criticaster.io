@@ -2,24 +2,23 @@ import React, { Component } from 'react';
 import './Education.scss';
 
 let arrayOfHobbies = [{title: 'Cycling', className: 'fa fa-bicycle'},
-                      {title: 'Sleeping', className: 'fa fa-bed'},
+                      {title: 'Swimming', className: 'material-icons', content: 'pool'},
                       {title: 'Travelling', className: 'fa fa-train'},
-                      {title: 'Book Reading', className: 'fa fa-book'}];
-
+                      {title: 'Sleeping', className: 'fa fa-bed'}];
 let arrayOfEducations = [{
   title: 'Regional Mathematical High School', 
   period: '2013 - 2015'
 },
 {
   title: 'National Technocal University of Ukraine \'Igor Sikorsky Kyiv Polytechnic Institute\'',
-  period: '2013 - 2015'
+  period: '2015 - CURRENT'
 },
 {
   title: 'Native English School', 
   period: '2017 - CURRENT'
 },
 {
-  title: 'Native English School', 
+  title: 'Ignite JavaScript Competence Center', 
   period: '2017 - CURRENT'
 }];
 
@@ -35,7 +34,10 @@ class Education extends Component {
     return arrayOfHobbies.map((item, itemIndex) => {
       return (<div className="col s6 offset-m1 m2" key={itemIndex}>
                 <div className="icon-box">
-                  <div className="icon"><i className={item.className} aria-hidden="true"></i></div>
+                  <div className="icon">
+                    <i className={item.className} aria-hidden="true">
+                      {item.content}
+                    </i></div>
                   <h6>{item.title}</h6>
                 </div>
               </div>);

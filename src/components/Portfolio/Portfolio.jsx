@@ -15,79 +15,95 @@ import tsLogo from '../../../static/img/ts-logo.png';
 import webpackLogo from '../../../static/img/webpack-logo.png';
 import wordpressLogo from '../../../static/img/wordpress-logo.png';
 
+import sleanStarImg from '../../../static/img/works/cleanStar.png';
+import ROImg from '../../../static/img/works/RO.png';
+import VLImg from '../../../static/img/works/VL.png';
+import ketImg from '../../../static/img/works/ket.png';
+import settoryImg from '../../../static/img/works/settory.png';
+import smakImg from '../../../static/img/works/smak.png';
+import newsBlogImg from '../../../static/img/works/newsBlog.png';
+import snakesImg from '../../../static/img/works/snakes.png';
+
 import './Portfolio.scss';
 
 let projects = [{
   title: 'News blog',
-  img: 'http://materializecss.com/images/office.jpg',
+  img: newsBlogImg,
   technologies: ['Express', 'React', 'Redux', 'Webpack', 'Materialize'],
-  link: '',
+  link: 'https://murmuring-sea-63593.herokuapp.com/',
+  github: 'https://github.com/PavlyukVadim/news-blog',
+  youtube: 'https://www.youtube.com/watch?v=5Ps5dQ7yQZE&t=1s',
   desc: (
-         <div><span className="card-title grey-text text-darken-4">Card Title<i className="material-icons right">close</i></span>
-         <p>Here is some more inhtmlFormation about this product that is only revealed once clicked on.</p></div>)
+         <div><span className="card-title grey-text text-darken-4">News blog<i className="material-icons right">close</i></span>
+         <p>This is a blog with admin panel and news API. 
+          You can create own news or read news from popular newspapers and journals like The Times, The Guardian.
+          You can filter news by popularity, novelty, title.</p></div>)
 },
 {
   title: 'Snakes',
-  img: 'http://materializecss.com/images/office.jpg',
+  img: snakesImg,
   technologies: ['Angular 2', 'TypeScript', 'Node.js', 'Mongodb'],
   link: '',
+  github: 'https://github.com/PavlyukVadim/snakes',
+  youtube: 'https://www.youtube.com/watch?v=e2vsN8Vcfns&t=5s',
   desc: (
-         <div><span className="card-title grey-text text-darken-4">Card Title<i className="material-icons right">close</i></span>
-         <p>Here is some more inhtmlFormation about this product that is only revealed once clicked on.</p></div>)
-},
-{
-  title: 'Clean Star',
-  img: 'http://materializecss.com/images/office.jpg',
-  technologies: ['jQuery', 'Bootstrap'],
-  link: '',
-  desc: (<div>
-         <span className="card-title grey-text text-darken-4">Card Title<i className="material-icons right">close</i></span>
-         <p>Here is some more inhtmlFormation about this product that is only revealed once clicked on.</p></div>)
-},
-{
-  title: 'Settory',
-  img: 'http://materializecss.com/images/office.jpg',
-  technologies: ['React', 'Webpack'],
-  link: '',
-  desc: (<div>
-         <span className="card-title grey-text text-darken-4">Card Title<i className="material-icons right">close</i></span>
-         <p>Here is some more inhtmlFormation about this product that is only revealed once clicked on.</p></div>)
+         <div><span className="card-title grey-text text-darken-4">Snakes<i className="material-icons right">close</i></span>
+         <p>This is a common known game "Snake", but it is real-time multiplayer game. For start playing you should create account or use anonymous mode then you compete with other players for food.</p></div>)
 },
 {
   title: 'SMAK',
-  img: 'http://materializecss.com/images/office.jpg',
+  img: smakImg,
   technologies: ['JavaScript', 'SASS'],
-  link: '',
+  link: 'https://smak-vanilla-js.herokuapp.com/',
   desc: (<div>
-         <span className="card-title grey-text text-darken-4">Card Title<i className="material-icons right">close</i></span>
-         <p>Here is some more inhtmlFormation about this product that is only revealed once clicked on.</p></div>)
+         <span className="card-title grey-text text-darken-4">SMAK<i className="material-icons right">close</i></span>
+         <p>This is vanilla js project with own grid and another commonly known components (sliders with touch event, hamburger menu, scroll to, count up, forms, tabs, etc).</p></div>)
 },
 {
-  title: 'Royal optica',
-  img: 'http://materializecss.com/images/office.jpg',
-  technologies: ['WordPress', 'jQuery'],
-  link: '',
+  title: 'Settory',
+  img: settoryImg,
+  technologies: ['React', 'Webpack'],
+  link: 'https://sleepy-garden-43033.herokuapp.com/',
   desc: (<div>
-         <span className="card-title grey-text text-darken-4">Card Title<i className="material-icons right">close</i></span>
-         <p>Here is some more inhtmlFormation about this product that is only revealed once clicked on.</p></div>)
+         <span className="card-title grey-text text-darken-4">Settory<i className="material-icons right">close</i></span>
+         <p>This is a project for cleaning company consist of 2 parts as follows: landing page and app for order. Also was implemented admin panel, where admin can control all operations.</p></div>)
 },
 {
-  title: 'Visio Lux',
-  img: 'http://materializecss.com/images/office.jpg',
+  title: 'Royal Optica',
+  img: ROImg,
   technologies: ['WordPress', 'jQuery'],
-  link: '',
+  link: 'http://www.royal-optica.com.ua/',
   desc: (<div>
-         <span className="card-title grey-text text-darken-4">Card Title<i className="material-icons right">close</i></span>
-         <p>Here is some more inhtmlFormation about this product that is only revealed once clicked on.</p></div>)
+         <span className="card-title grey-text text-darken-4">Royal Optica<i className="material-icons right">close</i></span>
+         <p>This is an eshop with wordpress, woocommerce, custom design, export products from excel and variable products.</p></div>)
 },
 {
   title: 'KET',
-  img: 'http://materializecss.com/images/office.jpg',
+  img: ketImg,
   technologies: ['Angular', 'SASS'],
-  link: '',
+  link: 'https://mighty-escarpment-69110.herokuapp.com/#!/',
+  github: 'https://github.com/PavlyukVadim/javascript-competence-center/tree/master/AngularJS/project',
   desc: (<div>
-         <span className="card-title grey-text text-darken-4">Card Title<i className="material-icons right">close</i></span>
-         <p>Here is some more inhtmlFormation about this product that is only revealed once clicked on.</p></div>)
+         <span className="card-title grey-text text-darken-4">KET<i className="material-icons right">close</i></span>
+         <p>This is an angular project. It consist of independent components.</p></div>)
+},
+{
+  title: 'Visio Lux',
+  img: VLImg,
+  technologies: ['WordPress', 'jQuery'],
+  link: 'http://966475.sqdev.web.hosting-test.net/',
+  desc: (<div>
+         <span className="card-title grey-text text-darken-4">Visio Lux<i className="material-icons right">close</i></span>
+         <p>This is an e-shop with wordpress, woocommerce and custom design.</p></div>)
+},
+{
+  title: 'Clean Star',
+  img: sleanStarImg,
+  technologies: ['jQuery', 'Bootstrap'],
+  link: 'https://clean-star.herokuapp.com/',
+  desc: (<div>
+         <span className="card-title grey-text text-darken-4">Clean Star<i className="material-icons right">close</i></span>
+         <p>This is a landing page for cleaning company with order calculator.</p></div>)
 }];
 
 let technologiesIcons = new Map();
@@ -190,7 +206,11 @@ class Portfolio extends Component {
                       <div className="technologies">
                         {technologies}
                       </div>
-                    <p><a href="#">This is a link</a></p>
+                    <p className="project-links">
+                      {project.link && <a href={project.link} target="_blank">Demo</a>}
+                      {project.github && <a href={project.github} target="_blank">GitHub</a>}
+                      {project.youtube && <a href={project.youtube} target="_blank">YouTube</a>}
+                    </p>
                   </div>
                   <div className="card-reveal">
                     {project.desc}

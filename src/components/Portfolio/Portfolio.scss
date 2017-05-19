@@ -35,5 +35,14 @@
 		@media(min-width: 600px) {
 			margin-left: 25%;
 		}
+		
+		.project-links {
+			margin-top: 5px;
+
+			a {
+				margin: 0 7px;
+				font-size: 18px;
+			}
+		}
 	}
 }

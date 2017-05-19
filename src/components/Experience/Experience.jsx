@@ -5,13 +5,13 @@ let arrayOfExperience = [{
   period: '2016 - Current',
   company: 'SQDev',
   position: 'Full-stack Developer',
-  desc: 'Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velitus sed quia non num quam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.'
+  desc: 'Now I\'m working as full-stack developer in sqDev, we create sites, e-shops, apps. Our technology stack consist of: HTML/SCSS, js/jQuery, React.js, Webpack, Gulp, Node.js, Express.js, WordPress.'
 },
 {
   period: '2016 - 2017',
   company: 'WeblancerNet',
   position: 'Web Developer',
-  desc: 'Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velitus sed quia non num quam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.'
+  desc: 'I was working as a freelance web developer. I had projects with HTML/CSS (landing pages, sites), JS/jQuery (projects like constructor of products for e-shop)'
 }];
 
 class Experience extends Component {
@@ -44,7 +44,7 @@ class Experience extends Component {
     return (
       <section id="experience">
         <div className="container">
-          <h2>2 Years Experience</h2>
+          <h2>1,5 Years Experience</h2>
           <div className="experience-timeline">
             {this.getExperience()}
           </div>

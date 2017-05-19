@@ -8,7 +8,7 @@ class Header extends Component {
       <div>
   	    <nav className="nav-extended">
           <div className="nav-wrapper">
-            <a href="#" className="brand-logo">Logo</a>
+            <a href="#" className="brand-logo">Pavlyuk Vadim</a>
             <a href="#" data-activates="mobile-demo" className="button-collapse"><i className="material-icons">menu</i></a>
             <ul className="side-nav" id="mobile-demo">
               <li><Link to="/">Home</Link></li>
