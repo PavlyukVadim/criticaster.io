@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import myPhoto from '../../../static/img/pavlyuk-vadim.jpg';
+import myPdf from '../../../static/PavlyukVadim.pdf';
 import './Home.scss';
 
 class Home extends Component {
@@ -57,7 +58,7 @@ class Home extends Component {
                 <li><a className="ripple-centered waves-effect waves-circle waves-light btn-floating secondary-content" href="https://vk.com/v_a_d_i_m_n" target="_blank"><i className="fa fa-vk" aria-hidden="true"></i></a></li>
                 <li><a className="ripple-centered waves-effect waves-circle waves-light btn-floating secondary-content" href="https://plus.google.com/u/0/115972493185809573726" target="_blank"><i className="fa fa-google-plus" aria-hidden="true"></i></a></li>
                 <li><a className="ripple-centered waves-effect waves-circle waves-light btn-floating secondary-content" href="https://www.youtube.com/channel/UCCJrX72dtaiFq1Dh3tjfE2g" target="_blank"><i className="fa fa-youtube" aria-hidden="true"></i></a></li>
-                <li><a className="ripple-centered waves-effect waves-circle waves-light btn-floating secondary-content blue pulse"><i className="material-icons">get_app</i></a></li>
+                <li><a className="ripple-centered waves-effect waves-circle waves-light btn-floating secondary-content blue pulse" href={myPdf} download><i className="material-icons">get_app</i></a></li>
               </ul>
             </div>
           </div>
