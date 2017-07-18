@@ -6,7 +6,7 @@ class Header extends Component {
   render() {
     return (
       <div>
-  	    <nav className="nav-extended">
+        <nav className="nav-extended">
           <div className="nav-wrapper">
             <a href="#" className="brand-logo">Pavlyuk Vadim</a>
             <a href="#" data-activates="mobile-demo" className="button-collapse"><i className="material-icons">menu</i></a>

@@ -21,41 +21,53 @@ class Skill extends Component {
 
   getListOfTechnicalSkills() {
     return arrayOfTechnicalSkills.map((item, itemIndex) => {
-      return (<div key={itemIndex}>
-                <label className="progress-bar-label">{item.title}</label>
-                  <div className="progress">
-                    <ReactCSSTransitionGroup
-                      transitionName="progress-animation"
-                      transitionAppear={true}
-                      transitionAppearTimeout={500 * itemIndex + 1500}
-                      transitionEnter={false}
-                      transitionLeave={false}>
-                        <div key={itemIndex} 
-                             className="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"
-                             style={
-                                    {
-                                     width: item.progress,
-                                     animationDelay: `${itemIndex * 0.5}s`  
-                                    }
-                                   }>
-                          <span>{item.progress}</span>
-                        </div>
-                    </ReactCSSTransitionGroup>
-                  </div>
-              </div>);
+      return (
+        <div key={itemIndex}>
+          <label className="progress-bar-label">{item.title}</label>
+            <div className="progress">
+              <ReactCSSTransitionGroup
+                transitionName="progress-animation"
+                transitionAppear={true}
+                transitionAppearTimeout={500 * itemIndex + 1500}
+                transitionEnter={false}
+                transitionLeave={false}
+              >
+                <div
+                  key={itemIndex} 
+                  className="progress-bar"
+                  role="progressbar"
+                  aria-valuenow="85"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  style={{width: item.progress,
+                          animationDelay: `${itemIndex * 0.5}s`,}}
+                >
+                  <span>{item.progress}</span>
+                </div>
+              </ReactCSSTransitionGroup>
+            </div>
+        </div>
+      );
     })
   }
 
   getKnowledge() {
     return arrayOfKnowledge.map((array, arrayIndex) => {
       let list = array.map((item, itemIndex, array) => {
-        return <li key={arrayIndex * array.length + itemIndex}><i className="fa fa-arrow-right" aria-hidden="true"></i>{item}</li>
+        return (
+          <li key={arrayIndex * array.length + itemIndex}>
+            <i className="fa fa-arrow-right" aria-hidden="true"></i>
+            {item}
+          </li>
+        );
       });
-      return (<div className="col m6" key={arrayIndex}>
-                <ul className="knowledge-list">
-                  {list}
-                </ul>
-              </div>);
+      return (
+        <div className="col m6" key={arrayIndex}>
+          <ul className="knowledge-list">
+            {list}
+          </ul>
+        </div>
+      );
     });
   }
 

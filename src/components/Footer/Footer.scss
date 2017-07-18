@@ -1,33 +1,33 @@
 @import '../../index';
 
-footer{
-	text-align: center;
-	color: $white;
-	font-weight: 500;
+footer {
+  text-align: center;
+  color: $white;
+  font-weight: 500;
 
-	.top {
+  .top {
     background: #232323;
     padding: 5px 0;
 
     .row {
-    	margin: 0;
+      margin: 0;
     }
-	}
+  }
 
-	h4 {
+  h4 {
     color: $white;
-	}
+  }
 
-	.bottom {
+  .bottom {
     background: #1c1c1c;
     line-height: 50px;
-	}
+  }
 
- .social {
-        background-color: transparent;
+  .social {
+    background-color: transparent;
 
-        li {
-            margin: 5px 5px;
-        }
-    }    
+    li {
+      margin: 5px 5px;
+    }
+  }
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import GoogleMap from '../GoogleMap/GoogleMap.jsx';
+import GoogleMap from '../GoogleMap';
 import './Contact.scss';
 
 class Contact extends Component {
@@ -16,20 +16,20 @@ class Contact extends Component {
     let mail = this.mailInput.value;
     let text = this.textInput.value;
     fetch(`${hostname}/mail`, {
-            method: 'POST',
-            credentials: 'same-origin',
-            headers: {
-              'Accept': 'application/json, text/plain, */*',
-              'Content-Type': 'application/json;charset=UTF-8'
-            },
-            body: JSON.stringify({
-              name,
-              mail,
-              text
-            })
-          }).then(() => {
-            alert('Message sent successfully');
-          });
+      method: 'POST',
+      credentials: 'same-origin',
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json;charset=UTF-8'
+      },
+      body: JSON.stringify({
+        name,
+        mail,
+        text
+      })
+    }).then(() => {
+      alert('Message sent successfully');
+    });
   }
   
   render() {
@@ -44,22 +44,31 @@ class Contact extends Component {
                   <h3>Feel free to contact me</h3>
                   <div className="row">
                     <div className="input-field col s12">
-                      <input id="last_name" type="text" className="validate"
-                             ref={(input) => {this.nameInput = input;}}/>
+                      <input id="last_name"
+                             type="text"
+                             className="validate"
+                             ref={(input) => {this.nameInput = input;}}
+                      />
                       <label htmlFor="last_name">Name</label>
                     </div>
                   </div>
                   <div className="row">
                     <div className="input-field col s12">
-                      <input id="email" type="email" className="validate"
-                             ref={(input) => {this.mailInput = input;}}/>
+                      <input id="email"
+                             type="email"
+                             className="validate"
+                             ref={(input) => {this.mailInput = input;}}
+                      />
                       <label htmlFor="email">Email</label>
                     </div>
                   </div>
                   <div className="row">
                     <div className="input-field col s12">
-                      <textarea id="message" className="materialize-textarea"
-                                ref={(input) => {this.textInput = input;}}></textarea>
+                      <textarea id="message"
+                                className="materialize-textarea"
+                                ref={(input) => {this.textInput = input;}}
+                      >
+                      </textarea>
                       <label htmlFor="message">Message</label>
                     </div>
                   </div>
@@ -86,7 +95,7 @@ class Contact extends Component {
                   </li>
                 </ul>
                 <div id="map">
-                  <GoogleMap/>
+                  <GoogleMap />
                 </div>
               </div>
             </div>

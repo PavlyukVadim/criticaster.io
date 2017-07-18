@@ -124,33 +124,34 @@ technologiesIcons.set('Webpack', webpackLogo);
 technologiesIcons.set('WordPress', wordpressLogo);
 
 let arrayOfTechnologies = [{
-  title: 'JavaScript libraries',
-  technologies: ['jQuery', 'React', 'Redux']
-},
-{
-  title: 'JavaScript frameworks',
-  technologies: ['Angular', 'Angular 2']
-},
-{
-  title: 'Programming languages',
-  technologies: ['JavaScript', 'TypeScript']
-},
-{
-  title: 'CSS frameworks',
-  technologies: ['Bootstrap', 'Materialize']
-},
-{
-  title: 'Module bundlers',
-  technologies: ['Webpack']
-},
-{
-  title: 'CMS',
-  technologies: ['WordPress']
-},
-{
-  title: 'Other',
-  technologies: ['Express', 'Mongodb', 'Node.js', 'SASS']
-}];
+    title: 'JavaScript libraries',
+    technologies: ['jQuery', 'React', 'Redux']
+  },
+  {
+    title: 'JavaScript frameworks',
+    technologies: ['Angular', 'Angular 2']
+  },
+  {
+    title: 'Programming languages',
+    technologies: ['JavaScript', 'TypeScript']
+  },
+  {
+    title: 'CSS frameworks',
+    technologies: ['Bootstrap', 'Materialize']
+  },
+  {
+    title: 'Module bundlers',
+    technologies: ['Webpack']
+  },
+  {
+    title: 'CMS',
+    technologies: ['WordPress']
+  },
+  {
+    title: 'Other',
+    technologies: ['Express', 'Mongodb', 'Node.js', 'SASS']
+  }
+];
 
 class Portfolio extends Component {
   
@@ -190,33 +191,40 @@ class Portfolio extends Component {
 
     let cards = arrayOfProjects.map((project, index) => {
       let technologies = project.technologies.map((technology, index) => {
-        return (<div className="chip" key={index}>
-                  <img src={technologiesIcons.get(technology)} alt={technology}/>
-                    {technology}
-                </div>)
+        return (
+          <div className="chip" key={index}>
+            <img
+              src={technologiesIcons.get(technology)}
+              alt={technology}
+            />
+            {technology}
+          </div>
+        )
       })
 
-      return (<div className="col m6 l4" key={index}>                
-                <div className="card hoverable">
-                  <div className="card-image waves-effect waves-block waves-light">
-                    <img className="activator" src={project.img}/>
-                  </div>
-                  <div className="card-content">
-                    <span className="card-title activator grey-text text-darken-4">{project.title}<i className="material-icons right">more_vert</i></span>
-                      <div className="technologies">
-                        {technologies}
-                      </div>
-                    <p className="project-links">
-                      {project.link && <a href={project.link} target="_blank">Demo</a>}
-                      {project.github && <a href={project.github} target="_blank">GitHub</a>}
-                      {project.youtube && <a href={project.youtube} target="_blank">YouTube</a>}
-                    </p>
-                  </div>
-                  <div className="card-reveal">
-                    {project.desc}
-                  </div>
-                </div>
-              </div>)
+      return (
+        <div className="col m6 l4" key={index}>
+          <div className="card hoverable">
+            <div className="card-image waves-effect waves-block waves-light">
+              <img className="activator" src={project.img}/>
+            </div>
+            <div className="card-content">
+              <span className="card-title activator grey-text text-darken-4">{project.title}<i className="material-icons right">more_vert</i></span>
+              <div className="technologies">
+                {technologies}
+              </div>
+              <p className="project-links">
+                {project.link && <a href={project.link} target="_blank">Demo</a>}
+                {project.github && <a href={project.github} target="_blank">GitHub</a>}
+                {project.youtube && <a href={project.youtube} target="_blank">YouTube</a>}
+              </p>
+            </div>
+            <div className="card-reveal">
+              {project.desc}
+            </div>
+          </div>
+        </div>
+      );
     });
     let result = [];
     let numberOfProjectsInRow = window.innerWidth >= 992 ? 3 : 2;
@@ -225,31 +233,37 @@ class Portfolio extends Component {
         <div className="row" key={cards.length}>
           {cards.slice(0, numberOfProjectsInRow)}
         </div>
-      )
+      );
       cards = cards.slice(numberOfProjectsInRow);
     }
     return result;
   }
 
-  getCheckboxes() {    
+  getCheckboxes() {
     this.checkboxes = [];
     return arrayOfTechnologies.map((group, index) => {
       let checkboxes = group.technologies.map((technology, index) => {
-        let checkbox = (<input type="checkbox" 
-                               className="filled-in" 
-                               onChange={(e) => {this.changeTechnologies(e)}}
-                               id={`${technology}-checkbox`}
-                               checked={~this.state.technologies.indexOf(technology)}
-                               defaultChecked/>);
-        return (<p key={index}>
-                  {checkbox}
-                  <label htmlFor={`${technology}-checkbox`}>{technology}</label>
-                </p>);  
+        let checkbox = (
+          <input type="checkbox" 
+            className="filled-in" 
+            onChange={(e) => {this.changeTechnologies(e)}}
+            id={`${technology}-checkbox`}
+            checked={~this.state.technologies.indexOf(technology)}
+            defaultChecked/>
+        );
+        return (
+          <p key={index}>
+            {checkbox}
+            <label htmlFor={`${technology}-checkbox`}>{technology}</label>
+          </p>
+        );
       });
-      return (<div key={index}>
-                <h4>{group.title}</h4>
-                {checkboxes}
-              </div>);
+      return (
+        <div key={index}>
+          <h4>{group.title}</h4>
+          {checkboxes}
+        </div>
+      );
     });
   }
 
@@ -278,13 +292,17 @@ class Portfolio extends Component {
            style={this.sideBarStyle}>
         <div className="col m3 sidebar"
              style={this.sideBarStyle}>
-          <form action="#"
-                ref={(input) => { this.filterForm = input;}}>
+          <form
+            action="#"
+            ref={(input) => { this.filterForm = input;}}
+          >
             <div className="switch">
               <label>
                 Every
-                <input type="checkbox"
-                       onChange={(e) => this.resetCheckboxes(e)}/>
+                <input 
+                  type="checkbox"
+                  onChange={(e) => this.resetCheckboxes(e)}
+                />
                 <span className="lever"></span>
                 None
               </label>

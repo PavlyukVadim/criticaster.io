@@ -1,19 +1,19 @@
 @import '../../common';
 
 nav {
-	background-color: $blue;
-	
-	#nav-mobile {
-		position: absolute !important;
-	    right: 0;
-	    top: 0;
-	}
+  background-color: $blue;
 
-	ul li {
-		float: none !important;
-		
-		@media(min-width: 768px) {
-			display: inline-block;
-		}
-	}
+  #nav-mobile {
+    position: absolute !important;
+    right: 0;
+    top: 0;
+  }
+
+  ul li {
+    float: none !important;
+
+    @media(min-width: 768px) {
+      display: inline-block;
+    }
+  }
 }
