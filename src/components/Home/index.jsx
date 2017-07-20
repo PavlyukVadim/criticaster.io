@@ -1,10 +1,22 @@
 import React, { Component } from 'react';
 import myPhoto from '../../../static/img/pavlyuk-vadim.jpg';
 import myPdf from '../../../static/PavlyukVadim.pdf';
+import SocialLink from './../SocialLink';
+import config from './../../appConfig';
 import './Home.scss';
 
 class Home extends Component {
+
   render() {
+    const socialLinks = config.socialLinks.map((item) => {
+      return (
+        <SocialLink
+          item={item}
+          key={item.link}
+        />
+      );
+    });
+
     return (
       <section id="home" className="col s12">
         <div className="section-box">
@@ -53,12 +65,16 @@ class Home extends Component {
             </div>
             <div className="profile-social">
               <ul className="social">
-                <li><a className="ripple-centered waves-effect waves-circle waves-light btn-floating secondary-content" href="https://www.linkedin.com/in/pavlyuk-vadim-934329131/" target="_blank"><i className="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                <li><a className="ripple-centered waves-effect waves-circle waves-light btn-floating secondary-content" href="https://github.com/PavlyukVadim" target="_blank"><i className="fa fa-github" aria-hidden="true"></i></a></li>
-                <li><a className="ripple-centered waves-effect waves-circle waves-light btn-floating secondary-content" href="https://vk.com/v_a_d_i_m_n" target="_blank"><i className="fa fa-vk" aria-hidden="true"></i></a></li>
-                <li><a className="ripple-centered waves-effect waves-circle waves-light btn-floating secondary-content" href="https://plus.google.com/u/0/115972493185809573726" target="_blank"><i className="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                <li><a className="ripple-centered waves-effect waves-circle waves-light btn-floating secondary-content" href="https://www.youtube.com/channel/UCCJrX72dtaiFq1Dh3tjfE2g" target="_blank"><i className="fa fa-youtube" aria-hidden="true"></i></a></li>
-                <li><a className="ripple-centered waves-effect waves-circle waves-light btn-floating secondary-content blue pulse" href={myPdf} download><i className="material-icons">get_app</i></a></li>
+                {socialLinks}
+                <li>
+                  <a
+                    className="ripple-centered waves-effect waves-circle waves-light btn-floating secondary-content blue pulse"
+                    href={myPdf}
+                    download
+                  >
+                    <i className="material-icons">get_app</i>
+                  </a>
+                </li>
               </ul>
             </div>
           </div>

@@ -6,7 +6,12 @@ import './Header.scss';
 class Header extends Component {
   render() {
     const navItems = config.navMenu.map((item) => {
-      return <NavItem item={item} />
+      return (
+        <NavItem
+          item={item}
+          key={item.title}
+        />
+      );
     });
 
     return (

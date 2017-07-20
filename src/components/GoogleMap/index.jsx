@@ -1,4 +1,4 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 import GoogleMap from 'react-google-map';
 import GoogleMapLoader from 'react-google-maps-loader';
 import './GoogleMap.scss';
