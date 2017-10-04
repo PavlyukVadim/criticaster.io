@@ -52,12 +52,12 @@ class Home extends Component {
                       <span className="cont"><a href="tel:+380986536130">+3 098 65 36 130</a></span>
                     </li>
                     <li className="clearfix">
-                      <strong className="title">Freelance</strong>
-                      <span className="cont">since January 2016</span>
-                    </li>
-                    <li className="clearfix">
                       <strong className="title"><span className="button">SQDEV</span></strong>
                       <span className="cont"><i className="rsicon rsicon-calendar"></i>since October 2016</span>
+                    </li>
+                    <li className="clearfix">
+                      <strong className="title">BSG</strong>
+                      <span className="cont">since June 2017</span>
                     </li>
                   </ul>
                 </div>

@@ -288,10 +288,15 @@ class Portfolio extends Component {
 
   render() {
     return (
-      <div id="portfolio" className="row"
-           style={this.sideBarStyle}>
-        <div className="col m3 sidebar"
-             style={this.sideBarStyle}>
+      <div
+        id="portfolio"
+        className="row"
+        style={this.sideBarStyle}
+      >
+        <div
+          className="col m3 sidebar"
+          style={this.sideBarStyle}
+        >
           <form
             action="#"
             ref={(input) => { this.filterForm = input;}}

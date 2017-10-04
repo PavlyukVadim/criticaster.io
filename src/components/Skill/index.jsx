@@ -2,14 +2,17 @@ import React, { Component } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import './Skill.scss';
 
-let arrayOfTechnicalSkills = [{ title: 'HTML/CSS', progress: '75%'},
-                              { title: 'JavaScript', progress: '92%'},
-                              { title: 'React.JS', progress: '85%'},
-                              { title: 'Node.JS', progress: '80%'},
-                              { title: 'Angular/Angular 2', progress: '73%'}];
-let arrayOfKnowledge = [['Network', 'HTTP', 'REST', 'SPA', 'OOP', 'Functional programming', 'Algorithms', 'Frameworks', 'CMS'],
-                        ['Data structures', 'Linux', 'DATABASES', 'JSON', 'VCS', 'Cross-browser layout', 'Material design',
-                         'Module bundlers', 'Seo optimization']];
+let arrayOfTechnicalSkills = [
+  { title: 'HTML/CSS', progress: '75%'},
+  { title: 'JavaScript', progress: '92%'},
+  { title: 'React.JS', progress: '85%'},
+  { title: 'Node.JS', progress: '80%'},
+  { title: 'Angular/Angular 2', progress: '73%'}
+];
+
+let arrayOfKnowledge = [
+  ['Network', 'HTTP', 'REST', 'SPA', 'OOP', 'Functional programming', 'Algorithms', 'Frameworks', 'CMS'],
+  ['Data structures', 'Linux', 'DATABASES', 'JSON', 'VCS', 'Cross-browser layout', 'Material design', 'Module bundlers', 'Seo optimization']];
 
 class Skill extends Component {
   

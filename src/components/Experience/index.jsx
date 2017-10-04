@@ -23,20 +23,22 @@ class Experience extends Component {
   
   getExperience() {
     return arrayOfExperience.map((item, itemIndex, arr) => {
-      return (<div className="experience-block clearfix" key={itemIndex}>
-                <div className="meta">
-                  <span className="year">{item.period}</span>
-                  <span className="company">{item.company}</span>
-                </div>
-                <div className="content">
-                  <h5>{item.position}</h5>
-                  <p>{item.desc}</p>
-                </div>
-                <div className="icon">
-                  <i className="fa fa-laptop" aria-hidden="true"></i>
-                </div>
-                <div className={itemIndex !== arr.length - 1 && "line"}></div>
-              </div>); 
+      return (
+        <div className="experience-block clearfix" key={itemIndex}>
+          <div className="meta">
+            <span className="year">{item.period}</span>
+            <span className="company">{item.company}</span>
+          </div>
+          <div className="content">
+            <h5>{item.position}</h5>
+            <p>{item.desc}</p>
+          </div>
+          <div className="icon">
+            <i className="fa fa-laptop" aria-hidden="true"></i>
+          </div>
+          <div className={itemIndex !== arr.length - 1 && "line"}></div>
+        </div>
+      ); 
     })
   }
 
