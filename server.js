@@ -8,7 +8,11 @@ app.use(express.static('./build'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('*', function (req, res) {
+app.get('/google0e8e3622987d5127.html', function (req, res) {
+  res.sendFile(path.join(__dirname, './static', 'google0e8e3622987d5127.html'));
+});
+
+app.get('/', function (req, res) {
  	res.sendFile(path.join(__dirname, './build', 'index.html'));
 });
 
