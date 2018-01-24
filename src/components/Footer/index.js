@@ -5,7 +5,6 @@ import './Footer.scss';
 
 class Footer extends Component {
   render() {
-    const config = [];
     const socialLinks = config.socialLinks.filter((item) => item.atFooter).map((item) => {
       return (
         <div
