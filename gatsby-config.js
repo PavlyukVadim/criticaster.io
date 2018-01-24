@@ -3,5 +3,8 @@ module.exports = {
     title: 'Gatsby Default Starter',
   },
   pathPrefix: "/pavlyuk.io",
-  plugins: ['gatsby-plugin-react-helmet'],
+  plugins: [
+    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-sass',
+  ],
 };

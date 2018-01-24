@@ -21,6 +21,7 @@
     "test": "exit 0"
   },
   "devDependencies": {
+    "gatsby-plugin-sass": "^1.0.16",
     "prettier": "^1.10.2"
   }
 }
