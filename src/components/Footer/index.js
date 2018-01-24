@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import SocialLink from './../SocialLink';
+import SocialLink from './../SocialLink';
 import config from './../../appConfig';
 import './Footer.scss';
 
