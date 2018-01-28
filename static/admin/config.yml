@@ -1,6 +1,7 @@
 backend:
   name: github
   repo: PavlyukVadim/pavlyuk.io
+  branch: gatsby-blog
 
 media_folder: static/assets
 

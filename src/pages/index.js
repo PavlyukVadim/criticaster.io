@@ -3,10 +3,23 @@ import Link from 'gatsby-link'
 
 const IndexPage = ({ data: { allMarkdownRemark: { edges } } }) => {
   const Posts = edges
-    .filter(edge => !!edge.node.frontmatter.date) // You can filter your posts based on some criteria
-    .map(edge => <Link key={edge.node.id} to={edge.node.frontmatter.path}>AA</Link>);
+    .filter(edge => !!edge.node.frontmatter.date)
+    .map(edge => (
+    		<Link
+    			key={edge.node.id}
+    			to={edge.node.frontmatter.path}
+    		>
+    			{edge.node.frontmatter.title}
+    		</Link>
+    	)
+    )
 
-  return <div>{Posts}</div>;
+  return (
+  	<div>
+  		<h2>Blog posts: </h2>
+  		{Posts}
+  	</div>
+  );
 };
 
 export default IndexPage;
