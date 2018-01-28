@@ -1,0 +1,2 @@
+webpackJsonp([0x81b8806e4260],{319:function(a,e){a.exports={data:{allMarkdownRemark:{edges:[{node:{id:"/home/travis/build/PavlyukVadim/pavlyuk.io/src/pages/aaa/index.md absPath of file >>> MarkdownRemark",excerpt:"",frontmatter:{date:"November 07, 2017",path:"/blog/my-first-post",title:"My first blog post"}}}]}},pathContext:{}}}});
+//# sourceMappingURL=path---index-61c34ff5584f9410fe67.js.map
