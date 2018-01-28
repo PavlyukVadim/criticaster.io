@@ -1,5 +1,6 @@
 backend:
-  name: test-repo
+  name: github
+  repo: PavlyukVadim/pavlyuk.io
 
 media_folder: static/assets
 
