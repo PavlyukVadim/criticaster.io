@@ -5,19 +5,22 @@ const IndexPage = ({ data: { allMarkdownRemark: { edges } } }) => {
   const Posts = edges
     .filter(edge => !!edge.node.frontmatter.date)
     .map(edge => (
-    		<Link
-    			key={edge.node.id}
-    			to={edge.node.frontmatter.path}
-    		>
-    			{edge.node.frontmatter.title}
-    		</Link>
+    		<li key={edge.node.id}>
+    			<Link
+            to={edge.node.frontmatter.path}
+          >
+            {edge.node.frontmatter.title}
+          </Link>
+    		</li>
     	)
     )
 
   return (
   	<div>
   		<h2>Blog posts: </h2>
-  		{Posts}
+  		<ul>
+        {Posts}
+      </ul>
   	</div>
   );
 };
