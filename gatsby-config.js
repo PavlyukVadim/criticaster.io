@@ -4,6 +4,7 @@ module.exports = {
   },
   pathPrefix: "/pavlyuk.io",
   plugins: [
+    'gatsby-plugin-netlify-cms',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sass',
   ],
