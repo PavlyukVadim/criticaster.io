@@ -1,12 +1,12 @@
 language: node_js
 node_js:
-  - stable
+  - lates
 cache:
   directories:
   - node_modules
 script:
-  - npm run build
-  - npm test
+  - yarn run build
+  - yarn test
 
 deploy:
   provider: pages

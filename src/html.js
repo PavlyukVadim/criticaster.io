@@ -1,4 +1,4 @@
-import React from "react"
+import React, { Component} from 'react'
 
 let stylesStr
 if (process.env.NODE_ENV === `production`) {
@@ -9,7 +9,7 @@ if (process.env.NODE_ENV === `production`) {
   }
 }
 
-module.exports = class HTML extends React.Component {
+module.exports = class HTML extends Component {
   render() {
     let css
     if (process.env.NODE_ENV === `production`) {
