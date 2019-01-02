@@ -1,18 +1,19 @@
-import React, { Component } from 'react';
-import SocialLink from './../SocialLink';
-import config from './../../appConfig';
-import './Footer.scss';
+import React, { Component } from 'react'
+import SocialLink from './../SocialLink'
+import config from './../../appConfig'
+import './Footer.scss'
 
 class Footer extends Component {
   render() {
-    const socialLinks = config.socialLinks.filter((item) => item.atFooter).map((item) => {
-      return (
+    const socialLinks = config.socialLinks
+      .filter((item) => item.atFooter)
+      .map((item) => (
         <SocialLink
           item={item}
           key={item.link}
         />
-      );
-    });
+      )
+    )
 
     return (
       <div>
@@ -42,8 +43,8 @@ class Footer extends Component {
           <div className="bottom">Copyright © Pavlyuk Vadim. All Rights Reserved.</div>
         </footer>
       </div>
-    );
+    )
   }
 }
 
-export default Footer;
+export default Footer
