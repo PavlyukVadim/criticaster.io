@@ -1,5 +1,5 @@
 ---
-path: blog/road-fighter
+path: /blog/road-fighter
 date: '2019-01-19'
 title: Lets create game in javascipt
 thumbnail: /static/assets/screen-shot-2019-01-15-at-1.31.34-am.png
