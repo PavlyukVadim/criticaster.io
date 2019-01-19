@@ -1,14 +1,14 @@
 import React from 'react'
 import Link from 'gatsby-link'
 
-const IndexPage = ({ data: { allMarkdownRemark: { edges } } }) => {
-  const Posts = edges
+const PostsPage = ({ data: { allMarkdownRemark: { edges } } }) => {
+  const posts = edges
     .filter(edge => !!edge.node.frontmatter.date)
     .map(edge => (
     		<li key={edge.node.id}>
-    			<Link
-            to={edge.node.frontmatter.path}
-          >
+          {edge.node.frontmatter.date}
+          &nbsp;>>&nbsp;
+    			<Link to={edge.node.frontmatter.path}>
             {edge.node.frontmatter.title}
           </Link>
     		</li>
@@ -19,16 +19,16 @@ const IndexPage = ({ data: { allMarkdownRemark: { edges } } }) => {
   	<div>
   		<h2>Blog posts: </h2>
   		<ul>
-        {Posts}
+        {posts}
       </ul>
   	</div>
   );
 };
 
-export default IndexPage
+export default PostsPage
 
-export const pageQuery = graphql`
-  query IndexQuery {
+export const PostsQuery = graphql`
+  query PostQuery {
     allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
       edges {
         node {
