@@ -1,6 +1,6 @@
 ---
-path: some
+path: /blog/some
 date: '2019-01-03'
-title: new title
+title: some article
 ---
 
