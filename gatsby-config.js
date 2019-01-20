@@ -13,6 +13,24 @@ module.exports = {
         name: 'markdown-pages',
       },
     },
-    'gatsby-transformer-remark',
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          `gatsby-remark-graphviz`,
+          `gatsby-remark-code-titles`,
+          // {
+          //   resolve: `gatsby-remark-images`,
+          //   options: {
+          //     maxWidth: 786,
+          //     backgroundColor: `#ffffff`,
+          //   },
+          // },
+          `gatsby-remark-prismjs`,
+          `gatsby-remark-copy-linked-files`,
+          `gatsby-remark-smartypants`,
+        ],
+      },
+    }
   ]
 }
