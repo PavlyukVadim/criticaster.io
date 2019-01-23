@@ -20,6 +20,12 @@ module.exports = class HTML extends Component {
         />
       )
     }
+
+    const disqus_config = function () {
+      this.page.url = 'amadev.com'
+      this.page.identifier = 'a'
+    }
+
     return (
       <html {...this.props.htmlAttributes}>
         <head>
@@ -40,6 +46,27 @@ module.exports = class HTML extends Component {
             dangerouslySetInnerHTML={{ __html: this.props.body }}
           />
           {this.props.postBodyComponents}
+
+          <div id="disqus_thread"></div>
+            <script>
+              window.disqus_config = disqus_config
+              
+              (function() {
+                const d = document
+                const s = d.createElement('script')
+
+                // IMPORTANT: Replace EXAMPLE with your forum shortname!
+                s.src = 'https://amadev.disqus.com/embed.js'
+                s.setAttribute('data-timestamp', +new Date())
+                (d.head || d.body).appendChild(s)
+              })()
+            </script>
+            <noscript>
+              Please enable JavaScript to view the 
+              <a href="https://disqus.com/?ref_noscript" rel="nofollow">
+                comments powered by Disqus.
+              </a>
+            </noscript>
         </body>
       </html>
     )
