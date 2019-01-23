@@ -13,6 +13,29 @@
     }
   }
 
+  tt, code, kbd, .gatsby-code-title {
+    font-family: SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;
+    font-size: 80%;
+    font-variant: none;
+    font-feature-settings: "clig" 0, "calt" 0;
+  }
+
+  tt, code, kbd {
+    background: #fdfaf6;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+  }
+
+  code:before, code:after, tt:before, tt:after {
+    letter-spacing: -0.2em;
+    content: " ";
+  }
+
+  code:before, code:after, tt:before, tt:after {
+    letter-spacing: -0.2em;
+    content: " ";
+  }
+
   .gatsby-highlight {
     background: #fdfaf6;
     border-radius: 2px;
@@ -31,11 +54,11 @@
 
   .gatsby-highlight-code-line {
     background: #faede5;
-    margin-right: -1.05rem;
-    margin-left: -1.05rem;
+    margin-right: -2rem;
+    margin-left: -2rem;
     padding-right: 1.05rem;
     padding-left: 0.84rem;
-    border-left: 0.21rem solid #f1beb6;
+    border-left: 1rem solid #f1beb6;
     display: block;
   }
 
@@ -76,9 +99,7 @@
     background: #fdfaf6;
     border-bottom: 1px solid #faede5;
     color: #866c5b;
-    margin-left: -1.05rem;
-    margin-right: -1.05rem;
-    padding: 1.05rem 1.575rem 0.525rem;
+    padding: 0.8rem 1rem;
     font-size: 74%;
   }
 
