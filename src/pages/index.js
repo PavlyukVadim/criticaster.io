@@ -17,6 +17,10 @@ const IndexPage = ({ data: { allMarkdownRemark: { edges } } }) => {
 
   return (
   	<div>
+      FEATURED ARTICLES
+
+      LATEST ARTICLES
+      
   		<h2>Blog posts: </h2>
   		<ul>
         {Posts}

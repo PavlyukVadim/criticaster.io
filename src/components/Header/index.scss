@@ -1,0 +1,81 @@
+header {
+  margin: 0px auto;
+  // max-width: 1000px;
+  height: 60px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.97);
+  border-bottom: solid 0.5px rgba(140, 101, 179, 0.2);
+  z-index: 999;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+
+    & > div {
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+    }
+
+    .logo {
+      a {
+        text-decoration: none;
+        text-decoration: none;
+        color: black;
+        font-size: 25px;
+        font-family: 'Futura PT',-apple-system,'BlinkMacSystemFont','Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue','Arial',sans-serif;
+        font-weight: bold;
+        text-rendering: optimizeLegibility;
+        font-size: 1.4rem;
+      }
+
+      margin-right: 25px;
+    }
+
+    nav {
+      .link {
+        margin: 0 10px;
+        font-size: 0.77rem;
+        letter-spacing: 0.25px;
+
+        a {
+          text-decoration: none;
+          text-transform: uppercase;
+          font-family: "Futura PT", BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+          font-size: 0.7937rem;
+          line-height: calc(2.9rem);
+          color: black;
+          padding: 18px 0px;
+          border-bottom: 2px solid transparent;
+
+          &:hover {
+            color: #663399;
+            transform: 0.2s;
+          }
+        }
+      }
+    }
+    
+    .social-links {
+      display: flex;
+      list-style: none;
+
+      & > li {
+        margin: 0px 7px;
+      }
+    }
+
+    .icon {
+      color: #8c65b3;
+      transition: 0.2s;
+      font-size: 25px;
+      
+      &:hover {
+        color: #663399;
+        cursor: pointer;
+      }
+    }
+  }
+}

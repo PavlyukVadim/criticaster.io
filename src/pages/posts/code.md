@@ -1,5 +1,5 @@
 ---
-path: /blog/code
+path: /posts/code
 date: '2019-01-19'
 title: Lets test code markdown
 ---

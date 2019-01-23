@@ -1,20 +1,9 @@
 import React, { Component } from 'react'
-import SocialLink from './../SocialLink'
-import config from './../../appConfig'
+import config from '../../config'
 import './Footer.scss'
 
 class Footer extends Component {
   render() {
-    const socialLinks = config.socialLinks
-      .filter((item) => item.atFooter)
-      .map((item) => (
-        <SocialLink
-          item={item}
-          key={item.link}
-        />
-      )
-    )
-
     return (
       <div>
         <footer className="footer">
@@ -29,7 +18,7 @@ class Footer extends Component {
                   <h4>Connect</h4>
                   <div className="social-icons">
                     <ul className="social">
-                      {socialLinks}
+                      socialLinks
                     </ul>
                   </div>
                 </div>
