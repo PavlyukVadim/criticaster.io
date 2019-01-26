@@ -7,8 +7,8 @@ const config = {
       link: '/posts',
     },
     {
-      title: 'Contact',
-      link: '/contact',
+      title: 'Contacts',
+      link: '/contacts',
     },
   ],
   socialLinks: [
