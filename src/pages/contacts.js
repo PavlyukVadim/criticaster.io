@@ -20,10 +20,10 @@ const Contacts = () => (
     <h2>Links:</h2>
     <ul>
       <li>
-        <a href={socialLinks[0].link}>YouTube</a>
+        <a href={socialLinks[0].link} rel="noreferrer">YouTube</a>
       </li>
       <li>
-        <a href={socialLinks[1].link}>GitHub</a>
+        <a href={socialLinks[1].link} rel="noreferrer">GitHub</a>
       </li>
     </ul>
     <DiscussionEmbed

@@ -29,7 +29,7 @@ class Header extends Component {
         const Icon = item.icon
         return (
           <li key={item.link}>
-            <a href={item.link} target="_blank">
+            <a href={item.link} target="_blank" rel="noreferrer">
               <Icon className="icon" />
             </a>
           </li>
