@@ -16,18 +16,29 @@ const IndexPage = ({ data: { allMarkdownRemark: { edges } } }) => {
     )
 
   return (
-  	<div>
-      FEATURED ARTICLES
-
-      LATEST ARTICLES
-      
-  		<h2>Blog posts: </h2>
-  		<ul>
-        {Posts}
-      </ul>
+  	<div className="homePage">
+      <div className="featuredArticles">
+        <h2>Featured articles: </h2>
+        <ul>
+          {Posts}
+        </ul>
+      </div>
+      <div className="latestArticles">
+        <h2>Latest articles: </h2>
+        <ul>
+          {Posts}
+        </ul>
+      </div>
+      <div className="categories">
+        <h2>Categories: </h2>
+        <h3 className="categoryTitle">Let's make 15 games in JavaScript: </h3>
+        <ul>
+          {Posts}
+        </ul>
+      </div>
   	</div>
-  );
-};
+  )
+}
 
 export default IndexPage
 
