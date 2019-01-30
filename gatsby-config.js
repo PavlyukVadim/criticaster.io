@@ -31,6 +31,12 @@ module.exports = {
           `gatsby-remark-smartypants`,
         ],
       },
-    }
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: 'UA-133530081-1',
+      },
+    },
   ]
 }
