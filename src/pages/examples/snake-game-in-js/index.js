@@ -107,7 +107,7 @@ class Snake {
 Snake.INITIAL_LENGTH = 150
 Snake.HEAD_RADIUS = 5
 Snake.SPEED = 2
-Snake.ROTATION_SPEED = 5
+Snake.ROTATION_SPEED = 10
 
 class Food {
   constructor(x, y, color, ctx) {
