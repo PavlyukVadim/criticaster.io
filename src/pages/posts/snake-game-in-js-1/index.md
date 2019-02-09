@@ -1,7 +1,7 @@
 ---
-path: /posts/how-to-make-snake-game-in-js-1
+path: /posts/snake-game-in-js-1
 date: '2019-02-02'
-title: How to make a "Snake" game in JavaScript, Part 1
+title: Snake game in JavaScript, Part 1
 ---
 
 Hi everyone and welcome to the first tutorial on my blog! I’m amadev, and this info should be enough for you at this time. You might saw me at YouTube, so don’t wonder, yeap, it’s me. Let’s better write some code.😀
@@ -89,19 +89,19 @@ class Snake {
   constructor() {}
   // drawing snake on the canvas
   draw() {}
-  // move snake
+  // snake's moving
   running() {}
 
-  // control snake using keyboard
+  // snake's control using keyboard
   directionControl() {}
 
-  // controll snakes grows
+  // control snake's growing
   snakeLengthControl() {}
 
-  // check intersections with map boards
+  // checking intersections with map boards
   validationCoordinates() {}
 
-  // check inner collision of snake head with body
+  // checking inner collision of snake's head with body
   findSnakeСollision() {}
 }
 ```
@@ -126,7 +126,7 @@ But also we have some common characteristics, that we can separate from inner pr
 
 ```js:title=src/index.js
 Snake.COLOR = '#ff5050'
-Snake.INITIAL_LENGTH = 150
+Snake.INITIAL_LENGTH = 100
 Snake.HEAD_RADIUS = 5
 Snake.SPEED = 2 // points per iteration
 Snake.ROTATION_SPEED = 5 // degrees per iteration
