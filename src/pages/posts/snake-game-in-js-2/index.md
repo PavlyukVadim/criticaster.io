@@ -4,7 +4,7 @@ date: '2019-02-05'
 title: Snake game in JavaScript, Part 2
 ---
 
-You’re welcome to the second part of our tutorial “Snake” game in JavaScript. We're stopped on adding keyboard control for the game. And now we can control our snake like that:
+You’re welcome to the second part of our tutorial “Snake” game in JavaScript. We're stopped on adding keyboard control for the game. (You can find the previous part [here](/posts/snake-game-in-js-1)). And now we can control our snake like that:
 
 ![](snake-in-js-example-2.gif)
 

@@ -286,4 +286,8 @@ Let's test snake's controlling:
 
 ![](snake-in-js-example-2.gif)
 
-It's the first part of two articles about creating "Snake" game in JavaScript. In the next, we'll add foods, collisions, control of snake length. For now, you can leave your feedback below and share your ideas. Will be soon ...
+It's the first part of two articles about creating "Snake" game in JavaScript.
+
+[In the next part, we'll add foods, collisions, and control of snake's length](/posts/snake-game-in-js-2).
+
+If you like it you can leave your feedback below.
