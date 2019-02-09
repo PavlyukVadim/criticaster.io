@@ -261,6 +261,8 @@ In the result, we're getting:
 
 ![](snake-in-js-example-6.gif)
 
+Also, you can test it [here](/examples/snake-game-in-js) (DEMO).
+
 ## Homework:
 
 There are a few methods, that you should try to implement by yourself:
@@ -279,7 +281,6 @@ Anyway, you can find a full game at GitHub or on YouTube. Links placed below.
 
 ## Links:
 
-* [Demo](/examples/snake-game-in-js)
 * [YouTube](https://www.youtube.com/watch?v=dguyPUlglAg)
 * [GitHub](https://github.com/amadevBox/snake)
 

@@ -3,34 +3,29 @@ import React, { Component } from 'react'
 const degToRad = (angle) => ((angle * Math.PI) / 180)
 
 class Snake {
-  constructor(x, y, angle, length, game) {
-    this.color = '#ff5050'
-    this.name = name
+  constructor(x, y, angle, length, ctx) {
     this.x = x
     this.y = y
     this.angle = angle
     this.length = length
-    this.ctx = game.ctx
-    this.game = game
+    this.ctx = ctx
     this.coordinates = []
   }
 
   draw() {
     this.ctx.beginPath()
-    this.ctx.fillStyle = this.color
+    this.ctx.fillStyle = Snake.COLOR
     this.ctx.arc(this.x, this.y, Snake.HEAD_RADIUS, 0, 2 * Math.PI)
     this.ctx.fill()
     this.ctx.closePath()
   }
 
-  running(canvasSize, that) {
-    const radian = degToRad(that.angle)
-    that.x += Snake.SPEED * Math.cos(radian)
-    that.y += Snake.SPEED * Math.sin(radian)
-    that.validationCoordinates(canvasSize)
-    that.pushCoordinates()
-    that.draw()
-    that.findSnakeСollision()
+  running() {
+    const radian = degToRad(this.angle)
+    this.x += Snake.SPEED * Math.cos(radian)
+    this.y += Snake.SPEED * Math.sin(radian)
+    this.pushCoordinates()
+    this.draw()
   }
 
   pushCoordinates() {
@@ -42,7 +37,6 @@ class Snake {
   }
 
   directionControl(e) {
-    if (this.game.finished) return
     switch(e.keyCode) {
       case 37: {
         this.turnLeft()
@@ -55,6 +49,14 @@ class Snake {
     }
   }
 
+  turnLeft() {
+    this.angle -= Snake.ROTATION_SPEED
+  }
+
+  turnRight() {
+    this.angle += Snake.ROTATION_SPEED
+  }
+
   snakeLengthControl() {
     if (this.coordinates.length > this.length) {
       const { x, y } = this.coordinates[0]
@@ -63,48 +65,12 @@ class Snake {
       this.ctx.arc(x, y, Snake.HEAD_RADIUS + 2, 0, 2 * Math.PI)
       this.ctx.fill()
       this.ctx.closePath()
-
       this.coordinates.shift()
     }
   }
-
-  validationCoordinates({mapW, mapH}) {
-    if (
-      (this.x < 0) || (this.x > mapW) ||
-      (this.y < 0) || (this.y > mapH)
-    ) {
-      finishGame(this.game)
-    }
-  }
-
-  turnLeft() {
-    this.angle -= Snake.ROTATION_SPEED
-    this.move(true)
-  }
-
-  turnRight() {
-    this.angle += Snake.ROTATION_SPEED
-    this.move(true)
-  }
-
-  move(rotate = false) {
-    const koef = rotate ? 0.8 : 1
-    this.x += koef * Snake.SPEED * Math.cos(degToRad(this.angle))
-    this.y += koef * Snake.SPEED * Math.sin(degToRad(this.angle))
-    this.pushCoordinates()
-    this.draw()
-  }
-
-  findSnakeСollision() {
-    this.coordinates.slice(0, -Snake.HEAD_RADIUS).forEach(({x, y}) => {
-      const distance = Math.sqrt(((x - this.x) ** 2) + ((y - this.y) ** 2))
-      if (distance < Snake.HEAD_RADIUS + 2) {
-        finishGame(this.game)
-      }
-    })
-  }
 }
-Snake.INITIAL_LENGTH = 150
+Snake.COLOR = '#ff5050'
+Snake.INITIAL_LENGTH = 100
 Snake.HEAD_RADIUS = 5
 Snake.SPEED = 2
 Snake.ROTATION_SPEED = 10
@@ -137,7 +103,7 @@ class Food {
 }
 Food.RADIUS = 6
 
-const maxAmountOfFood = 100
+const maxAmountOfFood = 20
 const foodGeneration = (foods = [], ctx) => {
   let diff = maxAmountOfFood - foods.length
   while (diff > 0) {
@@ -150,7 +116,7 @@ const foodGeneration = (foods = [], ctx) => {
   }
 }
 
-const findFoodCollision = (foods, ctx, snake) => {
+const findFoodCollision = (foods, snake, ctx) => {
   for (const food of foods) {
     if (
       (snake.x > food.x - 10) && (snake.x < food.x + 10) &&
@@ -169,46 +135,71 @@ const changeScore = (score) => {
   scoreElem.innerHTML = `length: ${score}`
 }
 
-const startGame = (game) => {
-  const { snake, foods, ctx } = game
+const startGame = (game, ctx) => {
+  const { snake, foods } = game
   foodGeneration(foods, ctx)
 
-  const canvasSize = {mapW: 500, mapH: 500}
-  game.snakeInterval = setInterval(snake.running, 30, canvasSize, snake)
-  game.foodInterval = setInterval(findFoodCollision, 15, foods, ctx, snake)
+  game.snakeInterval = setInterval(snake.running.bind(snake), 30)
+  game.foodInterval = setInterval(findFoodCollision, 15, foods, snake, ctx)
 
   addEventListener('keydown', snake.directionControl.bind(snake))
-}
-
-const finishGame = (game) => {
-  if(game.finished) return
-  const { snake, snakeInterval, foodInterval } = game
-  clearInterval(snakeInterval)
-  clearInterval(foodInterval)
-  game.finished = true
-  alert('You lose :(')
 }
 
 class SnakeGame extends Component {
   componentDidMount() {
     const canvas = document.getElementById('map')
     const ctx = canvas.getContext('2d')
-    const game = { ctx }
+    const game = {}
 
-    game.snake = new Snake(100, 100, 0, Snake.INITIAL_LENGTH, game)
+    game.snake = new Snake(100, 100, 0, Snake.INITIAL_LENGTH, ctx)
     game.foods = []
 
-    startGame(game)
+    startGame(game, ctx)
   }
 
   render() {
+    const mapStyles = {
+      display: 'block',
+      margin: '0 auto',
+      border: '1px dashed red',
+    }
+
+    const wrapperStyles = {
+      position: 'relative',
+      width: '500px',
+      height: '500px',
+      margin: '20px auto',
+    }
+
+    const scoreStyles = {
+      position: 'absolute',
+      right: '0',
+      top: '0',
+      margin: '10px',
+      font: '35px Comic Sans MS',
+    }
+
     return (
       <div className="contactsPage">
-        <h1>Snake</h1>
-        <div className="wrapper">
-          <p id="score">length: 0</p>
-          <canvas id="map" width="500" height="500"></canvas>
+        <h2>Snake game in JavaScript, demo</h2>
+        <div className="wrapper" style={wrapperStyles}>
+          <p id="score" style={scoreStyles}>length: 0</p>
+          <canvas
+            id="map"
+            style={mapStyles}
+            width="500"
+            height="500"
+          />
         </div>
+        Back to tutorials:
+        <ul>
+          <li>
+            <a href="/posts/snake-game-in-js-1">Snake game in JavaScript, Part 1</a>
+          </li>
+          <li>
+            <a href="/posts/snake-game-in-js-2">Snake game in JavaScript, Part 2</a>
+          </li>
+        </ul>
       </div>
     )
   }
