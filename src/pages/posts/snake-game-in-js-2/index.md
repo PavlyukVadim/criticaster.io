@@ -2,6 +2,8 @@
 path: /posts/snake-game-in-js-2
 date: '2019-02-05'
 title: Snake game in JavaScript, Part 2
+category: games-in-js
+featured: false
 ---
 
 You’re welcome to the second part of our tutorial “Snake” game in JavaScript. We're stopped on adding keyboard control for the game. (You can find the previous part [here](/posts/snake-game-in-js-1)). And now we can control our snake like that:

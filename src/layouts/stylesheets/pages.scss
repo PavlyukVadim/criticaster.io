@@ -1,5 +1,6 @@
 .homePage {
   .featuredArticles {}
+
   .latestArticles {
     margin-top: 60px;
   }
@@ -14,10 +15,28 @@
       margin-top: 25px;
     }
   }
+
+  a {
+    font-weight: 600 !important;
+    transition-duration: .2s !important;
+  }
+
+  .categories-wrapper {
+    display: flex;
+
+    li {
+      font-size: 16px;
+    }
+  }
+
+  ul, ol {
+    li {
+      margin-bottom: 2px;
+    }
+  }
 }
 
-.homePage,
-.contactsPage {
+.homePage, .contactsPage {
   a {
     color: inherit;
     text-decoration: none;

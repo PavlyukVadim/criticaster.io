@@ -1,9 +1,29 @@
 import React from 'react'
 import Link from 'gatsby-link'
+import config from './../config'
+
+const { categories: categoriesConfig } = config
 
 const IndexPage = ({ data: { allMarkdownRemark: { edges } } }) => {
-  const Posts = edges
+  const filteredEdges = edges
     .filter(edge => !!edge.node.frontmatter.date)
+  
+  const featuredPosts = filteredEdges
+    .filter(edge => !!edge.node.frontmatter.featured)
+    .map(edge => (
+      <li key={edge.node.id}>
+        <Link
+          to={edge.node.frontmatter.path}
+        >
+          {edge.node.frontmatter.title}
+        </Link>
+      </li>
+    )
+  )
+  
+  const numberOfLatestPosts = 5
+  const latesPosts = filteredEdges
+    .slice(0, numberOfLatestPosts)
     .map(edge => (
     		<li key={edge.node.id}>
     			<Link
@@ -15,26 +35,66 @@ const IndexPage = ({ data: { allMarkdownRemark: { edges } } }) => {
     	)
     )
 
+  const categories = filteredEdges
+    .map((edge) => edge.node.frontmatter.category)
+    .filter((category, i, categories) => {
+      return (categories.indexOf(category) === i)
+    })
+
+  const postsByCategories = categories
+    .sort((category1, category2) => {
+      return (
+        categoriesConfig[category1].position -
+        categoriesConfig[category2].position
+      )
+    })
+    .map((category) => {
+      const edgesByCategory = filteredEdges
+        .filter((edge) => {
+          return (edge.node.frontmatter.category === category)
+        })
+
+      const posts = edgesByCategory.map(edge => (
+        <li key={edge.node.id}>
+          <Link
+            to={edge.node.frontmatter.path}
+          >
+            {edge.node.frontmatter.title}
+          </Link>
+        </li>
+      ))
+      
+      return (
+        <div key={category}>
+          <h3 className="categoryTitle">
+            {categoriesConfig[category].title}:
+          </h3>
+          <ul>
+            {posts}
+          </ul>
+        </div>
+      )
+    })
+  
   return (
   	<div className="homePage">
       <div className="featuredArticles">
         <h2>Featured articles: </h2>
         <ul>
-          {Posts}
+          {featuredPosts}
         </ul>
       </div>
       <div className="latestArticles">
         <h2>Latest articles: </h2>
-        <ul>
-          {Posts}
-        </ul>
+        <ol>
+          {latesPosts}
+        </ol>
       </div>
       <div className="categories">
         <h2>Categories: </h2>
-        <h3 className="categoryTitle">Let's make 15 games in JavaScript: </h3>
-        <ul>
-          {Posts}
-        </ul>
+        <div className="categories-wrapper">
+          {postsByCategories}
+        </div>
       </div>
   	</div>
   )
@@ -53,6 +113,8 @@ export const pageQuery = graphql`
             date(formatString: "MMMM DD, YYYY")
             path
             title
+            category
+            featured
           }
         }
       }

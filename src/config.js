@@ -21,6 +21,16 @@ const config = {
       icon: FaGithub,
     },
   ],
-};
+  categories: {
+    'canvas-tutorials-basics': {
+      title: 'Canvas Tutorials Basics',
+      position: 1,
+    },
+    'games-in-js': {
+      title: 'Games in JS',
+      position: 2,
+    },
+  }
+}
 
 export default config
