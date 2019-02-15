@@ -22,8 +22,8 @@ const config = {
     },
   ],
   categories: {
-    'canvas-tutorials-basics': {
-      title: 'Canvas Tutorials Basics',
+    'canvas-basics-guide': {
+      title: ' Canvas Basics Guide',
       position: 1,
     },
     'games-in-js': {
