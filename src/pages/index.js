@@ -53,6 +53,11 @@ const IndexPage = ({ data: { allMarkdownRemark: { edges } } }) => {
         .filter((edge) => {
           return (edge.node.frontmatter.category === category)
         })
+      
+      const isReversion = categoriesConfig[category].reversion
+      if (isReversion) {
+        edgesByCategory.reverse()
+      }
 
       const posts = edgesByCategory.map(edge => (
         <li key={edge.node.id}>

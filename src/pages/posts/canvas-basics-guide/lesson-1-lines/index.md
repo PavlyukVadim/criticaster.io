@@ -1,5 +1,5 @@
 ---
-path: /posts/canvas-basics-guide-1
+path: /posts/canvas-basics-guide-lines
 date: '2019-02-10'
 title: Canvas Basics Guide, Lines
 category: canvas-basics-guide

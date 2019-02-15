@@ -25,10 +25,12 @@ const config = {
     'canvas-basics-guide': {
       title: ' Canvas Basics Guide',
       position: 1,
+      reversion: true,
     },
     'games-in-js': {
       title: 'Games in JS',
       position: 2,
+      reversion: true,
     },
   }
 }
