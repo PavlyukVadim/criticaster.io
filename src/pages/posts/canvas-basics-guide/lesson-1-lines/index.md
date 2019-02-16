@@ -108,7 +108,7 @@ Now, we're getting:
 
 ## How to change the line color
 
-So, we have the line with default styles. But, how can we change these styles? There are two properties, which we can modify: line width and line color.
+So, we have the line with default styles. But, how can we change these styles? There are at least two properties, which we can modify: line width and line color.
 
 Let’s try them:
 
@@ -220,7 +220,7 @@ ctx.lineTo(400, 400)
 ctx.lineWidth = 5
 ctx.strokeStyle = 'red'
 
-ctx2.closePath()  // highlight-line
+ctx.closePath()  // highlight-line
 ctx.stroke()
 ```
 
@@ -232,4 +232,4 @@ Very well, works as we expected.
 
 ## Conclusions
 
-So, in that tutorial we met with ```canvas```, learned how to draw basic lines, how to change their styles (width and color). Consider methods ```beginPath``` and ```closePath``` for working with lines. In the next part, we’ll consider how to work with shapes.
+So, in that tutorial we met with ```canvas```, learned how to draw basic lines, how to change their styles (width and color). Consider methods ```beginPath``` and ```closePath``` for working with lines. In [the next part](/posts/canvas-basics-guide-shapes), we’ll consider how to work with shapes.
