@@ -209,4 +209,4 @@ Expected output:
 
 ## Conclusions
 
-So, we learned how to draw basic shapes: rectangles, circles and arcs, triangles, and any shape using lines, and methods ```fill```, ```stroke```. To avoid styles interacting you should reset the previous path using ```beginPath```. See you in the next part where we'll add images on our canvas.
+So, we learned how to draw basic shapes: rectangles, circles and arcs, triangles, and any shape using lines, and methods ```fill```, ```stroke```. To avoid styles interacting you should reset the previous path using ```beginPath```. See you in [the next part](/posts/canvas-basics-guide-images) where we'll add images on our canvas.

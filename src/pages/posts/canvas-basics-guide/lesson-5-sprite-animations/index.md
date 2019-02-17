@@ -6,6 +6,6 @@ category: canvas-basics-guide
 featured: false
 ---
 
-Hi everyone on our 5 lesson of the course " Canvas Basics Guide".
+Hi everyone on our 5 lesson of the course "Canvas Basics Guide".
 
 Will be soon ...
