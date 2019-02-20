@@ -3,6 +3,9 @@ path: /posts/snake-game-in-js-1
 date: '2019-02-02'
 title: Snake game in JavaScript, Part 1
 category: games-in-js
+metaTitle: Snake game in JavaScript, Part 1
+metaDescription: How to create Snake game in JavaScript
+metaKeywords: '2d game, javascript, html5, canvas, games in js'
 featured: true
 ---
 

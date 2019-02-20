@@ -1,4 +1,5 @@
 import React from 'react'
+import Helmet from 'react-helmet'
 import rehypeReact from 'rehype-react'
 import { DiscussionEmbed } from 'disqus-react'
 import './index.scss'
@@ -33,6 +34,19 @@ export default function Template({
         shortname={disqusShortname}
         config={disqusConfig}
       />
+      <Helmet
+        title={frontmatter.metaTitle}
+        meta={[
+          {
+            name: 'description',
+            content: frontmatter.metaDescription,
+          },
+          {
+            name: 'keywords',
+            content: frontmatter.metaKeywords,
+          },
+        ]}
+      />
     </div>
   )
 }
@@ -46,6 +60,9 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         path
         title
+        metaTitle
+        metaDescription
+        metaKeywords
       }
     }
   }

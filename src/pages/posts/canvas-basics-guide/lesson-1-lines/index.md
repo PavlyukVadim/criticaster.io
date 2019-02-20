@@ -3,10 +3,13 @@ path: /posts/canvas-basics-guide-lines
 date: '2019-02-10'
 title: Canvas Basics Guide, Lines
 category: canvas-basics-guide
+metaTitle: Canvas Basics Guide, Lines
+metaDescription: The first lesson of the course "Canvas Basics Guide", course overview and introduction
+metaKeywords: 'javascript, js, canvas, html5, canvas tutorials'
 featured: true
 ---
 
-Hi everybody on our first lesson of the course " Canvas Basics Guide".
+Hi everybody on our first lesson of the course "Canvas Basics Guide".
 
 ## Course overview
 
