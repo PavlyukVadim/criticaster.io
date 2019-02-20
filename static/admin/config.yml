@@ -15,6 +15,11 @@ collections:
       - { label: Date, name: date, widget: date }
       - { label: Title, name: title }
       - { label: Category, name: category }
+
+      - { label: MetaTitle, name: metaTitle }
+      - { label: MetaDescription, name: metaDescription }
+      - { label: MetaKeywords, name: metaKeywords }
+
       - { label: Featured, name: featured }
       - { label: Featured Image, name: thumbnail, widget: image }
       - { label: Body, name: body, widget: markdown }
