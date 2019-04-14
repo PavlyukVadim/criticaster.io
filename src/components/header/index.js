@@ -41,7 +41,7 @@ class Header extends Component {
         <div className="container">
           <div className="left">
             <span className="logo">
-              <Link to="/">Amadev</Link>
+              <Link to="/">Criticaster</Link>
             </span>
             <nav>
               {navLinks}

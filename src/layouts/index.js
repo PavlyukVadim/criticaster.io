@@ -8,9 +8,9 @@ import './stylesheets/index.scss'
 const TemplateWrapper = ({ children }) => (
   <div>
     <Helmet
-      title="Amadev"
+      title="Criticaster"
       meta={[
-        { name: 'description', content: 'Welcome to Amadevs blog! Here you can find some javascript tutorials.' },
+        { name: 'description', content: 'Welcome to Criticaster! Here you can find some javascript tutorials.' },
         { name: 'keywords', content: 'javascript, canvas, 2d games, games in js' },
       ]}
     />

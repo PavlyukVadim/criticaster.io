@@ -14,7 +14,7 @@ const Contacts = () => (
   <div className="contactsPage">
     <h1>Contacts</h1>
     <p>
-      Welcome to Amadevs blog! Here you can find some explanation and accompanying code for YouTube video tutorials.
+      Welcome to Criticaster! Here you can find some explanation and accompanying code for YouTube video tutorials.
       Feel free to leave your feedback or share ideas for future videos.
     </p>
     <h2>Links:</h2>

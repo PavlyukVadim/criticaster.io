@@ -9,7 +9,7 @@ metaKeywords: '2d game, javascript, html5, canvas, games in js'
 featured: true
 ---
 
-Hi everyone and welcome to the first tutorial on my blog! I’m amadev, and this info should be enough for you at this time. You might saw me at YouTube, so don’t wonder, yeap, it’s me. Let’s better write some code.😀
+Hi everyone and welcome to the first tutorial on my blog! I’m criticaster, and this info should be enough for you at this time. You might saw me at YouTube, so don’t wonder, yeap, it’s me. Let’s better write some code.😀
 
 ## Intro & preconditions
 
