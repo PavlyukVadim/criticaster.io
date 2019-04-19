@@ -11,7 +11,7 @@ featured: false
 
 You’re welcome to the second part of our tutorial “Snake” game in JavaScript. We're stopped on adding keyboard control for the game. (You can find the previous part [here](/posts/snake-game-in-js-1)). And now we can control our snake like that:
 
-![](snake-in-js-example-2.gif)
+![](assets/snake-in-js-example-2.gif)
 
 As you can notice, we have a problem with increasing the snake's length without any causes. Let's start from fixing that.
 
@@ -71,13 +71,13 @@ As we said we have to call this method after any changes of snake’s position. 
 
 ```js:title=src/index.js
 running() {
-    const radian = degToRad(this.angle)
-    this.x += Snake.SPEED * Math.cos(radian)
-    this.y += Snake.SPEED * Math.sin(radian)
-    
-    this.pushCoordinates() // highlight-line
-    this.draw()
-  }
+  const radian = degToRad(this.angle)
+  this.x += Snake.SPEED * Math.cos(radian)
+  this.y += Snake.SPEED * Math.sin(radian)
+  
+  this.pushCoordinates() // highlight-line
+  this.draw()
+}
 ```
 
 Well, when we have a previous position we can return to implementation ```snakeLengthControl```. Out array of ```coordinates``` works like a ```queue```. We place new elements at the end of the array. And when points amount increases we’ll take the first point (which was added at the far time), clear map, and delete it from an array.
@@ -112,7 +112,7 @@ pushCoordinates() {
 
 Now, it looks better:
 
-![](snake-in-js-example-3.gif)
+![](assets/snake-in-js-example-3.gif)
 
 We have implemented enough methods to make the game realistic. But what next? Foods... It’s really very simple. Each object have just two scenarios: drawing at generation and destroying at collision with snake.
 
@@ -170,18 +170,15 @@ To test how it works we have to call this function. In optimization purpose we c
 ```js:title=src/index.js
 const startGame = (game, ctx) => {
   const { snake } = game
-
   foodGeneration(foods, ctx) // highlight-line
-  
   game.snakeInterval = setInterval(snake.running.bind(snake), 30)
- 
   addEventListener('keydown', snake.directionControl.bind(snake)) 
 }
 ```
 
 Now our canvas renders with foods points:
 
-![](snake-in-js-example-4.gif)
+![](assets/snake-in-js-example-4.gif)
 
 But you can notice that the snake doesn’t react on collisions with these points. On each collision, our snake should increase in length and the point should be cleared. Out collisions function will contain a ```loop``` with each food point and we’ll just check intersection of point and snake’s head. On each intersection we’ll call ```destroy``` method for food point:
 
@@ -190,11 +187,11 @@ const findFoodCollision = (foods, ctx, snake) => {
   for (const food of foods) {
     if (
       (snake.x > food.x - 10) && (snake.x < food.x + 10) &&
-    	(snake.y > food.y - 10) && (snake.y < food.y + 10)
+      (snake.y > food.y - 10) && (snake.y < food.y + 10)
     ) {
       food.destroy(ctx)
-    	foods.splice(foods.indexOf(food), 1)
-    	snake.length += 1
+      foods.splice(foods.indexOf(food), 1)
+      snake.length += 1
     }
   }
 }
@@ -233,7 +230,7 @@ window.onload = () => {
 
 So, it definitely looks better:
 
-![](snake-in-js-example-5.gif)
+![](assets/snake-in-js-example-5.gif)
 
 Did you notice the score block, with containing current snake’s length? Let’s connect it with real length. We’ll use the ```changeScore``` function for updating the ```DOM``` element value:
 
@@ -251,11 +248,11 @@ const findFoodCollision = (foods, snake, ctx) => {
   for (const food of foods) {
     if (
       (snake.x > food.x - 10) && (snake.x < food.x + 10) &&
-    	(snake.y > food.y - 10) && (snake.y < food.y + 10)
+      (snake.y > food.y - 10) && (snake.y < food.y + 10)
     ) {
       food.destroy(ctx)
-    	foods.splice(foods.indexOf(food), 1)
-    	snake.length += 1
+      foods.splice(foods.indexOf(food), 1)
+      snake.length += 1
       changeScore(snake.length - Snake.INITIAL_LENGTH) // highlight-line
     }
   }
@@ -264,7 +261,7 @@ const findFoodCollision = (foods, snake, ctx) => {
 
 In the result, we're getting:
 
-![](snake-in-js-example-6.gif)
+![](assets/snake-in-js-example-6.gif)
 
 Also, you can test it [here](/examples/snake-game-in-js) (DEMO).
 
