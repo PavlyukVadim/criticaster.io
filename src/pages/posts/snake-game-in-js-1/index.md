@@ -13,7 +13,7 @@ Hi everyone and welcome to the first tutorial on my blog! I’m criticaster, and
 
 ## Intro & preconditions
 
-As you can notice we're going to create a "Snake" game. We'll use no frameworks and game engines for this. Just using plain ```javascript``` we'll create game step by step. The result shoud be like [this](/examples/snake-game-in-js) (DEMO).
+As you can notice we're going to create a "Snake" game. We'll use no frameworks and game engines for this. Just using plain ```javascript``` we'll create game step by step. The result shoud be like [this](/demos/snake-game-in-js) (DEMO).
 
 ## Place where everything begins
 
