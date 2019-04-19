@@ -61,7 +61,7 @@ For rendering our game on the screen we’ll use ```canvas```. Also, let’s add
 
 All that we have now it's:
 
-![first-step](html.png)
+![first-step](assets/html.png)
 
 
 ## Time for javascript
@@ -211,7 +211,7 @@ running() {
 
 And now our canvas comes alive:
 
-![](snake-in-js-example-1.gif)
+![](assets/snake-in-js-example-1.gif)
 
 Ok, move forward and consider our control function. Our snake will turn due to keys' s events. Press on left arrow will turn snake to left and on right to turn it right. So we need to connect ```directionControl```  method with an event listener. There a no better place for that then ```startGame``` function. We can use ```eventListener``` on whole ```document``` object:
 
@@ -289,10 +289,10 @@ const startGame = (game) => {
 
 Let's test snake's controlling:
 
-![](snake-in-js-example-2.gif)
+![](assets/snake-in-js-example-2.gif)
 
 It's the first part of two articles about creating "Snake" game in JavaScript.
 
-[In the next part, we'll add foods, collisions, and control of snake's length](/posts/snake-game-in-js-2).
+In [the next part](/posts/snake-game-in-js-2), we'll add foods, collisions, and control of snake's length.
 
 If you like it you can leave your feedback below.
