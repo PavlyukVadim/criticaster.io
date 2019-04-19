@@ -81,7 +81,6 @@ After that, we can go to the implementation of the ```startGame``` function. We 
 
 ```js:title=src/index.js
 const game = {}
-
 startGame(game)
 ```
 
@@ -167,11 +166,10 @@ window.onload = () => {
   const canvas = document.getElementById('map')
   const ctx = canvas.getContext('2d')
   
- const snake = new Snake(100, 100, 0, Snake.INITIAL_LENGTH, ctx)  // highlight-line
+  const snake = new Snake(100, 100, 0, Snake.INITIAL_LENGTH, ctx)  // highlight-line
   const game = {             // highlight-line
     snake,                   // highlight-line
   }                          // highlight-line
-  
   startGame(game)            // highlight-line
 }
 ```

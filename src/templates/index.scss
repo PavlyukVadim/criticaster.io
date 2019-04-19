@@ -26,15 +26,15 @@
     padding-bottom: 0.2em;
   }
 
-  code:before, code:after, tt:before, tt:after {
-    letter-spacing: -0.2em;
-    content: " ";
-  }
+  // code:before, code:after, tt:before, tt:after {
+  //   letter-spacing: -0.2em;
+  //   content: " ";
+  // }
 
-  code:before, code:after, tt:before, tt:after {
-    letter-spacing: -0.2em;
-    content: " ";
-  }
+  // code:before, code:after, tt:before, tt:after {
+  //   letter-spacing: -0.2em;
+  //   content: " ";
+  // }
 
   .gatsby-highlight {
     background: #fdfaf6;
@@ -46,7 +46,7 @@
 
     pre code {
       display: block;
-      font-size: 94%;
+      font-size: 84%;
       line-height: 1.5;
       padding: 0;
     }
@@ -54,11 +54,11 @@
 
   .gatsby-highlight-code-line {
     background: #faede5;
-    margin-right: -2rem;
-    margin-left: -2rem;
+    margin-right: -1rem;
+    margin-left: -1rem;
     padding-right: 1.05rem;
-    padding-left: 0.84rem;
-    border-left: 1rem solid #f1beb6;
+    padding-left: 0.5rem;
+    border-left: 0.5rem solid #f1beb6;
     display: block;
   }
 
@@ -95,6 +95,12 @@
     color: #4084a1;
   }
 
+  .token.comment {
+    color: #777;
+    font-size: 95%;
+    font-style: italic;
+  }
+
   .gatsby-code-title {
     background: #fdfaf6;
     border-bottom: 1px solid #faede5;
@@ -104,7 +110,7 @@
   }
 
   .gatsby-highlight {
-    padding: 1.575rem;
+    padding: 0 1rem;
     margin-bottom: 1.575rem;
     
     pre[class*='language-']::before {
