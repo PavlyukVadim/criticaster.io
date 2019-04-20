@@ -59,7 +59,7 @@ Now, we can create a ```js``` file, and add some ```CSS``` styles for canvas:
 
 After that, we'll get something like that:
 
-![first-step](canvas-tutorials-1-1.png)
+![first-step](assets/canvas-tutorials-1-1.png)
 
 ## Canvas getContext
 
@@ -80,7 +80,7 @@ const ctx = canvas.getContext('2d')       // highlight-line
 
 In this section, we’re going to draw on canvas your first line. But how can we describe our line? Each line can be described using 2 points. So, we should take canvas as a coordinate system, and there are some interesting moments with this. Our coordinate system begins (0, 0) from top-left corner and moves right for  ```x```, and down for ```y```:
 
-![first-step](canvas-tutorials-1-2.png)
+![first-step](assets/canvas-tutorials-1-2.png)
 
 Now, we can get two points of our line. For example, (100, 100) and (100, 400) and draw a line, between them. We should use ```moveTo``` canvas method for changing context point (and setting our first canvas point), after that, just use ```lineTo``` (setting our next point):
 
@@ -107,7 +107,7 @@ ctx.stroke() // highlight-line
 
 Now, we're getting:
 
-![canvas-how-to-draw-line](canvas-how-to-draw-line.png)
+![canvas-how-to-draw-line](assets/canvas-how-to-draw-line.png)
 
 ## How to change the line color
 
@@ -128,7 +128,7 @@ ctx.strokeStyle = 'red'   // highlight-line
 ctx.stroke()
 ```
 
-![canvas-how-to-change-line-color](canvas-how-to-change-line-color.png)
+![canvas-how-to-change-line-color](assets/canvas-how-to-change-line-color.png)
 
 
 ## How to draw multiple lines
@@ -155,7 +155,7 @@ for (let i = 0; i < colors.length; i++) {
 
 You'll receive something like that:
 
-![canvas-multiple-lines-1.png](canvas-multiple-lines-1.png)
+![canvas-multiple-lines-1.png](assets/canvas-multiple-lines-1.png)
 
 As you can notice, all lines have the same styles. The point is, that you're working with some path (current path), and all changes that you have done appended to the previous path. To fix that you have to use method ```beginPath```:
 
@@ -180,7 +180,7 @@ for (let i = 0; i < colors.length; i++) {
 
 The result:
 
-![canvas-multiple-lines-2.png](canvas-multiple-lines-2.png)
+![canvas-multiple-lines-2.png](assets/canvas-multiple-lines-2.png)
 
 ## Canvas beginPath and closePath
 
@@ -206,7 +206,7 @@ ctx.stroke()
 
 Output without ```closePath```:
 
-![canvas-closePath-1.png](canvas-closePath-1.png)
+![canvas-closePath-1.png](assets/canvas-closePath-1.png)
 
 And with ```closePath```:
 
@@ -229,7 +229,7 @@ ctx.stroke()
 
 Output with ```closePath```:
 
-![canvas-closePath-2.png](canvas-closePath-2.png)
+![canvas-closePath-2.png](assets/canvas-closePath-2.png)
 
 Very well, works as we expected.
 
