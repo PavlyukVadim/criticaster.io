@@ -51,7 +51,7 @@ Now, we can create a ```js``` file, and add some ```CSS``` styles for canvas:
     display: block;                // highlight-line
     margin: 0 auto;                // highlight-line
     border: 1px red dashed;        // highlight-line
-  }
+  }                                // highlight-line
 </style>
 <canvas id="first-canvas" height="500" width="500"></canvas>
 <script src="./index.js"></script> // highlight-line
