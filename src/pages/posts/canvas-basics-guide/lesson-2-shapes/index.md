@@ -36,7 +36,7 @@ const ctx = canvas.getContext('2d')
 
 There are three methods that you can use for drawing a rectangle: ```fillRect```, ```strokeRect```, ```clearRect```. Each of them has the same parameters: ```x```, ```y```, ```width```, and ```height```. As you can guess, ```x``` and ```y``` determinate initial point, where we start working with our rectangle (top left corner) and ```width```, ```height``` describe sides of out rectangle (it makes able to automatically count the bottom right point):
 
-![how-to-draw-rectangle-1](how-to-draw-rectangle-1.png)
+![how-to-draw-rectangle-1](assets/how-to-draw-rectangle-1.png)
 
 Now, let's consider these methods more detailed.
 
@@ -53,7 +53,7 @@ ctx.fillRect(50, 50, 100, 100)  // highlight-line
 
 We'll get a solid filled rectangle in the left top angle of canvas:
 
-![how-to-draw-rectangle-2](how-to-draw-rectangle-2.png)
+![how-to-draw-rectangle-2](assets/how-to-draw-rectangle-2.png)
 
 If you want to change color, you have to set the ```fillStyle``` property:
 
@@ -67,7 +67,7 @@ ctx.fillRect(50, 50, 100, 100)
 
 Now our rectangle becomes red:
 
-![how-to-draw-rectangle-3](how-to-draw-rectangle-3.png)
+![how-to-draw-rectangle-3](assets/how-to-draw-rectangle-3.png)
 
 ### Canvas strokeRect
 
@@ -87,7 +87,7 @@ ctx.strokeRect(25, 25, 150, 150)  // highlight-line
 
 For changing stroke styles we used ```strokeStyle``` and ```lineWidth``` properties from the previous part:
 
-![how-to-stroke-rectangle](how-to-stroke-rectangle.png)
+![how-to-stroke-rectangle](assets/how-to-stroke-rectangle.png)
 
 ### Canvas clearRect
 
@@ -110,7 +110,7 @@ ctx.clearRect(100, 100, 150, 150)  // highlight-line
 
 We'll get a little bit interesting pattern:
 
-![how-to-clear-rectangle](how-to-clear-rectangle.png)
+![how-to-clear-rectangle](assets/how-to-clear-rectangle.png)
 
 ## How to draw arcs or circles
 
@@ -138,7 +138,7 @@ ctx.stroke()   // highlight-line
 
 It looks like that:
 
-![how-to-draw-arc](how-to-draw-arc.png)
+![how-to-draw-arc](assets/how-to-draw-arc.png)
 
 And let's add some filled full circle inside this one:
 
@@ -167,7 +167,7 @@ ctx.fill()  // highlight-line
 
 The result:
 
-![how-to-draw-circle](how-to-draw-circle.png)
+![how-to-draw-circle](assets/how-to-draw-circle.png)
 
 We added ```beginPath``` to avoid filling the previous circle, and the ```fill``` method for filling the whole inner area in blue.
 
@@ -208,7 +208,7 @@ ctx.fill()               // highlight-line
 
 Expected output:
 
-![how-to-draw-triangle](how-to-draw-triangle.png)
+![how-to-draw-triangle](assets/how-to-draw-triangle.png)
 
 ## Conclusions
 
