@@ -38,7 +38,7 @@ Let's use the previous way and add some image into your working directory for ge
 
 I add an image of tree:
 
-![tree](tree.png)
+![tree](assets/tree.png)
 
 You can use this one or any that you want.
 
@@ -81,7 +81,7 @@ img.src = './tree.png'       // highlight-line
 
 Now, you can see our tree on the canvas:
 
-![how-to-draw-image](how-to-draw-image.png)
+![how-to-draw-image](assets/how-to-draw-image.png)
 
 ## How to change image size
 
@@ -101,7 +101,7 @@ img.src = './tree.png'
 
 Nice, we get a little tree:
 
-![how-to-change-image-size](how-to-change-image-size.png)
+![how-to-change-image-size](assets/how-to-change-image-size.png)
 
 ### Example: let's create a forest
 
@@ -151,7 +151,7 @@ Also, we can set some ```background``` for our canvas and change ```border``` co
 
 The result:
 
-![how-to-draw-multiple-images](how-to-draw-multiple-images.png)
+![how-to-draw-multiple-images](assets/how-to-draw-multiple-images.png)
 
 ## Conclusions
 
