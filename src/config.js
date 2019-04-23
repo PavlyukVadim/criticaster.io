@@ -27,9 +27,14 @@ const config = {
       position: 1,
       reversion: true,
     },
+    'algorithms-in-js': {
+      title: 'Algorithms in JS',
+      position: 2,
+      reversion: true,
+    },
     'games-in-js': {
       title: 'Games in JS',
-      position: 2,
+      position: 3,
       reversion: true,
     },
   }
