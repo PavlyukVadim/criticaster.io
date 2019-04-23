@@ -6,7 +6,10 @@ const { categories: categoriesConfig } = config
 
 const IndexPage = ({ data: { allMarkdownRemark: { edges } } }) => {
   const filteredEdges = edges
-    .filter(edge => !!edge.node.frontmatter.date)
+    .filter(edge => (
+      !!edge.node.frontmatter.date &&
+      edge.node.frontmatter.category !== 'nope'
+    ))
   
   const featuredPosts = filteredEdges
     .filter(edge => !!edge.node.frontmatter.featured)
