@@ -11,9 +11,9 @@ featured: true
 
 Our task is to reverse a string in javascript. JavaScript has a powerful built-in set of methods on the String ```prototype``` for working with strings, but there no the ```reverse``` method. However, let's go ahead:
 
-### Basic solution
+### Standard solution
 
-This solution is basic because it’s the direct way to work with string as a set of characters. It’s similar to the way how to do it in traditional programming languages:
+This solution is standard because it’s the direct way to work with string as a set of characters. It’s similar to the way how to do it in traditional programming languages:
 
 ```js:title=index.js
 const reverse = (str) => {
@@ -31,7 +31,7 @@ So we implemented reverse function by themselves, but we can cheat using the sam
 ## Single-line solution
 For use the second way we have to transform our string into an array, where each cell, will be a single character. After using ```reverse``` we have to convert them back into a string using ```join```.
 
-```js:title=single-line solution
+```js:title=Single-line solution
 const reverse = s => [...s].reverse().join``
 ```
 
