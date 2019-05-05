@@ -1,8 +1,15 @@
 import React from 'react'
 import Link from 'gatsby-link'
+// import { DiscussionEmbed } from 'disqus-react'
 import config from './../config'
 
 const { categories: categoriesConfig } = config
+
+// const disqusShortname = 'amadev'
+// const disqusConfig = {
+//   identifier: 'index',
+//   title: 'index',
+// }
 
 const IndexPage = ({ data: { allMarkdownRemark: { edges } } }) => {
   const filteredEdges = edges
@@ -105,6 +112,10 @@ const IndexPage = ({ data: { allMarkdownRemark: { edges } } }) => {
           {postsByCategories}
         </div>
       </div>
+      {/* <DiscussionEmbed
+        shortname={disqusShortname}
+        config={disqusConfig}
+      /> */}
   	</div>
   )
 }
