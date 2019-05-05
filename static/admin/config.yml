@@ -20,6 +20,7 @@ collections:
       - { label: MetaDescription, name: metaDescription }
       - { label: MetaKeywords, name: metaKeywords }
 
+      - { label: Hidden, name: hidden }
       - { label: Featured, name: featured }
       - { label: Featured Image, name: thumbnail, widget: image }
       - { label: Body, name: body, widget: markdown }

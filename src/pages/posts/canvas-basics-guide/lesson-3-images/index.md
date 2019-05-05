@@ -1,7 +1,7 @@
 ---
 path: /posts/canvas-basics-guide-images
 date: '2019-02-17'
-title: Canvas Basics Guide, Images
+title: 🖼 Canvas Basics Guide, Images
 category: canvas-basics-guide
 metaTitle: Canvas Basics Guide, Images
 metaDescription: In the 3-rd lesson of the course "Canvas Basics Guide", we'll learn how to output image on canvas using javascript

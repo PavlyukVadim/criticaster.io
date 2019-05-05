@@ -1,7 +1,7 @@
 ---
 path: /posts/elegant-single-line-algorithms-in-js
 date: '2019-04-21'
-title: Elegant single-line algorithms in JavaScript
+title: 🥇 Elegant single-line algorithms in JavaScript
 category: algorithms-in-js
 metaTitle: Elegant single-line algorithms in js
 metaDescription: Elegant single-line algorithms in js

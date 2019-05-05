@@ -8,7 +8,8 @@ const IndexPage = ({ data: { allMarkdownRemark: { edges } } }) => {
   const filteredEdges = edges
     .filter(edge => (
       !!edge.node.frontmatter.date &&
-      edge.node.frontmatter.category !== 'nope'
+      edge.node.frontmatter.category !== 'nope' &&
+      edge.node.frontmatter.hidden !== true
     ))
   
   const featuredPosts = filteredEdges
@@ -123,6 +124,7 @@ export const pageQuery = graphql`
             title
             category
             featured
+            hidden
           }
         }
       }

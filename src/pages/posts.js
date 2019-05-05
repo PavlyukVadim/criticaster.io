@@ -3,7 +3,12 @@ import Link from 'gatsby-link'
 
 const PostsPage = ({ data: { allMarkdownRemark: { edges } } }) => {
   const posts = edges
-    .filter(edge => !!edge.node.frontmatter.date)
+    .filter((edge) => {
+      return (
+        !!edge.node.frontmatter.date &&
+        edge.node.frontmatter.hidden !== true
+      )
+    })
     .map(edge => (
     		<li key={edge.node.id}>
           {edge.node.frontmatter.date}
@@ -38,6 +43,7 @@ export const PostsQuery = graphql`
             date(formatString: "MMMM DD, YYYY")
             path
             title
+            hidden
           }
         }
       }

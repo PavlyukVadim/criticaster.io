@@ -37,7 +37,7 @@
   }
 }
 
-.homePage, .contactsPage {
+.contactsPage {
   a {
     color: inherit;
     text-decoration: none;
@@ -49,6 +49,23 @@
   
     &:hover {
       background: #e0d6eb;
+    }
+  }
+}
+
+.homePage {
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: all 100ms cubic-bezier(0.4, 0, 0.2, 1);
+    // border-bottom: 1px solid #e0d6eb;
+    // box-shadow: inset 0 -2px 0px 0px #e0d6eb;
+    font-family: Futura PT,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Arial,sans-serif;
+    font-weight: bold;
+    padding-right: 7px;
+  
+    &:hover {
+      background: rgba(224,214,235, 0.8);
     }
   }
 }
