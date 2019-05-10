@@ -1,26 +1,25 @@
 ---
 path: /posts/how-to-remove-all-whitespaces-from-string-in-javascript
 date: '2019-05-10'
-title: How to remove all whitespaces from string in JavaScript
+title: How to remove all whitespaces from a string in JavaScript
 category: nope
-metaTitle: How to remove all whitespaces from string in JavaScript
-metaDescription: How to remove all whitespaces from string in JavaScript using replace
+metaTitle: How to remove all whitespaces from a string in JavaScript
+metaDescription: How to remove all whitespaces from a string in JavaScript using replace
 metaKeywords: 'javascript, js, algorithms, single-line algorithms, tutorials, remove whitespaces, regexp'
 featured: true
-hidden: true
 ---
 
-Removing some characters from string is one of the esiest and the most popular tasks with strings in javascript. Moreover, revoming whitespaces from string is event more popular than othes symbols.
-So, let's consider ways how to get rid of whitespaces in string.
-There are a lots solutions for this purpose. For removing whitespaces from the start of string or at the end you can use the trim method, that has been added in ES5.1 at string prototype.
-But for removing symbols from the middle of string we have to find another ways.
+Removing some characters from the string is one of the easiest and the most popular tasks with strings in javascript. Moreover, removing whitespaces from a string is even more popular than other symbols.
+So, let's consider ways how to get rid of whitespaces in a string.
+There are lots of solutions for this purpose. For removing whitespaces from the start of the string or at the end you can use the ```trim``` method, that has been added in ```ES5.1``` at ```string prototype```.
+But for removing symbols from the middle of string we have to find another way.
 
 ### Standard solution
 
-Of course, you can interate throught each character of string and separate non-whitespace symbols in a new stirng, that you'll return as result:
+Of course, you can iterate through each character of a string and separate non-whitespace symbols in a new string, which you'll return as a result:
 
 ```js
-const noSpaced = (str) => {
+const noSpaces = (str) => {
   let resultStr = ''
   for(let i = 0; i < str.length; i++) {
     if (str[i] !== ' ') {
@@ -29,44 +28,39 @@ const noSpaced = (str) => {
   }
   return resultStr
 }
-noSpaced('  foo  ') // 'foo'
+noSpaces('  foo  ') // 'foo'
 ```
 
-It's the most direct solution, using the minimum of language capability. Fortunatly, javascript has a powerfull functionallity of working with strings and arrays. Let's apply them to our task.
+It's the most direct solution, using the minimum of language capability. Fortunately, javascript has a powerful functionality of working with ```strings``` and ```arrays```. Let's apply them to our task:
 
-### Standard solution
+### Using an array filter
 
-## Single-line solution
-
-Which data structure does include only unique values? Yeap, the ```Set```. And with ```EcmaScript6``` we don't have to implement it by themselves. Let's use the ```Set``` constructor instead. And even better news, as far as 
-The set takes an iterable parameter, we can pass our string directly into it. After that, we'll get a new ```Set object``` with unique symbols. So, at that step, we have to transform these object into an array to join them into the string.
-
-There are several ways how to convert a Set object into an array:
-
-- firstly, using ```Array.from```:
+You can achieve your goal by converting a string into an array, that'll be filtered and joined into the result string:
 
 ```js
-const array = Array.from(mySet)
+const noSpaces = (str) => {
+  return str.split``.filter(e => (e !== ' ')).join``
+}
+noSpaces('  foo  ') // 'foo'
 ```
 
-- Or more elegant way, using spreading the Set out in an array:
+It's working approach, that looks better than the previous one, but let's consider the ```replace``` method:
 
-```js
-const array = [...mySet]
-```
+## Single-line solution using replace
 
-As you guessed, we'll use the last one. Now, all we got to do is use the ```join``` method to transform an array into the string:
+There is a powerful method for replacing parts of a string using a ```regular expression``` on other strings. How can we use that? Let's replace all space symbols on an empty string. To do that we need regular expression, that will match every space symbol. Regular expressions have ```shorthand character classes```, ```\s``` stands for a space character. For matching all space characters, we have to add a ```global flag``` to our expression. So, the result of regexp will ```/\s/g```. Now, we can use the ```replace``` method:
 
 ```js:title=Single-line solution
-const unique = s => [...new Set(s)].join``
+const noSpaces = (str) => str.replace(/\s/g, e => '')
 ```
 
 Example of use:
 
 ```js
-unique('abbccc') // 'abc'
+noSpaces(' foo bar baz ') // 'foobarbaz'
 ```
 
 ### Conclusions
 
-We have sovled task with removing duplicates from a string in JavaScript. We've considered a standard solution, that can be implemented in most programming languages, without using additional data structures and special methods, and more elegant single-line solution, that requires using a ```Set object``` and ```spreading```. If you have ideas about other ways how to remove duplicated symbol - leave them below. Thanks for reading.
+We have solved the task with removing whitespaces from a string in JavaScript. We've considered a straightforward solution, approach using array filtering, and way with ```replace``` method, that was the most suitable and flexible for that problem.
+Thanks for reading.
