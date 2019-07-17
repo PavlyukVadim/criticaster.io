@@ -1,0 +1,37 @@
+$green: #07cb79;
+$white: #ffffff;
+$grey: #efefef;
+$blue: #337ab7;
+$lblue: #1047a9;
+$violet: #6a0aab;
+$grey-text: #666;
+
+// Browser Prefixes
+@mixin transform($transforms) {
+  transform: $transforms;
+}
+
+// Rotate
+@mixin rotate ($deg) {
+  @include transform(rotate(#{$deg}deg));
+}
+
+// Scale
+@mixin scale($scale) {
+  @include transform(scale($scale));
+}
+
+// Translate
+@mixin translate ($x, $y) {
+  @include transform(translate($x, $y));
+}
+
+// Skew
+@mixin skew ($x, $y) {
+  @include transform(skew(#{$x}deg, #{$y}deg));
+}
+
+// Transform Origin
+@mixin transform-origin ($origin) {
+  transform-origin: $origin;
+}
