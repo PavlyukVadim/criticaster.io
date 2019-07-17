@@ -7,6 +7,10 @@ const config = {
       link: '/posts',
     },
     {
+      title: 'JS Dictionary',
+      link: '/js-dictionary',
+    },
+    {
       title: 'Contacts',
       link: '/contacts',
     },

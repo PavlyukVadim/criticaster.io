@@ -13,6 +13,16 @@
     }
   }
 
+  h1, h2, h3, h4, h5, h6 {
+    a {
+      border-bottom: none !important;
+      box-shadow: none !important;
+      &:hover {
+        background: transparent !important;
+      }
+    }
+  }
+
   tt, code, kbd, .gatsby-code-title {
     font-family: SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;
     font-size: 80%;
@@ -138,5 +148,20 @@
     max-width: 500px;
     margin: 0 auto;
     display: block;
+  }
+}
+
+.dictionary {
+  h2 {
+    border-bottom: 1px solid #eaecef;
+    padding-bottom: .3em;
+  }
+
+  code {
+    border-radius: 3px;
+    font-size: 85%;
+    margin: 0;
+    padding: .2em .4em;
+    background-color: rgba(27,31,35,.05);
   }
 }

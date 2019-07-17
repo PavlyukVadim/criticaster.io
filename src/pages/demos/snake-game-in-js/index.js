@@ -142,7 +142,7 @@ const startGame = (game, ctx) => {
   game.snakeInterval = setInterval(snake.running.bind(snake), 30)
   game.foodInterval = setInterval(findFoodCollision, 15, foods, snake, ctx)
 
-  addEventListener('keydown', snake.directionControl.bind(snake))
+  window.addEventListener('keydown', snake.directionControl.bind(snake))
 }
 
 class SnakeGame extends Component {

@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'gatsby-link'
+import TemplateWrapper from '../components/layout'
 
 const PostsPage = ({ data: { allMarkdownRemark: { edges } } }) => {
   const posts = edges
@@ -21,12 +22,14 @@ const PostsPage = ({ data: { allMarkdownRemark: { edges } } }) => {
     )
 
   return (
-  	<div>
-  		<h2>Blog posts: </h2>
-  		<ul>
-        {posts}
-      </ul>
-  	</div>
+    <TemplateWrapper>
+      <div>
+        <h2>Blog posts: </h2>
+        <ul>
+          {posts}
+        </ul>
+      </div>
+    </TemplateWrapper>
   );
 };
 

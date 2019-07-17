@@ -2,6 +2,7 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import rehypeReact from 'rehype-react'
 import { DiscussionEmbed } from 'disqus-react'
+import TemplateWrapper from '../components/layout'
 import './index.scss'
 
 const renderAst = new rehypeReact({
@@ -12,8 +13,9 @@ const renderAst = new rehypeReact({
 export default function Template({
   data, // this prop will be injected by the GraphQL query below.
 }) {
-  const { markdownRemark } = data // data.markdownRemark holds our post data
-  const { frontmatter, htmlAst } = markdownRemark
+  const { markdownRemark = {} } = data // data.markdownRemark holds our post data
+  const { frontmatter = {}, htmlAst } = markdownRemark
+  const { wrapperClass } = frontmatter
 
   const disqusShortname = 'amadev'
   const disqusConfig = {
@@ -21,33 +23,37 @@ export default function Template({
     title: frontmatter.title,
   }
 
+  const className = `${wrapperClass} blog-post-container`
+
   return (
-    <div className="blog-post-container">
-      <div className="blog-post">
-        <h1>{frontmatter.title}</h1>
-        <h3>{frontmatter.date}</h3>
-        <section className="post-body">
-          {renderAst(htmlAst)}
-        </section>
+    <TemplateWrapper>
+      <div className={className}>
+        <div className="blog-post">
+          <h1>{frontmatter.title}</h1>
+          <h3>{frontmatter.date}</h3>
+          <section className="post-body">
+            {renderAst(htmlAst)}
+          </section>
+        </div>
+        <DiscussionEmbed
+          shortname={disqusShortname}
+          config={disqusConfig}
+        />
+        <Helmet
+          title={frontmatter.metaTitle}
+          meta={[
+            {
+              name: 'description',
+              content: frontmatter.metaDescription,
+            },
+            {
+              name: 'keywords',
+              content: frontmatter.metaKeywords,
+            },
+          ]}
+        />
       </div>
-      <DiscussionEmbed
-        shortname={disqusShortname}
-        config={disqusConfig}
-      />
-      <Helmet
-        title={frontmatter.metaTitle}
-        meta={[
-          {
-            name: 'description',
-            content: frontmatter.metaDescription,
-          },
-          {
-            name: 'keywords',
-            content: frontmatter.metaKeywords,
-          },
-        ]}
-      />
-    </div>
+    </TemplateWrapper>
   )
 }
 
@@ -63,6 +69,7 @@ export const pageQuery = graphql`
         metaTitle
         metaDescription
         metaKeywords
+        wrapperClass
       }
     }
   }

@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'gatsby-link'
+import TemplateWrapper from '../components/layout'
 // import { DiscussionEmbed } from 'disqus-react'
 import config from './../config'
 
@@ -93,30 +94,32 @@ const IndexPage = ({ data: { allMarkdownRemark: { edges } } }) => {
     })
   
   return (
-  	<div className="homePage">
-      <div className="featuredArticles">
-        <h2>Featured articles: </h2>
-        <ul>
-          {featuredPosts}
-        </ul>
-      </div>
-      <div className="latestArticles">
-        <h2>Latest articles: </h2>
-        <ol>
-          {latesPosts}
-        </ol>
-      </div>
-      <div className="categories">
-        <h2>Categories: </h2>
-        <div className="categories-wrapper">
-          {postsByCategories}
+    <TemplateWrapper>
+      <div className="homePage">
+        <div className="featuredArticles">
+          <h2>Featured articles: </h2>
+          <ul>
+            {featuredPosts}
+          </ul>
         </div>
+        <div className="latestArticles">
+          <h2>Latest articles: </h2>
+          <ol>
+            {latesPosts}
+          </ol>
+        </div>
+        <div className="categories">
+          <h2>Categories: </h2>
+          <div className="categories-wrapper">
+            {postsByCategories}
+          </div>
+        </div>
+        {/* <DiscussionEmbed
+          shortname={disqusShortname}
+          config={disqusConfig}
+        /> */}
       </div>
-      {/* <DiscussionEmbed
-        shortname={disqusShortname}
-        config={disqusConfig}
-      /> */}
-  	</div>
+    </TemplateWrapper>
   )
 }
 
