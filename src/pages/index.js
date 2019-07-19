@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby-link'
 import TemplateWrapper from '../components/layout'
 // import { DiscussionEmbed } from 'disqus-react'
 import config from './../config'
