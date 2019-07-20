@@ -45,13 +45,8 @@ factorial(5) // 120
 
 ### Explanation
 
-The traditional way of transforming a string into an array is using the ```split``` method:
-
-```js:title=split
-'abc'.split('') // ['a', 'b', 'c']
-```
-
-But also we can use the ```spread operator```, that is more stylish and elegant. After that, we used an array method to changing elements positions into the opposite order and join them together. You can wonder how we've called the ```join``` method (```join`` ```). It's calling the method as ```tag function```, that returns ```template literals``` (``` `sample of template literal with ${arg}` ```). You can replace it with ```join('')```. From my point of view, the previous way looks better, however, might seems like overkill.
+As you can see our factorial function calls itself with decremented number value, it'll create a call stack of function call that will close with return a final value when function goes to the zero value.
+So for 
 
 ### Conclusions
 
