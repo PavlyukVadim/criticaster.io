@@ -2,7 +2,6 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import rehypeReact from 'rehype-react'
 import { DiscussionEmbed } from 'disqus-react'
-import TemplateWrapper from '../components/layout'
 import './index.scss'
 
 const renderAst = new rehypeReact({
@@ -26,34 +25,32 @@ export default function Template({
   const className = `${wrapperClass} blog-post-container`
 
   return (
-    <TemplateWrapper>
-      <div className={className}>
-        <div className="blog-post">
-          <h1>{frontmatter.title}</h1>
-          <h3>{frontmatter.date}</h3>
-          <section className="post-body">
-            {renderAst(htmlAst)}
-          </section>
-        </div>
-        <DiscussionEmbed
-          shortname={disqusShortname}
-          config={disqusConfig}
-        />
-        <Helmet
-          title={frontmatter.metaTitle}
-          meta={[
-            {
-              name: 'description',
-              content: frontmatter.metaDescription,
-            },
-            {
-              name: 'keywords',
-              content: frontmatter.metaKeywords,
-            },
-          ]}
-        />
+    <div className={className}>
+      <div className="blog-post">
+        <h1>{frontmatter.title}</h1>
+        <h3>{frontmatter.date}</h3>
+        <section className="post-body">
+          {renderAst(htmlAst)}
+        </section>
       </div>
-    </TemplateWrapper>
+      <DiscussionEmbed
+        shortname={disqusShortname}
+        config={disqusConfig}
+      />
+      <Helmet
+        title={frontmatter.metaTitle}
+        meta={[
+          {
+            name: 'description',
+            content: frontmatter.metaDescription,
+          },
+          {
+            name: 'keywords',
+            content: frontmatter.metaKeywords,
+          },
+        ]}
+      />
+    </div>
   )
 }
 
