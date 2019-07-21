@@ -152,9 +152,19 @@
 }
 
 .dictionary {
+  a {
+    // font-weight: normal;
+    // font-style: oblique;
+  }
+
   h2 {
     border-bottom: 1px solid #eaecef;
     padding-bottom: .3em;
+  }
+
+  h4 {
+    margin-top: 5px;
+    margin-bottom: 12px;
   }
 
   code {
