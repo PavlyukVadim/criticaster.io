@@ -4,6 +4,7 @@ module.exports = {
     siteUrl: `https://criticaster.io/`,
   },
   plugins: [
+    'gatsby-plugin-robots-txt',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-netlify-cms',
     'gatsby-plugin-react-helmet',
