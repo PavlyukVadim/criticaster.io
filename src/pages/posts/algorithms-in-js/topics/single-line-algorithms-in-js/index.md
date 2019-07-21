@@ -6,7 +6,7 @@ category: algorithms-in-js
 metaTitle: Elegant single-line algorithms in js
 metaDescription: Elegant single-line algorithms in js
 metaKeywords: 'javascript, js, algorithms, single-line algorithms, tutorials'
-featured: true
+featured: false
 ---
 
 ## Overview

@@ -28,7 +28,7 @@ const config = {
   categories: {
     'canvas-basics-guide': {
       title: ' Canvas Basics Guide',
-      position: 1,
+      position: 3,
       reversion: true,
     },
     'algorithms-in-js': {
@@ -38,7 +38,12 @@ const config = {
     },
     'games-in-js': {
       title: 'Games in JS',
-      position: 3,
+      position: 4,
+      reversion: true,
+    },
+    'data-types-in-js': {
+      title: 'Data types in JS',
+      position: 1,
       reversion: true,
     },
   }

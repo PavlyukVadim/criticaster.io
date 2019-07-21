@@ -33,7 +33,7 @@ const IndexPage = ({ data: { allMarkdownRemark: { edges } } }) => {
     )
   )
   
-  const numberOfLatestPosts = 5
+  const numberOfLatestPosts = 3
   const latesPosts = filteredEdges
     .slice(0, numberOfLatestPosts)
     .map(edge => (
