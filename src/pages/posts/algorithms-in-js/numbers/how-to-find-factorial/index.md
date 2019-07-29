@@ -5,16 +5,14 @@ title: How to find factorial of a number in javascript
 category: nope
 metaTitle: How to find factorial of a number in javascript
 metaDescription: How to find factorial of a number in javascript using recursion
-metaKeywords: 'javascript, js, algorithms, single-line algorithms, tutorials, factorial, recursion'
-featured: true
-hidden: true
+metaKeywords: 'javascript, js, algorithms, single-line algorithms, tutorials, factorial, recursion, recurtion in javascript'
 ---
 
-Finding a factorial is one of the most popular tasks for demonstrating how recursion works, regardless on programming language. And JavaScript, isn't an exception. Also, it's one of the esiest algorithms, that might be asked on interview for a entry position. So, finding a factorial of a number is your first step on the way to to mastering a recursion. Let’s get started.
+Finding a factorial is one of the most popular tasks for demonstrating how recursion works, regardless of programming language. And JavaScript isn't an exception. Also, it's one of the easiest algorithms, that might be asked on the interview for an entry position. So, finding factorial of a number is your first step on the way to mastering a recursion. Let’s get started.
 
 ### Standard solution
 
-Of course, you can implement it without recursion, i’ll show you a solution with loop for comparing:
+Of course, you can implement it without recursion, I'll show you a solution with loop for comparing:
 
 ```js:title=index.js
 const factorial = (num) => {
@@ -28,13 +26,13 @@ const factorial = (num) => {
 factorial(5) // 120
 ```
 
-Great. Go to the recursion version.
+Great. Let's go to the recursion version.
 
 ## Single-line solution
-For use the second way we have to transform our string into an array, where each cell, will be a single character. After using ```reverse``` we have to convert them back into a string using ```join```.
+For use the second way the factorial function has to call itself with a decremented argument while the last goes to the ```1```.
 
 ```js:title=Single-line solution
-const factorial = x => (x === 0) ? 1 : x * factorial(x - 1)
+const factorial = x => (x === 1) ? 1 : x * factorial(x - 1)
 ```
 
 Example of use:
@@ -45,9 +43,22 @@ factorial(5) // 120
 
 ### Explanation
 
-As you can see our factorial function calls itself with decremented number value, it'll create a call stack of function call that will close with return a final value when function goes to the zero value.
-So for 
+As you can see our factorial function calls itself with decremented number value, it'll create a call stack of function calls that will close when the function calls with a ```1``` and returns a ```1``` as a result.
+
+In other words, the call stack looks like:
+```js
+f(5) =
+  5 * f(4) =
+  5 * (4 * f(3)) =
+  5 * (4 * (3 * f(2))) =
+  5 * (4 * (3 * (2 * f(1)))) =
+  5 * (4 * (3 * (2 * (1)))) =
+  5 * (4 * (3 * (2))) =
+  5 * (4 * (6)) =
+  5 * (24) =
+  120
+```
 
 ### Conclusions
 
-So, we've done the task with reversing a string using javascript. Also, we've compared the basic solution with a more elegant way. Additionally, we've considered ways of transforming a string into an array, and introduced into calling methods in ```tag function``` mode.
+So, we've written a function for calculation recursion in javascript. Also, we've considered how the call stack works with the recursion.
