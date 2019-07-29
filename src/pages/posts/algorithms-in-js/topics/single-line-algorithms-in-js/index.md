@@ -27,6 +27,11 @@ A string is one of the basic structure for any programming language, and javascr
 * [How to reverse a string in JavaScript](/posts/how-to-reverse-string-in-javascript)
 * [How to remove duplicates from a string in JavaScript](/posts/how-to-remove-duplicates-from-string-in-javascript)
 
+
+### Numbers
+
+* [How to find factorial of a number in javascript](/posts/how-to-find-factorial-of-number-in-javascript)
+
 <br />
 <br />
 <br />
