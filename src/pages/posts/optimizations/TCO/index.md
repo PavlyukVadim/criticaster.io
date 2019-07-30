@@ -9,7 +9,7 @@ metaKeywords: 'javascript, js, algorithms, tail call optimization, TCO, ES6'
 hidden: true
 ---
 
-Tail call optimization is a special way of optimization the call stack in mostly functional languages. In JavaScript TCO support starts with ES6. (At least ES6 offers to use TCO, browser support still is pure).
+Tail call optimization is a special way of optimization the number of stack frames in mostly functional languages. In JavaScript TCO support starts with ES6. (At least ES6 offers to use TCO, browser support still is pure).
 
 ### How tail call optimization works
 
@@ -36,49 +36,33 @@ function bar(b) {
 bar(5) // 1
 ```
 
-Firstly, will be created a stack frame for the global variables (foo, bar).
-After that, will be created a stack frame for the bar function with a 
+Firstly, will be created a [stack frame](/js-dictionary#stack-frame) for the global variables (foo, bar).
+After that, will be created a stack frame for the bar function with local variable a and parameter b. And the last one - stack frame for the foo function. (global => bar => foo). The reason in tail call optimization is that the compiler can skip creatin a new stack frame (global => bar) and make a call in the existed stack frame (!when function returns the call of function, even the same function). It a great optimization of using a RAM, and can solve a problem with a maximum call stack size for recursion functions.
 
+### What is tail recursion
 
+As you can gues tail call optimization is a powerful tool for the functional languages. Profit of it is more obvious with applying it to the recurtion.
+Actually, exactly the recurtional functions mostly are the source of the problems with a maximum call stack size. Let's use our recurtional way of the getting factoril and play around it to change it to the tail recursion:
 
-
-
-
-
-Of course, you can implement it without recursion, I'll show you a solution with loop for comparing:
-
-```js:title=index.js
-const factorial = (num) => {
-  let value = 1
-  for (let i = 2; i <= num; i++) {
-    value = value * i
-  }
-  return value
-}
-
-factorial(5) // 120
-```
-
-Great. Let's go to the recursion version.
-
-## Single-line solution
-For use the second way the factorial function has to call itself with a decremented argument while the last goes to the ```1```.
-
-```js:title=Single-line solution
+```js:title=Not tail recursion function
 const factorial = x => (x === 1) ? 1 : x * factorial(x - 1)
 ```
 
-Example of use:
+Why it isn't the tail call?
+The point in the last expression inside the ternany operator.
+In the other words it looks like:
 
-```js
-factorial(5) // 120
+```js:title=Not tail recursion function
+const factorial = x => {
+  if (x === 1) return 1
+  const f = factorial(x - 1) 
+  return x * f
+}
 ```
 
-### Explanation
+So our function doesn't return a call of function and it can't be optimized.
+As we mention in the post about factorial the stack calls looks like:
 
-As you can see our factorial function calls itself with decremented number value, it'll create a call stack of function calls that will close when the function calls with a ```1``` and returns a ```1``` as a result.
-
-In other words, the call stack looks like:
 ```js
 f(5) =
   5 * f(4) =
@@ -91,6 +75,8 @@ f(5) =
   5 * (24) =
   120
 ```
+
+Let's update our function to use 
 
 ### Conclusions
 
