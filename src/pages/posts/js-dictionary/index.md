@@ -181,10 +181,9 @@ Block of the [stack](#call-stack) corresponds to some function call that keeps r
 ## T:
 
 #### ```TCO```
-Tail Call Optimization.
+Tail Call Optimization. Read [more](/posts/tail-call-optimization-in-javascript) about TCO in JavaScript.
 
 #### ```TDD```
-
 
 
 ## U:

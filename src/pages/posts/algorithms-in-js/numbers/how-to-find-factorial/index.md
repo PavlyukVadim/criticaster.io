@@ -62,3 +62,7 @@ f(5) =
 ### Conclusions
 
 So, we've written a function for calculation recursion in javascript. Also, we've considered how the call stack works with the recursion.
+
+#### Further Learning:
+
+[Tail call optimization in javascript](/posts/tail-call-optimization-in-javascript)
