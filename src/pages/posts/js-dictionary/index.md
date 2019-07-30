@@ -42,6 +42,9 @@ What you are allowed to do. (permissions)
 
 ## C:
 
+#### ```Call stack```
+A stack data structure that keeps information about active function call.
+
 #### ```Composition```
 
 
@@ -166,6 +169,9 @@ to test different parts of a processes.
 #### ```SOLID```
 
 #### ```Spies```
+
+#### ```Stack frame```
+Block of the [stack](#call-stack) corresponds to some function call that keeps relative information about this call (local variables, parameters, a location where to be returned).
 
 #### ```Stub```
 
