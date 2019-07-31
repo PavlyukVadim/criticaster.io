@@ -52,6 +52,9 @@ A stack data structure that keeps information about active function call.
 
 #### ```Data Access Layer```
 
+#### ```Data type```
+Abstraction that has a bounded set of available values and operations that can be performed on these values.
+
 #### ```Duck typing```
 General term for "type checks" that make assumptions about a value's "type"
 based on its shape (what properties are present).

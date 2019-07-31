@@ -1,6 +1,6 @@
 ---
 path: /posts/arrays-in-javascript-complete-guide
-date: '2019-07-20'
+date: '2019-07-31'
 title: 🗄️ Complete guide to Arrays in JavaScript
 category: data-types-in-js
 metaTitle: Complete guide to Arrays in Js
