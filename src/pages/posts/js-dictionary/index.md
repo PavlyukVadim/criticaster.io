@@ -130,6 +130,7 @@ to test different parts of a processes.
 
 #### ```Number```
 
+Numeric data type, that represents both integer and fractional numbers. Read more in the [Complete Guide](/posts/numbers-in-javascript-complete-guide).
 
 ## O:
 
