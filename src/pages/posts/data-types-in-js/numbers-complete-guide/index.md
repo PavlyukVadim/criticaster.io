@@ -16,6 +16,7 @@ metaKeywords: 'javascript, js, numbers'
 * [Is floating point math broken?](#is-floating-point-math-broken)
 * [Not a number, number](#not-a-number-number)
 * [Special values](#special-values)
+* [Bitwise operators](#bitwise-operators)
 
 ### Introduction to Number
 
@@ -103,7 +104,7 @@ isNaN(NaN) // true
 
 ### Special values
 
-Besides the ```NaN```, there are some other special values:
+As we've mentioned in the advanced section of introduction part, there are some other special values besides the ```NaN```:
 
 * ```Infinity```
 * ```-Infinity```
@@ -118,4 +119,22 @@ Examples with special values:
 -2 * 0   // -0
 -0 === 0 // true
 -0 < 0   // false
+```
+
+### Bitwise operators
+
+In that section, we'll skip introduction part about bitwise operators (at least you have to know that it's an operator which operates over binary data).
+
+The main that you have to know about that operator in the context of numbers or integers, that all of them works with int32 data type, so values are limited with ```32``` bits (values range from ```-2^31``` to ```2^31 - 1```) instead of ```52``` bits that can be used for max integer in JavaScript.
+
+In result's all operation's that in result overflow the 32 bits will return wrong values. You have to remember about it when you use the bitwise operator for any purpose. In most cases the issues arise when you use it for pretty rounding an so on:
+
+```js
+const MAX_32_INTEGER = Math.pow(2, 31) - 1 // 2147483647
+MAX_32_INTEGER.toString(2) // 1111111111111111111111111111111
+const floatValueLessMax32 = MAX_32_INTEGER - 0.5 // 2147483646.5
+const floatValueMoreMax32 = MAX_32_INTEGER + 1.5 // 2147483648.5
+// Bitwise Or, that with 0 returns integer part of the number
+floatValueLessMax32 | 0 // 2147483646
+floatValueMoreMax32 | 0 // -2147483648
 ```
