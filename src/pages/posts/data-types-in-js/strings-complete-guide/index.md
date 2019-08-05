@@ -109,4 +109,38 @@ Elements is just a 16-bit unsigned integer values (each element is a single UTF-
 
 ### How to get code at char
 
-### Working with emojji
+As far as each element is 16-bit integer how to get that value? Old good method is charCodeAt:
+
+```js
+'A'.charCodeAt(0) // 65
+'B'.charCodeAt(0) // 66
+'a'.charCodeAt(0) // 97
+```
+
+But it works only to 0x10000 (65,536) while avaliable values are ranged from 0x0 to 0x10FFFF (1,114,111). And to resovle values above that limit (like emoji) you have to play around pair of values (pair of code units, aka a surrogate pairs). And actually all built-in string methods/properties work with code units:
+
+```js
+'😜'.length // 2
+'😜'.split('') // ['�', '�']
+'😜'.split('').map((u) => u.charCodeAt(0)) // [55357, 56860]
+```
+
+To handle this methods due pairs of code units you have to write custom functions or use some libraries (we're gotta skip that part). But, there're good news.
+ES6 offers some of that methods. One of them codePointAt that returns integer represents UTF-16 code:
+
+```js
+'😜'.charCodeAt(0) // 55357, wrong (only a first unit)
+'😜'.codePointAt(0) // 128540, correct
+```
+
+### How to get char from code
+
+The opposite action is getting a char element from code. And there are two ways, too. String.fromCharCode works with limited range of values (subset of most popular unicode symbols), and String.fromCodePoint that works opposite to String.prototype.codePointAt:
+
+```js
+String.fromCharCode(65) // 'A'
+String.fromCharCode(65, 97) // 'Aa'
+
+String.fromCharCode(55357, 56860) // '😜'
+String.fromCodePoint(128540) // '😜'
+```
