@@ -26,19 +26,24 @@ const config = {
     },
   ],
   categories: {
-    'data-types-in-js': {
-      title: 'Data types in JS',
+    'js-core': {
+      title: 'Js Core',
       position: 1,
       reversion: true,
     },
-    'algorithms-in-js': {
-      title: 'Algorithms in JS',
+    'data-types-in-js': {
+      title: 'Data types in Js',
       position: 2,
+      reversion: true,
+    },
+    'algorithms-in-js': {
+      title: 'Algorithms in Js',
+      position: 3,
       reversion: true,
     },
     'optimizations': {
       title: 'Optimizations in Js',
-      position: 3,
+      position: 4,
       reversion: true,
     },
     'canvas-basics-guide': {
@@ -47,8 +52,8 @@ const config = {
       reversion: true,
     },
     'games-in-js': {
-      title: 'Games in JS',
-      position: 4,
+      title: 'Games in Js',
+      position: 6,
       reversion: true,
     },
   }
