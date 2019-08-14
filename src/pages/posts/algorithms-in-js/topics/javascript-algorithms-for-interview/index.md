@@ -1,7 +1,7 @@
 ---
 path: /posts/commonly-asked-javascript-algorithms-for-interview
 date: '2019-05-11'
-title: 🤷‍♂️ Commonly asked javascript algorithms for interview
+title: 🤷‍♂️ Commonly asked algorithms in JavaScript
 category: algorithms-in-js
 metaTitle: Commonly asked javascript algorithms for interview
 metaDescription: Commonly asked javascript algorithms for interview

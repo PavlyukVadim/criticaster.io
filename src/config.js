@@ -10,10 +10,10 @@ const config = {
       title: 'JS Dictionary',
       link: '/js-dictionary',
     },
-    {
-      title: 'Contacts',
-      link: '/contacts',
-    },
+    // {
+    //   title: 'Contacts',
+    //   link: '/contacts',
+    // },
   ],
   socialLinks: [
     {

@@ -1,7 +1,7 @@
 ---
 path: /posts/canvas-basics-guide-lines
 date: '2019-02-10'
-title: 📈 Canvas Basics Guide, Lines
+title: 📈 Canvas basics guide, Lines
 category: canvas-basics-guide
 metaTitle: Canvas Basics Guide, Lines
 metaDescription: The first lesson of the course "Canvas Basics Guide", course overview and introduction
