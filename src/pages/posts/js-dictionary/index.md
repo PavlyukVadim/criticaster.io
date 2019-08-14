@@ -16,23 +16,23 @@ Place with explanations for each buzzword in the JS world.😀
 
 #### ```Array```
 
-Basic composing data type. Read more in the [Complete Guide](/posts/arrays-in-javascript-complete-guide).
+Basic composing data type. Read more in the [Complete Guide to Arrays](/posts/arrays-in-javascript-complete-guide).
 
 #### ```AST```
-Abstract syntax tree.
+*Abstract syntax tree*.
 
 #### ```Abstract Equality```
-Comparison operator (x == y, where x and y are values, produces true or false).
+Comparison operator (```x == y```, where x and y are values, produces true or false).
 
 #### ```AJAX```
 
 #### ```Arrow Functions```
 
 #### ```Authentication```
-Who you are. (login + password)
+Who you are (```login``` + ```password```).
 
 #### ```Authorization```
-What you are allowed to do. (permissions)
+What you are allowed to do (```permissions```).
 
 
 ## B:
@@ -64,8 +64,7 @@ based on its shape (what properties are present).
 ## E:
 
 #### ```Event loop```
-The mechanism that performs moving functions from
-the event queue to stack when stack becomes empty.
+The mechanism that performs moving functions from the event queue to stack when stack becomes empty.
 
 
 ## F:
@@ -107,6 +106,9 @@ Not Json-safe: ```undefineds```, ```functions```, ```symbols```, and objects wit
 
 ## L:
 
+#### ```Lexical scope```
+[Scope](#scope) that defined during the lexing time.
+
 #### ```Let```
 
 #### ```Localstorage```
@@ -130,7 +132,7 @@ to test different parts of a processes.
 
 #### ```Number```
 
-Numeric data type, that represents both integer and fractional numbers. Read more in the [Complete Guide](/posts/numbers-in-javascript-complete-guide).
+Numeric data type, that represents both integer and fractional numbers. Read more in the [Complete Guide to Numbers](/posts/numbers-in-javascript-complete-guide).
 
 ## O:
 
@@ -162,6 +164,9 @@ Numeric data type, that represents both integer and fractional numbers. Read mor
 
 #### ```Scaffolding```
 
+#### ```Scope```
+The accessibility of objects (variables/functions) in some part of your program.
+
 #### ```Service workers```
 
 #### ```Set```
@@ -185,7 +190,7 @@ Block of the [stack](#call-stack) corresponds to some function call that keeps r
 ## T:
 
 #### ```TCO```
-Tail Call Optimization. Read [more](/posts/tail-call-optimization-in-javascript) about TCO in JavaScript.
+*Tail Call Optimization*. Read more about [TCO in JavaScript](/posts/tail-call-optimization-in-javascript).
 
 #### ```TDD```
 
