@@ -12,11 +12,8 @@ hidden: true
 ## Table of content:
 
 * [Data types overview](#data-types-overview)
-* [Type system classification](#type-system-classification)
-* [JavaScript built-in types](#javascript-built-in-types)
-* [How to check data type in JavaScript](#how-to-check-data-type-in-javascript)
 
-### What is lexical scope?
+### What is lexical scope
 
 The scope is the accessibility of some objects in some part of your programm.
 Lexical scope is a scope that defined during lexing time (surprisingly).
@@ -54,9 +51,9 @@ function foo(a) {
 foo(1)
 ```
 
-In that case look-up process will use a inner (hidden) function property [[Scope]], that refers to parent scope while it goes to the global scope.
+In that case look-up process will use a inner (hidden) function property [[Scope]], that refers to parent scope until it goes to the global scope.
 
-Note: look-up process works untill it find the first match:
+Note: look-up process works until it find the first match:
 
 ```js
 var a = 3
@@ -73,6 +70,19 @@ function foo(a) {
 }
 
 foo(1)
+```
+
+#### IIFE
+
+If you want just to enclose data into some scope and you actually don't need a extra function that have to called after it defenition, you can use Immediately Invoked Function Expression:
+
+```js
+var a = 3;
+(function () {
+  var a = 5
+  console.log(a) // 5
+})()
+console.log(a) // 3
 ```
 
 ### Blocks As Scopes
@@ -93,6 +103,17 @@ The reason is in a process that called hoisting, we're going to examinate it in 
 But with ES6 let/const you can ahcive exactly that behaviour:
 
 ```js
+let a = 5
+{
+  const a = 3
+  console.log(a) // 3
+}
+console.log(a) // 5
+```
+
+When look-up failers it throw an relative error:
+
+```js
 var flag = true
 if (flag) {
   let a = 4
@@ -100,6 +121,47 @@ if (flag) {
 }
 console.log(a) // Uncaught ReferenceError: a is not defined
 ```
+
+#### Loops
+
+Let variables have a very useful property to rebinding to each iteration of the loop, so the plain loop:
+
+```js
+for (let i = 0; i < 10; i++) {
+	console.log(i)
+}
+```
+
+can be assumed like:
+
+```js
+{
+	let j
+	for (j = 0; j < 10; j++) {
+		let i = j // re-bound
+		console.log(i)
+	}
+}
+```
+
+### try/catch as scope
+
+ES3 support block-scope for the catch parameter:
+
+```js
+try {
+  const a = 5
+	a++
+}
+catch (err) {
+  var foo = true
+	console.log(err) // works
+}
+
+console.log(foo) // true
+console.log(err) // Uncaught ReferenceError
+```
+
 
 ### How to change a lexical scope in runtime
 
