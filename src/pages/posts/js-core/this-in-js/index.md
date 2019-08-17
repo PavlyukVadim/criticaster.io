@@ -36,7 +36,7 @@ Brief overview of what is this:
 
 * default binding - global object/undefined in strict mode
 * implicit binding - object contained called method
-* explicit binding - object passed as context using call/apply/bind
+* explicit binding - object passed as context using call/apply/bind (works like default for null/undefined as context)
 * new binding - created object
 
 #### Default Binding
@@ -135,4 +135,25 @@ console.log(context) // { a: 'boundFoo call' }
 var boundFooInstance = new boundFoo('boundFoo call')
 console.log(context) // { a: 'boundFoo call' }
 console.log(boundFooInstance) // foo { a: 'boundFoo call' }
+```
+
+### Arrow functions and this
+
+Arrow functions offered by ES6, have a special behavior with this keyword, actually they just get an value of the enclosing (function/global) scope.
+
+So, it's a great innovation for passing function as callbacks:
+
+```js
+var a = 'global bar'
+function foo () {
+  setTimeout(function() {
+    console.log(this.a) // global bar
+  }, 100)
+
+  setTimeout(() => {
+    console.log(this.a) // bar
+  }, 200)
+}
+
+foo.call({ a: 'bar' })
 ```
