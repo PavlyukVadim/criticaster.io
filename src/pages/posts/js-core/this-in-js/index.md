@@ -6,17 +6,22 @@ category: js-core
 metaTitle: Keyword this in JavaScript
 metaDescription: Keyword this in JavaScript
 metaKeywords: 'javascript, js, js core, this, array, number, string, bool'
-hidden: true
 ---
 
 ## Table of content:
 
-* [Key](#)
-
+* [Keyword this overview](#keyword-this-overview)
+* [Band of call-site cases](#band-of-call-site-cases)
+* [Default binding](#default-binding)
+* [Implicit binding](#implicit-binding)
+* [Explicit binding](#explicit-binding)
+* [new binding](#new-binding)
+* [Priority](#priority)
+* [Arrow functions and this](#arrow-functions-and-this)
 
 ### Keyword ```this``` overview
 
-```this``` is dynamic context of the function, that defiends by call-site (added to call-stack during the call).
+```this``` is a dynamic context of the function, that defined by call-site (added to ```call-stack``` during the call).
 
 Example: 
 
@@ -26,22 +31,22 @@ function foo () {
 }
 ```
 
-This function will output different values in order to context of it calling.
+This function will output different values in order to the context of its calling.
 
-### Band of this cases
+### Band of call-site cases
 
-So, how does these types look?
+So, how do these types look? What is the context in those cases?
 
-Brief overview of what is this:
+A brief overview of what is ```this```:
 
-* default binding - global object/undefined in strict mode
+* default binding - ```global object```/```undefined``` in strict mode
 * implicit binding - object contained called method
-* explicit binding - object passed as context using call/apply/bind (works like default for null/undefined as context)
-* new binding - created object
+* explicit binding - object passed as context using ```call```/```apply```/```bind``` (works like the default for ```null```/```undefined``` as context)
+* ```new``` binding - created object
 
-#### Default Binding
+#### Default binding
 
-By default this is reffered to global object, or to undefined in strict mode:
+By default this is referred to the global object, or to undefined in strict mode:
 
 ```js
 var a = 'bar'
@@ -58,9 +63,9 @@ foo1() // 'bar'
 foo2() // Cannot read property 'a' of undefined
 ```
 
-#### Implicit Binding
+#### Implicit binding
 
-When function is a method, this reffers to the object contained that method:
+When a function is a method, this refers to the object contained that method:
 
 ```js
 var a = 'global bar'
@@ -76,9 +81,9 @@ var obj = {
 obj.foo() // bar
 ```
 
-#### Explicit Binding
+#### Explicit binding
 
-You can explicit set the context using call/apply methods:
+You can explicit set the context using ```call```/```apply``` methods:
 
 ```js
 function foo () {
@@ -92,13 +97,13 @@ var context = {
 foo.call(context) // bar
 ```
 
-Note: call/apply get a function arguments after context value, and differance is that call gets list of arguments while apply gets singe argument - array of arguments.
+Note: ```call```/```apply``` get a function arguments after context value, and the difference is that ```call``` gets a list of arguments while ```apply``` gets singe argument - an array of arguments.
 
-Also, you can create a new function that will hard bound to context using bind method.
+Also, you can create a new function that will hardbound to the context using the ```bind``` method.
 
-#### new Binding
+#### ```new``` binding
 
-And, the last but not least binding to creating object during constuctor call:
+And, the last but not least binding to creating object during ```constructor call```:
 
 ```js
 function Foo (a) {
@@ -110,16 +115,16 @@ var foo = new Foo('bar') // 'bar'
 console.log(foo) // { a: 'bar' }
 ```
 
-### Types priority
+### Priority
 
-The power of binding types in order as we examinated them:
+The power of binding types in order as we examined them:
 
 * default binding
 * implicit binding
 * explicit binding
 * new binding
 
-Note: you can't use new binding with call/apply methods, but can with bind, that will ignore binded context for constructor calls:
+Note: you can't use new binding with ```call```/```apply``` methods, but can with ```bind```, that will ignore bound context for constructor calls:
 
 
 ```js
@@ -137,11 +142,11 @@ console.log(context) // { a: 'boundFoo call' }
 console.log(boundFooInstance) // foo { a: 'boundFoo call' }
 ```
 
-### Arrow functions and this
+### Arrow functions and ```this```
 
-Arrow functions offered by ES6, have a special behavior with this keyword, actually they just get an value of the enclosing (function/global) scope.
+Arrow functions offered by ```ES6```, have a special behavior with ```this``` keyword, actually, they just get a value of the enclosing (function/global) scope.
 
-So, it's a great innovation for passing function as callbacks:
+We can use that improvement for passing a function as callbacks to save out context inside other functions, like ```setTimeout```:
 
 ```js
 var a = 'global bar'
