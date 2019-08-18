@@ -6,6 +6,7 @@ category: data-types-in-js
 metaTitle: Complete guide to Objects in Js
 metaDescription: Complete guide to Objects in Js
 metaKeywords: 'javascript, js, objects'
+hidden: true
 ---
 
 ## Table of content:
