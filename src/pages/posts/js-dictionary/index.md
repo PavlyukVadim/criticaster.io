@@ -97,9 +97,8 @@ Moving all declarations to their respective scopes.
 #### ```JSON```
 
 #### ```JSON-safe```
-Json-safe values consist of values that can be represented as JSON.
-Not Json-safe: ```undefineds```, ```functions```, ```symbols```, and objects with circular references.
-
+JSON-safe values consist of values that can be represented as JSON.
+Not JSON-safe: ```undefined```s, ```function```s, ```symbol```s, ```object```s with circular references, ```Date```s, ```Infinity```, ```RegExp```s, ```Map```s, ```Set```s, ```Blob```s, ```FileList```s, sparse ```Array```s, ```Typed Array```s or other complex types.
 
 ## K:
 

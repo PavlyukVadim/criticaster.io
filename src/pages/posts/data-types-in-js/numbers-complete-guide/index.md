@@ -58,6 +58,8 @@ To use it with number literals you have to wrap them with brackets or use extra 
 5..toFixed(2)  // '5.00', also, you can use two point symbols one after another
 ```
 
+Note: for both cases engine automatically coerced numbers to a ```Number``` object to get access to the method from ```Number.prototype```.
+
 ### How to check that a number is an integer
 
 The old good way is checking for a remainder when dividing by 1. But with ```ES6``` you can use ```Number.isInteger``` method:
