@@ -160,3 +160,23 @@ Creates a "sealed" object. (```Object.preventExtensions(..)``` + ```configurable
 
 Creates a "frozen" object. (```Object.seal(..)``` + ```writable:false``` for each property).
 
+### Object.prototype
+
+Objects in JavaScript can be esaly linked using ```prototype``` property as a briedje between them. When you get access to the object property, it will looked at this object and if property is absente will goes by prototypes chain. 
+
+#### How to create link to another object
+
+You can use ```Object.create(..)``` that create a new object linked to the passed argument via ```prototype```:
+
+```js
+var parentObj = { foo: 'bar' }
+var obj = Object.create(parentObj)
+console.log(obj.foo) // 'bar'
+```
+
+Object.defineProperty(parentObj, 'foo', { value: 'bar', writable:false })
+
+'use strict'
+obj.foo = 'dsfsdf'
+
+ TypeError: Cannot assign to read only property 'foo' of 
