@@ -140,7 +140,7 @@ Let's examine each item from property descriptor more close
 
 #### enumerable
 
-* ability to show property during object properties enumeration (like for..in loop)
+* ability to show property during object properties enumeration (like ```for..in``` loop/```Object.keys(..)```)
 
 ### Immutability
 
@@ -166,7 +166,7 @@ Objects in JavaScript can be esaly linked using ```prototype``` property as a br
 
 #### How to create link to another object
 
-You can use ```Object.create(..)``` that create a new object linked to the passed argument via ```prototype```:
+You can use ```Object.create(..)``` from ```ES5``` that creates a new object linked to the passed argument via ```prototype```:
 
 ```js
 var parentObj = { foo: 'bar' }
@@ -174,9 +174,101 @@ var obj = Object.create(parentObj)
 console.log(obj.foo) // 'bar'
 ```
 
-Object.defineProperty(parentObj, 'foo', { value: 'bar', writable:false })
+Or you can modify existing prototype using ```Object.setPrototypeOf``` from ```ES6```:
 
+```js
+var parentObj = { foo: 'bar' }
+var obj = { baz: 'baz' }
+Object.setPrototypeOf(obj, parentObj)
+console.log(obj.foo) // 'bar'
+```
+
+#### How to get object prototype
+
+You can use ```Object.getPrototypeOf(..)``` that returns propotype of object:
+
+```js
+var parentObj = { foo: 'bar' }
+var obj = Object.create(parentObj)
+Object.getPrototypeOf(obj) === parentObj // true
+```
+
+### How does properties assignment work
+
+There're 3 case of setting properties (using ```=``` assignment) due to existing property with the same name on [[Prototype]] chain:
+
+* property is found higher on [[Prototype]] chain, and that property has attribute ```writable:true```, then new property adds directly to the object as expected.
+
+* property is found higher on [[Prototype]] chain, and that property has attribute ```writable:false```, then setting ignores (with throwing TypeError in ```strict mode```):
+
+```js
 'use strict'
-obj.foo = 'dsfsdf'
+var parentObj = {}
+Object.defineProperty(parentObj, 'foo', {
+  value: 'bar',
+  writable: false,
+})
+var obj = Object.create(parentObj)
+obj.foo = 'new value' // TypeError: Cannot assign to read only property 'foo'
+```
 
- TypeError: Cannot assign to read only property 'foo' of 
+* property is found higher on the [[Prototype]] chain and it's a setter, then the setter will be called.
+
+Note: you can use Object.defineProperty(..) instead of ```=``` assignment to directly setting a property
+
+### How to check property existence
+
+For checking if object has a certain property you can use:
+* ```in``` operator - check existence on [[Prototype]] chain
+* ```Object.prototype.hasOwnProperty``` - check existence only inside target object
+
+### Constructors
+
+When you call function with a ```new``` keyword you perform constructor call. So, function will create a new object that linked to function prototype.
+
+Each function has a prototype property, that by default includes a link to that function named constructor.
+
+Also, you can add a custom properties that will avaliable for constructor instances:
+
+```js
+function Foo(name) {
+  this.name = name
+}
+
+Foo.prototype.output = function() {
+  console.log(this.name)
+}
+
+var foo = new Foo('bar')
+foo.output() // 'bar'
+```
+
+#### prototypal inheritance
+
+To implement prototypal inheritance you have to link consturctors:
+
+```js
+ChildFn.prototype = Object.create(ParentFn.prototype)
+// or
+Object.setPrototypeOf(ChildFn.prototype, ParentFn.prototype)
+```
+
+Example:
+
+```js
+function ParentFn(foo) {
+  this.foo = foo
+}
+ParentFn.prototype.output = function () {
+  console.log(this)
+}
+
+function ChildFn(foo, bar) {
+  ParentFn.call(this, foo)
+  this.bar = bar
+}
+Object.setPrototypeOf(ChildFn.prototype, ParentFn.prototype)
+
+var child = new ChildFn('foo', 'bar')
+child.output() // { foo: 'foo', bar: 'bar' }
+```
