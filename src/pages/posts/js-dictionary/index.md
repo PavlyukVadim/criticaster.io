@@ -91,6 +91,7 @@ Moving all declarations to their respective scopes.
 
 #### ```Introspection```
 
+The ability of a program to examine the type or properties of an object at runtime. Read more in the [Complete Guide to Objects](/posts/objects-in-javascript-complete-guide#introspection-in-js).
 
 ## J:
 
@@ -155,6 +156,8 @@ Numeric data type, that represents both integer and fractional numbers. Read mor
 #### ```Reflect```
 
 #### ```Reflection```
+
+The ability for a program to manipulate the values, meta-data, properties and/or functions of an object at runtime.
 
 #### ```Regular Expressions```
 

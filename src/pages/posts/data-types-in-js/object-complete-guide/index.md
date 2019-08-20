@@ -6,12 +6,21 @@ category: data-types-in-js
 metaTitle: Complete guide to Objects in Js
 metaDescription: Complete guide to Objects in Js
 metaKeywords: 'javascript, js, objects'
-hidden: true
 ---
 
 ## Table of content:
 
-* [How to create object](#)
+* [How to create object](#how-to-create-object)
+* [How to access object properties](#how-to-access-object-properties)
+* [How to clone objects in js](#how-to-clone-objects-in-js)
+* [Property descriptors](#property-descriptors)
+* [Immutability](#immutability)
+* [Object.prototype](#objectprototype)
+* [How does properties assignment work](#how-does-properties-assignment-work)
+* [How to check object property existence](#how-to-check-object-property-existence)
+* [Constructors](#constructors)
+* [Prototypal inheritance](#prototypal-inheritance)
+* [Introspection in js](#introspection-in-js)
 
 ### How to create object
 
@@ -45,7 +54,7 @@ obj['foo bar'] = 'baz'
 console.log(obj) // { foo bar: 'baz' }
 ```
 
-Property name is always a string, so name you passed as prop name will be coerce to string:
+Property name is always a string, so name you passed as property name will be coerce to string:
 
 ```js
 var obj = {}
@@ -53,7 +62,7 @@ obj[1] = 'foo'
 obj[1] === obj['1'] // true
 ```
 
-And more intresting example:
+And a little more intresting example:
 
 ```js
 var a = {}, b = {}, c = {}
@@ -63,7 +72,7 @@ console.log(b[b]) // 2
 console.log(b) // { [object Object]: 2 }
 ```
 
-ES6 offers compound property names:
+Note: ES6 offers compound property names:
 
 ```js
 var foo = 'bar'
@@ -73,7 +82,7 @@ var obj = {
 console.log(obj) // { barProp: 'baz' }
 ```
 
-### How to clone objects in JS
+### How to clone objects in js
 
 The esiest, but slow way (that works only with [JSON-safe](/js-dictionary/#json-safe) items) - serialize/deserialize object using built-in methods:
 
@@ -95,9 +104,9 @@ console.log(newObj)
 
 ES6 offers more elegant solutions but only for shallow clone: Object.assign(..) and spread operator.
 
-For deep clone you have to implement your custom solution, with recurcise copy of inner properties.
+For deep cloning, you have to implement your custom solution, with a recursive copy of inner properties.
 
-### Property Descriptors
+### Property descriptors
 
 ES5 offers ```Object.getOwnPropertyDescriptor``` to get a property descriptor:
 
@@ -114,7 +123,7 @@ Object.getOwnPropertyDescriptor(obj, 'foo')
 */
 ```
 
-The opposite method for setting a property is ```Object.defineProperty(..)```:
+The opposite method for gettiing a property descriptor is ```Object.defineProperty(..)```:
 
 ```js
 Object.defineProperty(obj, 'foo', {
@@ -125,22 +134,22 @@ Object.defineProperty(obj, 'foo', {
 })
 ```
 
-Let's examine each item from property descriptor more close
+Let's examine each property descriptor item closer:
 
 #### writable
 
 * ability to change the value of a property
-* returs TypeError for any value changes in strict mode
+* returns TypeError for any value changes in strict mode
 
 #### configurable
 
 * ability to change property descriptor with Object.defineProperty(..) method
-* returs TypeError for any calls of Object.defineProperty(..), regardless of strict mode (the only writable can be changed from true to false without error)
+* returns TypeError for any calls of Object.defineProperty(..), regardless of strict mode (the only writable can be changed from true to false without error)
 * prevents the ability to use the delete operator (silently)
 
 #### enumerable
 
-* ability to show property during object properties enumeration (like ```for..in``` loop/```Object.keys(..)```)
+* ability to show the property during object properties enumeration (like ```for..in``` loop/```Object.keys(..)```)
 
 ### Immutability
 
@@ -150,7 +159,7 @@ If you want to make a constant property (cannot be changed, redefined or deleted
 
 #### prevent extensions
 
-```Object.preventExtensions(..)``` disable ability to add new properties to object and returs TypeError for any extensions in strict mode.
+```Object.preventExtensions(..)``` disable the ability to add new properties to object and returns TypeError for any extensions in strict mode.
 
 #### seal
 
@@ -162,7 +171,7 @@ Creates a "frozen" object. (```Object.seal(..)``` + ```writable:false``` for eac
 
 ### Object.prototype
 
-Objects in JavaScript can be esaly linked using ```prototype``` property as a briedje between them. When you get access to the object property, it will looked at this object and if property is absente will goes by prototypes chain. 
+Objects in JavaScript can be easily linked using ```prototype``` property as a bridge between them. When you're getting access to the object property, the property is searched at this object and if it's absence, the searching goes further by prototypes chain. 
 
 #### How to create link to another object
 
@@ -185,7 +194,7 @@ console.log(obj.foo) // 'bar'
 
 #### How to get object prototype
 
-You can use ```Object.getPrototypeOf(..)``` that returns propotype of object:
+```Object.getPrototypeOf(..)``` returns object propotype:
 
 ```js
 var parentObj = { foo: 'bar' }
@@ -195,9 +204,9 @@ Object.getPrototypeOf(obj) === parentObj // true
 
 ### How does properties assignment work
 
-There're 3 case of setting properties (using ```=``` assignment) due to existing property with the same name on [[Prototype]] chain:
+There are 3 cases of setting properties (using ```=``` assignment) due to property existence with the same name on [[Prototype]] chain:
 
-* property is found higher on [[Prototype]] chain, and that property has attribute ```writable:true```, then new property adds directly to the object as expected.
+* property is found higher on [[Prototype]] chain and that property has attribute ```writable:true```, then new property adds directly to the object as expected.
 
 * property is found higher on [[Prototype]] chain, and that property has attribute ```writable:false```, then setting ignores (with throwing TypeError in ```strict mode```):
 
@@ -214,21 +223,21 @@ obj.foo = 'new value' // TypeError: Cannot assign to read only property 'foo'
 
 * property is found higher on the [[Prototype]] chain and it's a setter, then the setter will be called.
 
-Note: you can use Object.defineProperty(..) instead of ```=``` assignment to directly setting a property
+Note: you can use Object.defineProperty(..) instead of ```=``` assignment to directly setting a property.
 
-### How to check property existence
+### How to check object property existence
 
 For checking if object has a certain property you can use:
-* ```in``` operator - check existence on [[Prototype]] chain
-* ```Object.prototype.hasOwnProperty``` - check existence only inside target object
+* ```in``` operator (checks existence on [[Prototype]] chain).
+* ```Object.prototype.hasOwnProperty``` (checks existence only inside target object).
 
 ### Constructors
 
-When you call function with a ```new``` keyword you perform constructor call. So, function will create a new object that linked to function prototype.
+When you call a function with a ```new``` keyword you perform constructor call. So, the function will create a new object that linked to the function prototype.
 
 Each function has a prototype property, that by default includes a link to that function named constructor.
 
-Also, you can add a custom properties that will avaliable for constructor instances:
+Also, you can add custom properties that will available for constructor instances:
 
 ```js
 function Foo(name) {
@@ -243,7 +252,7 @@ var foo = new Foo('bar')
 foo.output() // 'bar'
 ```
 
-#### prototypal inheritance
+### Prototypal inheritance
 
 To implement prototypal inheritance you have to link consturctors:
 
@@ -271,4 +280,42 @@ Object.setPrototypeOf(ChildFn.prototype, ParentFn.prototype)
 
 var child = new ChildFn('foo', 'bar')
 child.output() // { foo: 'foo', bar: 'bar' }
+```
+
+### Introspection in js
+
+There are a few ways to examinate objects:
+
+* operator ```instanceof``` takes object as left operand, constructor as right and checks if constructor prototype is detected somewhere on object [[Prototype]] chain:
+
+```js
+function Foo () {}
+var foo = new Foo()
+foo instanceof Foo // true
+foo instanceof Object // true
+```
+
+* ```Object.prototype.isPrototypeOf(..)``` checks if object is detected somewhere on argument object [[Prototype]] chain:
+
+```js
+function Foo () {}
+var foo = new Foo()
+Foo.prototype.isPrototypeOf(foo) // true
+```
+
+As you can guess, with ```Object.prototype.isPrototypeOf(..)``` we can check if two object are linked:
+
+```js
+var parentFoo = {}
+var childFoo = Object.create(parentFoo)
+parentFoo.isPrototypeOf(childFoo) // true
+```
+
+* Also, we can directly retrieve the [[Prototype]] of an object with ```Object.getPrototypeOf(..)```:
+
+```js
+function ParentFn(foo) {}
+function ChildFn(bar) {}
+ChildFn.prototype = Object.create(ParentFn.prototype)
+Object.getPrototypeOf(ChildFn.prototype) === ParentFn.prototype // true
 ```
