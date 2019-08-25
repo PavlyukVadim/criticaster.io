@@ -12,7 +12,7 @@ const PostsPage = ({ data: { allMarkdownRemark: { edges } } }) => {
     })
     .map(edge => (
     		<li key={edge.node.id}>
-          {edge.node.frontmatter.date}
+          <span className="post-date">{edge.node.frontmatter.date}</span>
           &nbsp;>>&nbsp;
     			<Link to={edge.node.frontmatter.path}>
             {edge.node.frontmatter.title}
@@ -23,7 +23,7 @@ const PostsPage = ({ data: { allMarkdownRemark: { edges } } }) => {
 
   return (
     <TemplateWrapper>
-      <div>
+      <div className="postsPage">
         <h2>Blog posts: </h2>
         <ul>
           {posts}

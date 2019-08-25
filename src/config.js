@@ -36,14 +36,19 @@ const config = {
       position: 2,
       reversion: true,
     },
+    'async-js': {
+      title: 'Async js',
+      position: 3,
+      reversion: true,
+    },
     'algorithms-in-js': {
       title: 'Algorithms in Js',
-      position: 3,
+      position: 4,
       reversion: true,
     },
     'optimizations': {
       title: 'Optimizations in Js',
-      position: 4,
+      position: 6,
       reversion: true,
     },
     'canvas-basics-guide': {
@@ -53,7 +58,7 @@ const config = {
     },
     'games-in-js': {
       title: 'Games in Js',
-      position: 6,
+      position: 7,
       reversion: true,
     },
   }
