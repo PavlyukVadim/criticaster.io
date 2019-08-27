@@ -6,6 +6,7 @@ category: async-js
 metaTitle: Callbacks in JavaScript
 metaDescription: Callbacks in JavaScript
 metaKeywords: 'javascript, js, js core, closure, array, number, string, bool'
+hidden: true
 ---
 
 ## Table of content:

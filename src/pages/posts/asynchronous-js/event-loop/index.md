@@ -6,6 +6,7 @@ category: async-js
 metaTitle: Event loop in JavaScript
 metaDescription: Event loop in JavaScript
 metaKeywords: 'javascript, js, js core, event loop, closure, array, number, string, bool'
+hidden: true
 ---
 
 ## Table of content:
