@@ -203,6 +203,65 @@ And even more important feature of ```Promise.resolve(..)``` that it can normali
 
 * Note: with passed ```[]``` infinity pending
 
+### Promise underhood
+
+Promises don't deny a callbacks, they just propose a new approach of using them inside a abstraction with a state that becomes an immutable value when result is ready, and calls callbacks that declared via inner method ```then```.
+Let's try to implement such abstraction:
+
+```js
+const PENDING = 'pending'
+const FULFILLED = 'fulfilled'
+const REJECTED = 'rejected'
+
+class Thenable {
+  constructor(executor) {
+    this.status = PENDING
+    this.result = null
+    this.next = null
+
+    if (typeof executor === 'function') {
+      executor(this.resolve.bind(this))
+    } else {
+      this.status = FULFILLED
+      this.result = executor
+    }
+  }
+
+  then(fn) {
+    this.fn = fn
+    const next = new Thenable()
+    this.next = next
+    return next
+  }
+
+  resolve(value) {
+    this.status = FULFILLED
+    const fn = this.fn
+    if (!fn) return
+    const result = fn(value)
+    // next.then(value => {
+    if (this.next) {
+      this.next.resovle(result)
+    }
+  }
+}
+
+const asyncFn = (params) => new Thenable((resolve) => {
+  setTimeout(() => {
+    resolve(params)
+  }, Math.random() * 100)
+})
+
+asyncFn('foo')
+  .then((value) => { console.log('data1', value); return 'bar' })
+  .then((value) => console.log('data2', value))
+
+```
+
+### Cancable Promise
+
+
+
 ### Decorator of Promises chaining
 
 It can be useful to create decorator that emulates chaining by fucntions calls:
@@ -269,6 +328,38 @@ chainedFn(1), chainedFn(2), chainedFn(3), chainedFn(4), chainedFn(5)
 // params 5
 ```
 
-### Cancable Promise
+Advanced sections:
 
-### Own Promise implementation
+Jobs queue:
+
+<!-- http://www.ecma-international.org/ecma-262/6.0/index.html#sec-promise-jobs -->
+
+```js
+setTimeout(() => {
+  console.log('c')
+}, 0)
+
+const immediatePromise = Promise.resolve('d')
+const immediatePromise2 = Promise.resolve('e')
+
+immediatePromise
+  .then(() => { console.log('d11'); return immediatePromise2 })
+  .then(() => { console.log('d12') })
+
+immediatePromise
+  .then(() => { console.log('d21'); return 'd2' })
+  .then((data) => { console.log('d22') })
+
+const b = () => { console.log('b') }
+const a = () => { console.log('a'); b() }
+
+a()
+
+// a
+// b
+// d11
+// d21
+// d22
+// d12
+// c
+```
