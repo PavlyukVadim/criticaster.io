@@ -172,7 +172,7 @@ const p1 = new Promise((resolve, reject) => { resolve('foo') })
 const p2 = Promise.resolve('foo')
 ```
 
-Note: immediately fulfilled Promise cannot be observed synchronously, when you call then(..) on a Promise, even if that Promise was already resolved, the callback (```then(..)```) will be called asynchronously.
+Note: immediately fulfilled Promise cannot be observed synchronously, when you call then(..) on a Promise, even if that Promise was already resolved, the callback (```then(..)```) will be called asynchronously (read more in advanced section).
 
 And even more important feature of ```Promise.resolve(..)``` that it can normalize ```thenable``` object into real Promise.
 
@@ -203,9 +203,50 @@ And even more important feature of ```Promise.resolve(..)``` that it can normali
 
 * Note: with passed ```[]``` infinity pending
 
+## Advanced section:
+
+### Jobs queue:
+
+Let's consider following code sample:
+
+```js
+setTimeout(() => {
+  console.log('d')
+}, 0)
+
+const immediatePromise = Promise.resolve('foo')
+const immediatePromise2 = Promise.resolve('bar')
+
+immediatePromise
+  .then(() => { console.log('c1'); return immediatePromise2 })
+  .then(() => { console.log('c4') })
+
+immediatePromise
+  .then(() => { console.log('c2'); return 'c2' })
+  .then((data) => { console.log('c3') })
+
+const b = () => { console.log('b') }
+const a = () => { console.log('a'); b() }
+
+a()
+
+// a
+// b
+// c1
+// c2
+// c3
+// c4
+// d
+```
+
+As we discussed async behaviour of promises in when we exanined immediately resolved promises, all handlers are called asynchonous. But the output of the previous code sample make to think about 2 strange things: setTimeout's callback had been called later; promise returned by first fork of the immediatePromise had been called after promise returned by second fork. How it can be possible?
+
+Here we go. The name of the main actor - 'PromiseJobs'. Additional Job Queue offered by ES6. So, now we have at least two job queues: ScriptJobs and PromiseJobs. The last one have a higher priority (explanation setTimeout call question). And the another interesting case with PromiseJobs that if PromiseJob ends with returning a immidiate value, new PromiseJob will be placed at the end of that PromiseJob, and if PromiseJob ends with returning a another Promise, new PromiseJob will be placed at the end of that PromiseJobs queues.
+
 ### Promise underhood
 
-Promises don't deny a callbacks, they just propose a new approach of using them inside a abstraction with a state that becomes an immutable value when result is ready, and calls callbacks that declared via inner method ```then```.
+Promises don't deny a callbacks, they just propose a new approach of using them inside a abstraction with a state and calls callbacks that declared via inner method ```then```.
+
 Let's try to implement such abstraction:
 
 ```js
@@ -217,32 +258,55 @@ class Thenable {
   constructor(executor) {
     this.status = PENDING
     this.result = null
-    this.next = null
+    // list of records to be processed when the promise becomes "fulfilled"
+    this.fulfillReactions = []
+    // list of records to be processed when the promise becomes "rejected"
+    this.rejectReactions = []
 
     if (typeof executor === 'function') {
-      executor(this.resolve.bind(this))
-    } else {
-      this.status = FULFILLED
-      this.result = executor
+      try {
+        executor(this.resolve.bind(this))
+      } catch (e) {
+        this.reject(e)
+      }
+    } else if (executor) {
+      this.resolve(executor)
     }
   }
 
-  then(fn) {
-    this.fn = fn
+  then(handler) {
     const next = new Thenable()
-    this.next = next
+    this.fulfillReactions.push({
+      handler,
+      next,
+    })
     return next
   }
 
   resolve(value) {
+    if (this.status !== PENDING) return
     this.status = FULFILLED
-    const fn = this.fn
-    if (!fn) return
-    const result = fn(value)
-    // next.then(value => {
-    if (this.next) {
-      this.next.resovle(result)
-    }
+    this.result = value
+    // To make promise immutable after resolving 
+    Object.freeze(this)
+
+    this.fulfillReactions.forEach(({ handler, next }) => {
+      const result = handler(value)
+      // Fo immulate adding a new Job into a Job queue
+      if (result instanceof Thenable) {
+        setTimeout(() => {
+          next.resolve(result)
+        }, 0)
+      } else {
+        next.resolve(result)
+      }
+    })
+  }
+
+  reject() {
+    if (this.status !== PENDING) return
+    this.status = REJECTED
+    // ...
   }
 }
 
@@ -252,21 +316,40 @@ const asyncFn = (params) => new Thenable((resolve) => {
   }, Math.random() * 100)
 })
 
-asyncFn('foo')
-  .then((value) => { console.log('data1', value); return 'bar' })
-  .then((value) => console.log('data2', value))
+const promise = asyncFn('foo')
 
+promise
+  .then((value) => { console.log('data11', value); return new Thenable('foo') })
+  .then((value) => { console.log('data12', value); value.result = 'updated'; })
+
+promise
+  .then((value) => { console.log('data21', value); return 'bar' })
+  .then((value) => console.log('data22', value))
+
+console.log(promise)
 ```
 
 ### Cancable Promise
 
+Promises don't have such a feature from the standard implementation. And there are some reason's. One of them that such feature can be source a additional issues and dissapointeds.
 
+Why it could be a bad idea to cancale a promise? When some consumer of promise calls a cancale method, it affect another consumer's (breaks external immutability) that can be considered as 'action at a distance' anti-pattern.
+
+The dissapointet is in fact that when you cancel some instance of Promise, actually you cancel a calling of relative handlers, but the action that produce that promise can't be cancaled (like fetching in browser env, or reading a file from fs in node env).
+
+Otherwise of that it can be useful in very rarely cases, and some of libreries give such a feature.
+
+Let's try to impletent cancable Promise based on a plain built-in Promise:
+
+```js
+
+```
 
 ### Decorator of Promises chaining
 
 It can be useful to create decorator that emulates chaining by fucntions calls:
 
-Let's modify our asyncFn by adding output before resolving for inspection of function resolves oreder:
+Let's modify our asyncFn by adding output before resolving for inspection of function resolves order:
 
 ```js
 const asyncFn = (params) => new Promise((resolve) => {
@@ -326,40 +409,4 @@ chainedFn(1), chainedFn(2), chainedFn(3), chainedFn(4), chainedFn(5)
 // params 3
 // params 4
 // params 5
-```
-
-Advanced sections:
-
-Jobs queue:
-
-<!-- http://www.ecma-international.org/ecma-262/6.0/index.html#sec-promise-jobs -->
-
-```js
-setTimeout(() => {
-  console.log('c')
-}, 0)
-
-const immediatePromise = Promise.resolve('d')
-const immediatePromise2 = Promise.resolve('e')
-
-immediatePromise
-  .then(() => { console.log('d11'); return immediatePromise2 })
-  .then(() => { console.log('d12') })
-
-immediatePromise
-  .then(() => { console.log('d21'); return 'd2' })
-  .then((data) => { console.log('d22') })
-
-const b = () => { console.log('b') }
-const a = () => { console.log('a'); b() }
-
-a()
-
-// a
-// b
-// d11
-// d21
-// d22
-// d12
-// c
 ```
