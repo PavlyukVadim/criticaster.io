@@ -342,7 +342,84 @@ Otherwise of that it can be useful in very rarely cases, and some of libreries g
 Let's try to impletent cancable Promise based on a plain built-in Promise:
 
 ```js
+class Cancelable extends Promise {
+  constructor(executor) {
+    super((resolve, reject) => {
+      executor(value => {
+        if (this.canceled) {
+          reject(new Error('canceled'))
+        }
+        resolve(value)
+      }, reject)
+    })
+    this.canceled = false
+  }
 
+  cancel() {
+    this.canceled = true
+  }
+}
+
+const promise1 = new Cancelable((resolve, reject) => {
+  setTimeout(() => { resolve('foo') }, 1000)
+})
+
+const promise2 = new Cancelable((resolve, reject) => {
+  setTimeout(() => { resolve('foo') }, 2000)
+})
+
+promise1
+  .then((value) => {
+    console.log('promise1', value)
+    promise2.cancel()
+  })
+
+promise2
+  .then((value) => console.log('promise2', value))
+  .catch((e) => console.error('promise2', e))
+
+// promise1 foo
+// promise2 Error: canceled
+```
+
+### Custom Promise patterns
+
+Promise with timeout based on ```Promise.race```:
+
+```js
+const getTimeoutPromise = (delay) => (
+  new Promise((resolve, reject) => {
+    setTimeout(() => { reject('Timeout') }, delay)
+  })
+)
+
+const asyncFn = (params) => new Promise((resolve) => {
+  setTimeout(() => { resolve(params) }, 200)
+})
+
+const p = Promise.race([asyncFn('foo'), getTimeoutPromise(100)])
+p.then((data) => console.log('data', data))
+  .catch((err) => console.error(err))
+```
+
+Promises race to the first success:
+
+```js
+const raceToSuccess = (promises) => {
+  return Promise
+    .all(promises.map(p => {
+      return p.then(
+        val => Promise.reject(val),
+        err => Promise.resolve(err)
+      )
+    }))
+    .then(
+      // If all resolved, we've got an array of errors
+      errors => Promise.reject(errors),
+      // If some of them is rejected, we've got the result 
+      val => Promise.resolve(val)
+    )
+}
 ```
 
 ### Decorator of Promises chaining
