@@ -6,18 +6,29 @@ category: async-js
 metaTitle: Promises in JavaScript
 metaDescription: Promises in JavaScript
 metaKeywords: 'javascript, js, js core, promise, closure, array, number, string, bool'
-hidden: true
 ---
 
 ## Table of content:
 
-* [Promises overview](#)
+* [Promises overview](#promises-overview)
+* [Promise immutability](#promises-immutability)
+* [Immediately resolved Promise](#immediately-resolved-promise)
+* [Built-in Promise patterns](#built-in-promise-patterns)
+
+### Advanced section:
+
+* [Jobs queue](#jobs-queue)
+* [How to implement own Promise](#how-to-implement-own-promise)
+* [Cancellable Promise](#cancellable-promise)
+* [Custom Promise patterns](#custom-promise-patterns)
+* [Decorator of Promises chaining](#decorator-of-promises-chaining)
 
 ### Promises overview
 
-Promise is't object that represrnts a future value and contains inner state (pending, fulfilled, rejected).
+Promises are a new way to handle async code offered by ES6.
+It's an object with the inner state (pending, fulfilled, rejected)  that represents a future value.
 
-How to create promise? Just use ```revealing constructor```: 
+How to create Promise? Just use ```revealing constructor```: 
 
 ```js
 const promise = new Promise((resolve, reject) => {
@@ -27,15 +38,17 @@ const promise = new Promise((resolve, reject) => {
 })
 ```
 
+How to use them?
+
 #### Promise.then
 
-Promises have a special method ```then(onFulfilled, onRejected)``` for adding handlers:
+Promises have a special method ```then(onFulfilled, onRejected)``` for adding handlers that will be called when Promise changes stutus to 'resolve':
 
 ```js
 promise.then((data) => { console.log(data) }) // 'foo'
 ```
 
-Note: You can apply chaining to ```then``` methods, and it then method retuns a new promise the next method will be activated with a real value when the promise resolves.
+Note: You can apply chaining to ```then``` methods, and if ```then``` returns a new Promise, the next method will be activated with real value when new Promise resolves.
 
 Let's create a function that produces a promises:
 ```js
@@ -46,7 +59,7 @@ const asyncFn = (params) => new Promise((resolve) => {
 })
 ```
 
-So the calls of asyncFn you can chained like that:
+So the calls of asyncFn you can chain like that:
 
 ```js
 asyncFn(1).
@@ -80,13 +93,11 @@ promise
 // data 2
 ```
 
-When you returns from ```then``` method not an immediate value, but another promise, that promise will be ```asynchronously``` unwrap:
+When you returns from ```then``` method not an immediate value, but a new Promise, it will be ```asynchronously``` unwrap:
 
 ```js
 const p3 = new Promise((resolve, reject) => resolve('B'))
-
 const p1 = new Promise((resolve, reject) => resolve(p3))
-
 const p2 = new Promise((resolve, reject) => resolve('A'))
 
 p1.then((data) => console.log(data))
@@ -95,7 +106,7 @@ p2.then((data) => console.log(data))
 // A B
 ```
 
-Note: all non-function types in ```then``` method a silent ignored:
+Note: all non-function types in ```then``` method are silent ignored:
 
 ```js
 const promise = asyncFn(1).
@@ -117,7 +128,7 @@ promise
 
 #### Promise.catch
 
-To handle error you can use or onRejected function inside method ```then``` or use ```catch``` method:
+To handle error you can eathier use ```onRejected``` function inside method ```then``` eathier use ```catch``` method:
 
 ```js
 const promise = new Promise((resolve, reject) => {
@@ -129,9 +140,9 @@ promise
   .catch((err) => { console.log(err) }) // Error: foo
 ```
 
-### Promises imutation
+### Promise's immutability
 
-The very important Promise feature, that when it resolves(rejects), it becomes an immutable value that can be observed many times.
+The very important Promise feature, that when it resolves(rejects), it becomes an ```immutable``` value that can be observed many times:
 
 ```js
 const promise = new Promise((resolve, reject) => {
@@ -144,7 +155,7 @@ promise
   .catch((err) => { console.log(err) }) // ignored
 ```
 
-Also, when you add multiple handles on promise, you get the same results:
+So, when you add multiple handles on the promise, you get the same results:
 
 ```js
 const promise = new Promise((resolve, reject) => {
@@ -163,7 +174,7 @@ promise
 
 ### Immediately resolved Promise
 
-There are shortcats that immediately sets Promise state: ```Promise.resolve(..)``` and ```Promise.reject(..)```.
+There are shortcuts that immediately sets Promise state: ```Promise.resolve(..)``` and ```Promise.reject(..)```.
 
 These two promises are equivalent:
 
@@ -182,20 +193,20 @@ And even more important feature of ```Promise.resolve(..)``` that it can normali
 
 ```Promise.all``` returns a Promise with results two or more parallel/concurrent tasks:
 
-* takes array of Promise instances (or thenables/immediate values, that will be passed through ```Promise.resolve(..)```)
+* takes an array of Promise instances (or thenables/immediate values, that will be passed through ```Promise.resolve(..)```)
 
 * returned promise will be fulfilled when all inner tasks are fulfilled
 
 * returned promise will be rejected if one of those tasks is rejected
 
-* with passed ```[]``` imideatly resolved with ```undefined```
+* with passed ```[]``` immediately resolved with ```undefined```
 
 
 #### Promise.race
 
 ```Promise.race``` returns a first fulfilled Promise:
 
-* takes array of Promise instances (or thenables/immediate values, that will be passed through ```Promise.resolve(..)```)
+* takes an array of Promise instances (or thenables/immediate values, that will be passed through ```Promise.resolve(..)```)
 
 * returned promise will be fulfilled when one of those tasks is fulfilled
 
@@ -205,7 +216,7 @@ And even more important feature of ```Promise.resolve(..)``` that it can normali
 
 ## Advanced section:
 
-### Jobs queue:
+### Jobs queue
 
 Let's consider following code sample:
 
@@ -239,13 +250,13 @@ a()
 // d
 ```
 
-As we discussed async behaviour of promises in when we exanined immediately resolved promises, all handlers are called asynchonous. But the output of the previous code sample make to think about 2 strange things: setTimeout's callback had been called later; promise returned by first fork of the immediatePromise had been called after promise returned by second fork. How it can be possible?
+As we discussed the async behavior of promises during examining immediately resolved promises, all handlers are called asynchronous. But the output of the previous code sample makes to think about 2 strange things: setTimeout's callback had been called later; promise returned by the first fork of the ```immediatePromise``` had been called after promise returned by the second fork. How it can be possible?
 
-Here we go. The name of the main actor - 'PromiseJobs'. Additional Job Queue offered by ES6. So, now we have at least two job queues: ScriptJobs and PromiseJobs. The last one have a higher priority (explanation setTimeout call question). And the another interesting case with PromiseJobs that if PromiseJob ends with returning a immidiate value, new PromiseJob will be placed at the end of that PromiseJob, and if PromiseJob ends with returning a another Promise, new PromiseJob will be placed at the end of that PromiseJobs queues.
+Here we go. The name of the main actor - ```PromiseJobs```. Additional Job Queue offered by ES6. So, now we have at least two job queues: ```ScriptJobs``` and ```PromiseJobs```. The last one has a higher priority (it explains setTimeout call question). And another interesting case with ```PromiseJobs``` that if ```PromiseJob``` ends with returning an immediate value, new ```PromiseJob``` will be placed at the end of that ```PromiseJob```, and if ```PromiseJob``` ends with returning another Promise, new ```PromiseJob``` will be placed at the end of that ```PromiseJobs``` queue.
 
-### Promise underhood
+### How to implement own Promise
 
-Promises don't deny a callbacks, they just propose a new approach of using them inside a abstraction with a state and calls callbacks that declared via inner method ```then```.
+Promises don't deny callbacks, they just propose a new approach of using them inside an abstraction with a state and calls callbacks that declared via inner method ```then```.
 
 Let's try to implement such abstraction:
 
@@ -329,17 +340,17 @@ promise
 console.log(promise)
 ```
 
-### Cancable Promise
+### Cancellable Promise
 
-Promises don't have such a feature from the standard implementation. And there are some reason's. One of them that such feature can be source a additional issues and dissapointeds.
+Promises don't have such a feature under hood. And there are some reasons. One of them that such feature can be a source of additional issues and misunderstandings.
 
-Why it could be a bad idea to cancale a promise? When some consumer of promise calls a cancale method, it affect another consumer's (breaks external immutability) that can be considered as 'action at a distance' anti-pattern.
+Why it could be a bad idea to cancel a promise? When some consumer of promise calls a cancel method, it affects another consumer's (breaks external immutability) that can be considered as 'action at a distance' anti-pattern.
 
-The dissapointet is in fact that when you cancel some instance of Promise, actually you cancel a calling of relative handlers, but the action that produce that promise can't be cancaled (like fetching in browser env, or reading a file from fs in node env).
+The misunderstanding is in fact that when you cancel some instance of Promise, actually you cancel a calling of relative handlers, but the action that produces that promise can't be canceled (like fetching in browser env or reading a file from fs in node env).
 
-Otherwise of that it can be useful in very rarely cases, and some of libreries give such a feature.
+However, it can be useful in very rare cases, and some of the libraries (like bluebird.js) give such a feature.
 
-Let's try to impletent cancable Promise based on a plain built-in Promise:
+Let's try to implement cancellable Promise based on a plain built-in Promise:
 
 ```js
 class Cancelable extends Promise {
@@ -384,7 +395,7 @@ promise2
 
 ### Custom Promise patterns
 
-Promise with timeout based on ```Promise.race```:
+Promise with a timeout based on ```Promise.race```:
 
 ```js
 const getTimeoutPromise = (delay) => (
@@ -402,7 +413,7 @@ p.then((data) => console.log('data', data))
   .catch((err) => console.error(err))
 ```
 
-Promises race to the first success:
+Promises race until the first success:
 
 ```js
 const raceToSuccess = (promises) => {
@@ -424,9 +435,9 @@ const raceToSuccess = (promises) => {
 
 ### Decorator of Promises chaining
 
-It can be useful to create decorator that emulates chaining by fucntions calls:
+It can be useful to create a decorator that emulates chaining by function calls:
 
-Let's modify our asyncFn by adding output before resolving for inspection of function resolves order:
+Let's modify our asyncFn by adding output before resolving for inspection order of function resolves:
 
 ```js
 const asyncFn = (params) => new Promise((resolve) => {
@@ -437,7 +448,7 @@ const asyncFn = (params) => new Promise((resolve) => {
 })
 ```
 
-When we call it, it would executes in random order:
+When we call it, it would execute in random order:
 
 ```js
 asyncFn(1), asyncFn(2), asyncFn(3), asyncFn(4), asyncFn(5)
@@ -450,7 +461,7 @@ asyncFn(1), asyncFn(2), asyncFn(3), asyncFn(4), asyncFn(5)
 ```
 
 But what if we need to call them one by one?
-Whit emulation of chaining:
+Like using ```then```:
 
 ```js
 asyncFn(1)
@@ -466,7 +477,7 @@ asyncFn(1)
 // params 5
 ```
 
-You can use the follows decorator:
+You can create the follows decorator:
 
 ```js
 function chainingDecorator(f) {
