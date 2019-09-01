@@ -64,8 +64,7 @@ based on its shape (what properties are present).
 ## E:
 
 #### ```Event loop```
-The mechanism that performs moving functions from the event queue to stack when stack becomes empty.
-
+The mechanism that performs moving functions from the ```event queue``` to ```call stack``` when it becomes empty. Read more about [event loop](/posts/event-loop-in-javascript).
 
 ## F:
 
