@@ -1,7 +1,7 @@
 ---
 path: /posts/event-loop-in-javascript
 date: '2019-08-24'
-title: 🤙 Event loop in JavaScript
+title: ➰ Event loop in JavaScript
 category: async-js
 metaTitle: Event loop in JavaScript
 metaDescription: Event loop in JavaScript
