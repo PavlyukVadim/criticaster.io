@@ -1,6 +1,6 @@
 ---
 path: /posts/async-await-in-javascript
-date: '2019-08-27'
+date: '2019-09-01'
 title: 🎩 Async/await in JavaScript
 category: async-js
 metaTitle: Callbacks in JavaScript

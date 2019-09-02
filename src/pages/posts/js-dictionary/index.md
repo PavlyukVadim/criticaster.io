@@ -16,7 +16,7 @@ Place with explanations for each buzzword in the JS world.😀
 
 #### ```Array```
 
-Basic composing data type. Read more in the [Complete Guide to Arrays](/posts/arrays-in-javascript-complete-guide).
+Basic composing data type. More on in [complete guide to Arrays](/posts/arrays-in-javascript-complete-guide).
 
 #### ```AST```
 *Abstract syntax tree*.
@@ -91,6 +91,14 @@ Moving all declarations to their respective scopes.
 #### ```Introspection```
 
 The ability of a program to examine the type or properties of an object at runtime. Read more in the [Complete Guide to Objects](/posts/objects-in-javascript-complete-guide#introspection-in-js).
+
+#### ```Iterable```
+
+An object that contains an iterator that can iterate over its values.
+
+#### ```Iterator```
+
+An object that has the ```next(..)``` method on its interface.
 
 ## J:
 

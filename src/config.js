@@ -37,7 +37,7 @@ const config = {
       reversion: true,
     },
     'async-js': {
-      title: 'Async js',
+      title: 'Async Js',
       position: 3,
       reversion: true,
     },
