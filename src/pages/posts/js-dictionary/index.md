@@ -55,10 +55,14 @@ A stack data structure that keeps information about active function call.
 #### ```Data type```
 Abstraction that has a bounded set of available values and operations that can be performed on these values.
 
+#### ```Dynamic typing```
+
+Means that ariable can represents any value of any type. Read also: [Duck typing](#duck-typing), [Weak typing](#weak-typing).
+
 #### ```Duck typing```
 General term for "type checks" that make assumptions about a value's "type"
 based on its shape (what properties are present).
-"If it looks like a duck, and quacks like a duck, it must be a duck".
+"If it looks like a duck, and quacks like a duck, it must be a duck". Read also: [Dynamic typing](#dynamic-typing), [Weak typing](#weak-typing).
 
 
 ## E:
@@ -70,6 +74,9 @@ The mechanism that performs moving functions from the ```event queue``` to ```ca
 
 #### ```Factory```
 
+#### ```First-class Function```
+
+Functions are treated as values – you can assign a function into a variable, pass it around etc. Read also: [Higher-order Function](#higher-order-function).
 
 ## G:
 
@@ -79,6 +86,8 @@ The mechanism that performs moving functions from the ```event queue``` to ```ca
 ## H:
 
 #### ```Higher-order Function```
+
+A function that takes a function as an argument, or returns a function. Read also: [First-class Function](#first-class-function).
 
 #### ```Hoisting```
 Moving all declarations to their respective scopes.
@@ -217,6 +226,9 @@ Block of the [stack](#call-stack) corresponds to some function call that keeps r
 
 
 ## W:
+
+#### ```Weak typing```
+Means that compiler can use ```implicit cast```. [Dynamic typing](#dynamic-typing), [Duck typing](#duck-typing).
 
 #### ```WeakMap```
 
