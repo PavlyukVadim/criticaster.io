@@ -103,11 +103,11 @@ The ability of a program to examine the type or properties of an object at runti
 
 #### ```Iterable```
 
-An object that contains an iterator that can iterate over its values.
+An object that contains an iterator that can iterate over its values ([example](/posts/iterators-in-javascript#iterable)).
 
 #### ```Iterator```
 
-An object that has the ```next(..)``` method on its interface.
+An object that has the ```next(..)``` method on its interface ([example](/posts/iterators-in-javascript#iterator)).
 
 ## J:
 

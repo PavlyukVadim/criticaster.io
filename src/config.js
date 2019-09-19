@@ -41,24 +41,29 @@ const config = {
       position: 3,
       reversion: true,
     },
+    'es6': {
+      title: 'ES6+',
+      position: 4,
+      reversion: true,
+    },
     'algorithms-in-js': {
       title: 'Algorithms in Js',
-      position: 4,
+      position: 5,
       reversion: true,
     },
     'optimizations': {
       title: 'Optimizations in Js',
-      position: 6,
+      position: 7,
       reversion: true,
     },
     'canvas-basics-guide': {
       title: ' Canvas Basics Guide',
-      position: 5,
+      position: 6,
       reversion: true,
     },
     'games-in-js': {
       title: 'Games in Js',
-      position: 7,
+      position: 8,
       reversion: true,
     },
   }
