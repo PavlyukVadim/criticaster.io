@@ -82,6 +82,8 @@ Functions are treated as values – you can assign a function into a variable, p
 
 #### ```Generator```
 
+Function that can be paused in mid-completion with saving inner state ([example](/posts/generators-in-javascript#generator)). 
+
 
 ## H:
 

@@ -27,6 +27,8 @@ const step2 = iterator.next() // { value: 1, done: false }
 
 ### Iterable
 
+Example 1:
+
 ```js
 const iterable = {
   [Symbol.iterator]() {
@@ -50,6 +52,23 @@ for (const step of iterable) {
 // 0
 // 1
 // ...
+```
+
+Example 2 (Iterable & Iterator at the same time):
+
+```js
+let counter = 0
+const iterable = {
+  [Symbol.iterator]() { return this },
+  next: () => {
+    return {
+      done: counter > 5,
+      value:  counter++,
+    }
+  }
+}
+
+console.log(...iterable) // 0 1 2 3 4 5
 ```
 
 ### Async Iterator
