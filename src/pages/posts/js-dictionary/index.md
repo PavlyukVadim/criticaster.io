@@ -51,7 +51,7 @@ A stack data structure that keeps information about active function call.
 
 #### ```Command```
 
-A ```pattern``` that defines action and parameters as object.
+A ```pattern``` that defines action and parameters as an object (like assuming a bank account transaction as an array of such objects, that objects often could be revoking).
 
 #### ```Composition```
 
@@ -170,6 +170,9 @@ Numeric data type, that represents both integer and fractional numbers. Read mor
 
 #### ```Object```
 
+Basic data type. More on in [complete guide to Objects](/posts/objects-in-javascript-complete-guide).
+
+
 
 ## P:
 
@@ -178,6 +181,10 @@ Numeric data type, that represents both integer and fractional numbers. Read mor
 #### ```Partial application```
 
 #### ```Promise```
+
+#### ```Proxy```
+
+ES6 feature that allows boxing software component with an interception of component handlers, like getting/setting/deleting/enumeration object properties, applying arguments to functions, etc.
 
 
 ## Q:
@@ -210,6 +217,8 @@ The accessibility of objects (variables/functions) in some part of your program.
 A ```pattern``` that provides existing of a single instance of a class.
 
 #### ```Symbol```
+
+New data type offered by ES6, a unique identifier for special object properties.
 
 #### ```SOLID```
 
