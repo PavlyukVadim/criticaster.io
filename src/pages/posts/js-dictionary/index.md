@@ -22,7 +22,11 @@ Basic composing data type. More on in [complete guide to Arrays](/posts/arrays-i
 *Abstract syntax tree*.
 
 #### ```Abstract Equality```
-Comparison operator (```x == y```, where x and y are values, produces true or false).
+Comparison operator (```x == y```, where x and y are values, produces ```true``` or ```false```).
+
+#### ```Adapter```
+
+A ```pattern``` for attainment compatibility that allows converting a class, function, or other components into the component with the interface we need.
 
 #### ```AJAX```
 
@@ -44,6 +48,10 @@ What you are allowed to do (```permissions```).
 
 #### ```Call stack```
 A stack data structure that keeps information about active function call.
+
+#### ```Command```
+
+A ```pattern``` that defines action and parameters as object.
 
 #### ```Composition```
 
@@ -73,6 +81,12 @@ The mechanism that performs moving functions from the ```event queue``` to ```ca
 ## F:
 
 #### ```Factory```
+
+A ```pattern``` for producing function, object, other data structures.
+
+#### ```Facade```
+
+A ```pattern``` for hiding the complexity, it offers a common interface for controlling instances of different classes.
 
 #### ```First-class Function```
 
@@ -193,6 +207,8 @@ The accessibility of objects (variables/functions) in some part of your program.
 
 #### ```Singleton```
 
+A ```pattern``` that provides existing of a single instance of a class.
+
 #### ```Symbol```
 
 #### ```SOLID```
@@ -201,6 +217,10 @@ The accessibility of objects (variables/functions) in some part of your program.
 
 #### ```Stack frame```
 Block of the [stack](#call-stack) corresponds to some function call that keeps relative information about this call (local variables, parameters, a location where to be returned).
+
+#### ```Strategy```
+
+A ```pattern``` that selects one of interchangeable classes that contain a behavior that is similar in functionality and implements a common interface (example for ```FP``` is ```Array.prototype.sort``` method).
 
 #### ```Stub```
 
