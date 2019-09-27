@@ -249,6 +249,8 @@ Split your interfaces to smaller for using only ones that you need.
 
 * #### Dependency Inversion Principle
 
+Gives recommendations on what dependencies should be:
+
   - High-level modules should not depend on low-level modules. Both should depend on abstractions.
   - Abstractions should not depend upon details. Details should depend on abstractions.
 
