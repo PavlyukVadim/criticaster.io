@@ -165,11 +165,6 @@ New data type offered by ES6, a unique identifier for special object properties.
 #### ```Stack frame```
 Block of the [stack](#call-stack) corresponds to some function call that keeps relative information about this call (local variables, parameters, a location where to be returned).
 
-#### ```Stub```
-
-#### ```Superposition```
-
-
 ## T:
 
 #### ```TCO```
