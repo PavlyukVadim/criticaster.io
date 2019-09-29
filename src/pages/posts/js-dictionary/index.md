@@ -59,14 +59,54 @@ A stack data structure that keeps information about active function call.
 
 #### ```Cohesion```
 
+
 #### ```Command```
 
 A ```pattern``` that defines action and parameters as an object (like assuming a bank account transaction as an array of such objects, that objects often could be revoking).
 
 #### ```Composition```
 
+Is a concept that allows you to combine two or more functions into a new function. Composition has a companion concept ```Piping```. ```Pipe``` also composes functions, but in reverse order.
+
+<details>
+  <summary>Code sample:</summary>
+
+```js
+const compose = (...fns) => (x) => fns.reduceRight((x, fn) => fn(x), x)
+
+// Usage
+const upperFirst = word => word.charAt(0).toUpperCase() + word.slice(1)
+const upperCapital = s => s.split(' ').map(upperFirst).join(' ')
+const lower = s => s.toLowerCase()
+
+const capitalize = compose(upperCapital, lower)
+
+const s = 'FOO BAR'
+capitalize(s) // Foo Bar
+```
+</details>
+
+
 #### ```Coupling```
 
+#### ```Currying```
+
+Is a technique of taking a function with multiple arguments and turning it into a sequence of functions each with only a single argument. Can be implemented using ```Partial application```.
+
+<details>
+  <summary>Code sample:</summary>
+
+```js
+const curry = fn => (...args) => {
+  if (fn.length > args.length) {
+    const f = fn.bind(null, ...args)
+    return curry(f)
+  } else {
+    return fn(...args)
+  }
+}
+```  
+</details>
 
 ## D:
 
@@ -202,12 +242,38 @@ Basic data type. More on in [complete guide to Objects](/posts/objects-in-javasc
 
 #### ```Partial application```
 
+Is a technique of fixing a number of arguments to a function, producing another function of smaller arguments i.e binding values of those arguments. Example: ```function.bind(null, [arg1], ...)```.
+
+#### ```Piping```
+
+Is a concept that allows you to combine two or more functions into a new function.
+
+<details>
+  <summary>Code sample:</summary>
+
+```js
+const pipe = (...fns) => (x) => fns.reduce((x, fn) => fn(x), x)
+
+// Usage
+const upperFirst = word => word.charAt(0).toUpperCase() + word.slice(1)
+const upperCapital = s => s.split(' ').map(upperFirst).join(' ')
+const lower = s => s.toLowerCase()
+
+const capitalize = pipe(lower, upperCapital)
+
+const s = 'FOO BAR'
+capitalize(s) // Foo Bar
+```
+</details>
+
+
 #### ```Promise```
 
 #### ```Proxy```
 
 ES6 feature that allows boxing software component with an interception of component handlers, like getting/setting/deleting/enumeration object properties, applying arguments to functions, etc.
 
+#### ```Pure Function```
 
 ## Q:
 
@@ -278,8 +344,6 @@ Block of the [stack](#call-stack) corresponds to some function call that keeps r
 A ```pattern``` that selects one of interchangeable classes that contain a behavior that is similar in functionality and implements a common interface (example for ```FP``` is ```Array.prototype.sort``` method).
 
 #### ```Stub```
-
-#### ```Superposition```
 
 
 ## T:

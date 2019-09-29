@@ -23,6 +23,47 @@ Place with explanations for each buzzword in the JS world.😀
 
 #### ```Composition```
 
+Is a concept that allows you to combine two or more functions into a new function. Composition has a companion concept ```Piping```. ```Pipe``` also composes functions, but in reverse order.
+
+<details>
+  <summary>Code sample:</summary>
+
+```js
+const compose = (...fns) => (x) => fns.reduceRight((x, fn) => fn(x), x)
+
+// Usage
+const upperFirst = word => word.charAt(0).toUpperCase() + word.slice(1)
+const upperCapital = s => s.split(' ').map(upperFirst).join(' ')
+const lower = s => s.toLowerCase()
+
+const capitalize = compose(upperCapital, lower)
+
+const s = 'FOO BAR'
+capitalize(s) // Foo Bar
+```
+</details>
+
+
+#### ```Currying```
+
+Is a technique of taking a function with multiple arguments and turning it into a sequence of functions each with only a single argument. Can be implemented using ```Partial application```.
+
+<details>
+  <summary>Code sample:</summary>
+
+```js
+const curry = fn => (...args) => {
+  if (fn.length > args.length) {
+    const f = fn.bind(null, ...args)
+    return curry(f)
+  } else {
+    return fn(...args)
+  }
+}
+```  
+</details>
+
+
 ## D:
 
 ## E:
@@ -65,13 +106,37 @@ A function that takes a function as an argument, or returns a function. Read als
 
 #### ```Partial application```
 
+Is a technique of fixing a number of arguments to a function, producing another function of smaller arguments i.e binding values of those arguments. Example: ```function.bind(null, [arg1], ...)```.
+
+#### ```Piping```
+
+Is a concept that allows you to combine two or more functions into a new function.
+
+<details>
+  <summary>Code sample:</summary>
+
+```js
+const pipe = (...fns) => (x) => fns.reduce((x, fn) => fn(x), x)
+
+// Usage
+const upperFirst = word => word.charAt(0).toUpperCase() + word.slice(1)
+const upperCapital = s => s.split(' ').map(upperFirst).join(' ')
+const lower = s => s.toLowerCase()
+
+const capitalize = pipe(lower, upperCapital)
+
+const s = 'FOO BAR'
+capitalize(s) // Foo Bar
+```
+</details>
+
+#### ```Pure Function```
+
 ## Q:
 
 ## R:
 
 ## S:
-
-#### ```Superposition```
 
 ## T:
 

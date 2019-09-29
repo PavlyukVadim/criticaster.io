@@ -25,6 +25,8 @@ Place with explanations for each buzzword in the JS world.😀
 
 ## D:
 
+#### ```Data Access Layer```
+
 #### ```Dependency Injection```
 
 A form of ```IoC```, where implementations are passed into an object through constructors/setters, which the object will 'depend' on in order to behave correctly.

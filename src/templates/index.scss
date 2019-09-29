@@ -185,6 +185,20 @@
     font-size: 85%;
     margin: 0;
     padding: .2em .4em;
-    background-color: rgba(27,31,35,.05);
+  }
+
+  details {
+    margin-top: -10px;
+    margin-bottom: 15px;
+
+    &:focus {
+      outline: none;
+    }
+
+    summary {
+      &:focus {
+        outline: none;
+      } 
+    }
   }
 }
