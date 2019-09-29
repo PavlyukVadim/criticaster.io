@@ -160,11 +160,19 @@
   a {
     // font-weight: normal;
     // font-style: oblique;
+    // font-weight: lighter !important;
+  }
+
+  ol {
+    a {
+      font-weight: lighter !important;
+    }
   }
 
   h2 {
     border-bottom: 1px solid #eaecef;
     padding-bottom: .3em;
+    font-weight: lighter;
   }
 
   h4 {
