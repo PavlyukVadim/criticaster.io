@@ -1,5 +1,5 @@
 ---
-path: /js-dictionary
+path: /js-dictionary/js-core
 title: 📙 JavaScript Dictionary
 metaTitle: JavaScript Dictionary
 metaDescription: JavaScript Dictionary | place with explanations for each buzzword in the JS world
@@ -11,73 +11,32 @@ Place with explanations for each buzzword in the JS world.😀
 
 [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J](#j) [K](#k) [L](#l) [M](#m) [N](#n) [O](#o) [P](#p) [Q](#q) [R](#r) [S](#s) [T](#t) [U](#u) [V](#v) [W](#w) [X](#x) [Y](#y) [Z](#z)
 
-## Categories:
+# JS Core:
 
-1. [JS Core](/js-dictionary/js-core)
-1. [Design Patterns](/js-dictionary/design-patterns)
-1. [Architecture principles](/js-dictionary/architecture-principles)
-1. [Functional programming](/js-dictionary/functional-programming)
-1. [Testing in JS]()
-
-# Dictionary:
 ## A:
 
 #### ```Array```
 
 Basic composing data type. More on in [complete guide to Arrays](/posts/arrays-in-javascript-complete-guide).
 
-#### ```AST```
-*Abstract syntax tree*.
-
 #### ```Abstract Equality```
 Comparison operator (```x == y```, where x and y are values, produces ```true``` or ```false```).
-
-#### ```Adapter```
-
-A ```pattern``` for attainment compatibility that allows converting a class, function, or other components into the component with the interface we need.
 
 #### ```AJAX```
 
 #### ```Arrow Functions```
 
-#### ```Authentication```
-Who you are (```login``` + ```password```).
-
-#### ```Authorization```
-What you are allowed to do (```permissions```).
-
-
 ## B:
-
-#### ```BDD```
-
 
 ## C:
 
 #### ```Call stack```
 A stack data structure that keeps information about active function call.
 
-#### ```Cohesion```
-
-#### ```Command```
-
-A ```pattern``` that defines action and parameters as an object (like assuming a bank account transaction as an array of such objects, that objects often could be revoking).
-
-#### ```Composition```
-
-#### ```Coupling```
-
-
 ## D:
-
-#### ```Data Access Layer```
 
 #### ```Data type```
 Abstraction that has a bounded set of available values and operations that can be performed on these values.
-
-#### ```Dependency Injection```
-
-A form of ```IoC```, where implementations are passed into an object through constructors/setters, which the object will 'depend' on in order to behave correctly.
 
 #### ```Dynamic typing```
 
@@ -96,14 +55,6 @@ The mechanism that performs moving functions from the ```event queue``` to ```ca
 
 ## F:
 
-#### ```Factory```
-
-A ```pattern``` for producing function, object, other data structures.
-
-#### ```Facade```
-
-A ```pattern``` for hiding the complexity, it offers a common interface for controlling instances of different classes.
-
 #### ```First-class Function```
 
 Functions are treated as values – you can assign a function into a variable, pass it around etc. Read also: [Higher-order Function](#higher-order-function).
@@ -112,9 +63,7 @@ Functions are treated as values – you can assign a function into a variable, p
 
 #### ```Generator```
 
-Function that can be paused in mid-completion with saving inner state ([example](/posts/generators-in-javascript#generator)).
-
-#### ```GRASP```
+Function that can be paused in mid-completion with saving inner state ([example](/posts/generators-in-javascript#generator)). 
 
 
 ## H:
@@ -128,12 +77,6 @@ Moving all declarations to their respective scopes.
 
 
 ## I:
-
-#### ```Immutable Data```
-
-#### ```Inversion of control```
-
-A programming principle by which the control of objects or portions of a program is transferred to a container or framework. 
 
 #### ```Introspection```
 
@@ -171,17 +114,6 @@ Not JSON-safe: ```undefined```s, ```function```s, ```symbol```s, ```object```s w
 
 #### ```Map```
 
-#### ```Meta Programming```
-
-#### ```Mixins```
-
-#### ```Memoization```
-
-#### ```Mock```
-Mocks or Fakes are faking certain modules or behaviors
-to test different parts of a processes.
-
-
 ## N:
 
 #### ```Number```
@@ -197,10 +129,6 @@ Basic data type. More on in [complete guide to Objects](/posts/objects-in-javasc
 
 
 ## P:
-
-#### ```Parasitic inheritance```
-
-#### ```Partial application```
 
 #### ```Promise```
 
@@ -225,57 +153,17 @@ The ability for a program to manipulate the values, meta-data, properties and/or
 
 ## S:
 
-#### ```Scaffolding```
-
 #### ```Scope```
 The accessibility of objects (variables/functions) in some part of your program.
 
-#### ```Service workers```
-
 #### ```Set```
-
-#### ```Singleton```
-
-A ```pattern``` that provides existing of a single instance of a class.
 
 #### ```Symbol```
 
 New data type offered by ES6, a unique identifier for special object properties.
 
-#### ```SOLID```
-
-* #### Single Responsibility Principle
-
-"There should never be more than one reason for a class to change". Ask yourself what does your class do? If the answer is a list of things your class probably don't satisfies SRP (like ```printReport``` method inside ```Employee``` class).
-
-* #### Open/Closed Principle
-
-"Software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification." It promotes using an abstractions for linking entities (like area method for each Shape for using area in some entity, so you can easily create another shape).
-
-* #### Liskov Substitution Principle
-
-"If S is a subtype of T, then objects of type T may be replaced with objects of type S without altering any of the desirable properties of that program." So if you have a parent class and a child class, then the base class and child class can be used interchangeably without getting incorrect results. (It's better to extend Reactangle and Squre from Shape).
-
-* #### Interface Segregation Principle
-
-"Clients should not be forced to depend upon interfaces that they do not use."
-Split your interfaces to smaller for using only ones that you need.
-
-* #### Dependency Inversion Principle
-
-Gives recommendations on what dependencies should be:
-
-  - High-level modules should not depend on low-level modules. Both should depend on abstractions.
-  - Abstractions should not depend upon details. Details should depend on abstractions.
-
-#### ```Spies```
-
 #### ```Stack frame```
 Block of the [stack](#call-stack) corresponds to some function call that keeps relative information about this call (local variables, parameters, a location where to be returned).
-
-#### ```Strategy```
-
-A ```pattern``` that selects one of interchangeable classes that contain a behavior that is similar in functionality and implements a common interface (example for ```FP``` is ```Array.prototype.sort``` method).
 
 #### ```Stub```
 
@@ -287,20 +175,10 @@ A ```pattern``` that selects one of interchangeable classes that contain a behav
 #### ```TCO```
 *Tail Call Optimization*. Read more about [TCO in JavaScript](/posts/tail-call-optimization-in-javascript).
 
-#### ```TDD```
-
 
 ## U:
 
-#### ```URI```
-*Uniform Resource Identifier*. URIs are a standard for identifying documents using a short string of numbers, letters, and symbols. ```URLs```, ```URNs```, and ```URCs``` are all types of URI.
-
-#### ```URL```
-*Uniform Resource Locator*. URL is a reference to a web resource that specifies its location and a mechanism for retrieving it.
-
-
 ## V:
-
 
 ## W:
 
@@ -310,9 +188,6 @@ Means that compiler can use ```implicit cast```. [Dynamic typing](#dynamic-typin
 #### ```WeakMap```
 
 #### ```WeakSet```
-
-#### ```WebWorkers```
-
 
 ## X:
 ## Y:
