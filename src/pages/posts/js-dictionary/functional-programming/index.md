@@ -146,6 +146,30 @@ capitalize(s) // Foo Bar
 
 ## W:
 
+#### ```Wrapper```
+
+A function that wraps a function by adding new behaviour.
+<details>
+  <summary>Examples of Cancelable:</summary>
+
+```js
+const cancelable = fn => {
+  const wrapper = (...args) => {
+    if (fn) return fn(...args);
+  }
+  wrapper.cancel = () => fn = null
+  return wrapper
+}
+
+// ...
+const f = cancelable(fn);
+
+f()
+f.cancel()
+f()
+```
+</details>
+
 ## X:
 ## Y:
 ## Z:
