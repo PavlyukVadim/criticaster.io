@@ -150,7 +150,7 @@ capitalize(s) // Foo Bar
 
 A function that wraps a function by adding new behaviour.
 <details>
-  <summary>Examples of Cancelable:</summary>
+  <summary>Example of Cancelable wrapper</summary>
 
 ```js
 const cancelable = fn => {
@@ -164,9 +164,9 @@ const cancelable = fn => {
 // ...
 const f = cancelable(fn);
 
-f()
+f() // called
 f.cancel()
-f()
+f() // ignored
 ```
 </details>
 

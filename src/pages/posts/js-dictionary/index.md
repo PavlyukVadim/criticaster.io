@@ -115,6 +115,36 @@ const curry = fn => (...args) => {
 #### ```Data type```
 Abstraction that has a bounded set of available values and operations that can be performed on these values.
 
+#### ```Debouncing```
+
+An optimization technique that enforces that a function not be called again until a certain amount of time has passed without it being called (execute this function only if N milliseconds have passed without it being called).
+
+<details>
+  <summary>Debounce implementation</summary>
+
+```js
+const debounce = (delay, fn) => {
+  let timeout
+  return (...args) => {
+    timeout && clearTimeout(timeout)
+    timeout = setTimeout(() => {
+      timeout = null
+      fn(...args)
+    }, delay)
+  }
+}
+
+const fn = arg => console.log('arg: ', arg)
+const ft = debounce(200, fn)
+setTimeout(() => ft('foo'), 50)
+setTimeout(() => ft('foo'), 150)
+setTimeout(() => console.log('bar'), 300)
+
+// bar
+// arg:  foo
+```
+</details>
+
 #### ```Dependency Injection```
 
 A form of ```IoC```, where implementations are passed into an object through constructors/setters, which the object will 'depend' on in order to behave correctly.
@@ -353,6 +383,39 @@ A ```pattern``` that selects one of interchangeable classes that contain a behav
 
 #### ```TDD```
 
+#### ```Throttling```
+
+An optimization technique that enforces a maximum number of times a function can be called over time (execute this function at most once every ```N``` milliseconds).
+
+<details>
+  <summary>Throttle implementation</summary>
+
+```js
+const throttle = (delay, fn) => {
+  let timer, wait = false, wrapped = null
+
+  wrapped = (...args) => {
+    if (!timer) {
+      timer = setTimeout(() => {
+        timer = undefined
+        if (wait) wrapped(...args)
+      }, delay)
+      wait = false
+      return fn(...args)
+    } else {
+      wait = true
+    }
+  }
+
+  return wrapped
+}
+
+const fn = arg => console.log('arg: ', arg)
+const ft = throttle(200, fn)
+const timer = setInterval(() => ft('foo'), 50)
+setTimeout(() => clearInterval(timer), 1000)
+```
+</details>
 
 ## U:
 
@@ -365,7 +428,6 @@ A ```pattern``` that selects one of interchangeable classes that contain a behav
 
 ## V:
 
-
 ## W:
 
 #### ```Weak typing```
@@ -377,6 +439,29 @@ Means that compiler can use ```implicit cast```. [Dynamic typing](#dynamic-typin
 
 #### ```WebWorkers```
 
+#### ```Wrapper```
+
+A function that wraps a function by adding new behaviour.
+<details>
+  <summary>Example of Cancelable wrapper</summary>
+
+```js
+const cancelable = fn => {
+  const wrapper = (...args) => {
+    if (fn) return fn(...args);
+  }
+  wrapper.cancel = () => fn = null
+  return wrapper
+}
+
+// ...
+const f = cancelable(fn);
+
+f() // called
+f.cancel()
+f() // ignored
+```
+</details>
 
 ## X:
 ## Y:
