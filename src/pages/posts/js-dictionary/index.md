@@ -245,10 +245,14 @@ Not JSON-safe: ```undefined```s, ```function```s, ```symbol```s, ```object```s w
 
 #### ```Mixins```
 
+A form of object composition, where component features get mixed into a composite object: ```Object.assing(compositeObject, ..)```.
+
 #### ```Memoization```
 
+An optimization technique by storing the results of expensive function calls and returning the cached result when the same inputs occur again.
+
 #### ```Mock```
-Mocks or Fakes are faking certain modules or behaviors
+```Mocks``` or ```Fakes``` are faking certain modules or behaviors
 to test different parts of a processes.
 
 

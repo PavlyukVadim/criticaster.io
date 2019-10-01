@@ -98,6 +98,8 @@ A function that takes a function as an argument, or returns a function. Read als
 
 #### ```Memoization```
 
+An optimization technique by storing the results of expensive function calls and returning the cached result when the same inputs occur again.
+
 ## N:
 
 ## O:
