@@ -66,6 +66,11 @@ const config = {
       position: 8,
       reversion: true,
     },
+    'react': {
+      title: 'React',
+      position: 9,
+      reversion: true,
+    },
   }
 }
 
