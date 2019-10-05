@@ -123,9 +123,15 @@ class CustomTextInput extends Component {
 ```
 </details>
 
+Gotchases with Callback Refs:
+
+Without binding the ```callback``` to a class method in the constructor, it calls twice (first time with ```null``` and the second with real value) in render during state updates.
+
+Callback refs are preferable when dealing with dynamic refs.
+
 <!-- https://moduscreate.com/blog/everything-you-need-to-know-about-refs-in-react/ -->
 
-<!-- https://react-refs-cheatsheet.netlify.com -->
+More examples in [react-refs-cheatsheet](https://react-refs-cheatsheet.netlify.com).
 
 ## D:
 ## E:
@@ -159,6 +165,9 @@ class CustomTextInput extends Component {
 
 #### ```Keys```
 
+Keys are usually used for dynamic lists.
+When a key changes, React will create a new component instance rather than update the current one.
+
 <!-- https://reactjs.org/docs/lists-and-keys.html -->
 
 ## L:
@@ -169,9 +178,20 @@ class CustomTextInput extends Component {
 
 #### ```Lifecycle Methods```
 
-<!-- https://reactjs.org/docs/state-and-lifecycle.html -->
+  Mounting                            |  Updating                           |  Unmounting                |
+:-------------------------------------|:------------------------------------|:---------------------------|
+***constructor***                     |```static getDerivedStateFromProps```| ***componentWillUnmount*** |
+```static getDerivedStateFromProps``` |```shouldComponentUpdate```          |  ```--```                  |
+***render***                          | ***render***                        |  ```--```                  |
+***componentDidMount***               | ```getSnapshotBeforeUpdate```       |  ```--```                  |
+```--```                              | ***componentDidUpdate***            |  ```--```                  |
 
-<!-- https://reactjs.org/docs/react-component.html#updating -->
+Error Handling                           |
+:----------------------------------------|
+ ```static getDerivedStateFromError()``` |
+ ```componentDidCatch()```               |
+
+Read more about ```Lifecycle Methods``` in [react docs](https://reactjs.org/docs/react-component.html#updating).
 
 <!-- https://reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html#what-about-memoization -->
 
@@ -184,6 +204,12 @@ class CustomTextInput extends Component {
 ## N:
 ## O:
 ## P:
+
+#### ```PureComponent```
+
+Only rerender if at least one state or prop value changes, performs a shallow comparison of props and state, and reduces the chance that you’ll skip a necessary update.
+
+
 ## Q:
 ## R:
 
