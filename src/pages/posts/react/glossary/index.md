@@ -123,7 +123,7 @@ class CustomTextInput extends Component {
 ```
 </details>
 
-Gotchases with Callback Refs:
+Attention:
 
 Without binding the ```callback``` to a class method in the constructor, it calls twice (first time with ```null``` and the second with real value) in render during state updates.
 
@@ -193,11 +193,22 @@ Error Handling                           |
 
 Read more about ```Lifecycle Methods``` in [react docs](https://reactjs.org/docs/react-component.html#updating).
 
-<!-- https://reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html#what-about-memoization -->
+#### ```getDerivedStateFromProps```
+
+Is invoked right before calling the ```render``` method. It should return an object to update the state, or ```null``` to update nothing.
+
+Attantion: use ```componentDidUpdate``` for side effects and ```memoization``` for re-compution expensive value in render.
+
+#### ```getSnapshotBeforeUpdate```
+
+Is invoked right before calling the ```componentDidUpdate``` method. It uses to capture some information from the DOM (e.g. scroll position) before it is potentially changed.
+
 
 ## M:
 
 #### ```React.memo```
+
+#### ```MobX```
 
 <!-- https://reactjs.org/blog/2018/10/23/react-v-16-6.html -->
 
@@ -207,11 +218,19 @@ Read more about ```Lifecycle Methods``` in [react docs](https://reactjs.org/docs
 
 #### ```PureComponent```
 
-Only rerender if at least one state or prop value changes, performs a shallow comparison of props and state, and reduces the chance that you’ll skip a necessary update.
+Only rerender if at least one state or prop value changes, it performs a shallow comparison of props and state, and reduces the chance that you’ll skip a necessary update.
 
 
 ## Q:
 ## R:
+
+#### ```Recompose```
+
+Utility belt for function components and HOCs (```pure```, ```shouldUpdate```). Use React Hooks instead of it.
+
+#### ```Redux```
+
+Store managment library.
 
 #### ```Reconciliation```
 
@@ -219,7 +238,13 @@ Only rerender if at least one state or prop value changes, performs a shallow co
 
 #### ```Refs```
 
+Read more about [Callback Refs](/posts/react-glossary#reactcreateref).
+
 #### ```Render props```
+
+#### ```Reselect```
+
+Library for creating a memoized function for selection data. Might be used for effective data computation from the Redux store (keep in your store minimum data and create derivatives data using selectors).
 
 ## S:
 ## T:
