@@ -136,6 +136,9 @@ More examples in [react-refs-cheatsheet](https://react-refs-cheatsheet.netlify.c
 ## D:
 ## E:
 ## F:
+
+```Fiber```
+
 ## G:
 ## H:
 
@@ -208,13 +211,17 @@ Is invoked right before calling the ```componentDidUpdate``` method. It uses to 
 
 #### ```React.memo```
 
-#### ```MobX```
-
 <!-- https://reactjs.org/blog/2018/10/23/react-v-16-6.html -->
+
+#### ```MobX```
 
 ## N:
 ## O:
 ## P:
+
+#### ```Profiler```
+
+Measures how often a React application renders and what the “cost” of rendering is. Its purpose is to help identify parts of an application that are slow and may benefit from optimizations.
 
 #### ```PureComponent```
 
