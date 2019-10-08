@@ -35,9 +35,56 @@ Glossary of React Terms ⚛
 
 #### ```Context```
 
-<!-- https://habr.com/ru/post/419449/ -->
+Provides a way to pass data through the component tree without having to pass props down manually at every level. 
 
-<!-- https://github.com/facebook/react/issues/13739 -->
+<details>
+  <summary>Example 🔥</summary>
+
+```js
+const ThemeContext = React.createContext({  // highlight-line
+  theme: themes.dark,
+  toggleTheme: () => {},
+})
+
+const ThemeTogglerButton = () => {
+  return (
+    <ThemeContext.Consumer>  // highlight-line
+      {({theme, toggleTheme}) => (  // highlight-line
+        <button
+          onClick={toggleTheme}
+          style={{backgroundColor: theme.background}}>
+          Toggle Theme
+        </button>
+      )}
+    </ThemeContext.Consumer>
+  )
+}
+
+class App extends Component {
+  state = {
+    theme: themes.light,  // highlight-line
+    toggleTheme: this.toggleTheme,  // highlight-line
+  }
+
+  this.toggleTheme = () => {
+    this.setState(state => ({
+      theme: state.theme === themes.dark ? themes.light : themes.dark,
+    }))
+  }
+
+  render() {
+    // The entire state is passed to the provider
+    return (
+      <ThemeContext.Provider value={this.state}>  // highlight-line
+        <div>
+          <ThemeTogglerButton />
+        </div>
+      </ThemeContext.Provider>
+    )
+  }
+}
+```
+</details>
 
 #### ```Controlled Components```
 
@@ -49,7 +96,7 @@ Way to access DOM nodes or React elements created in the render method.
 Motivations for creating the ```React.createRef``` method in [RFC](https://github.com/reactjs/rfcs/pull/17/files).
 
 <details>
-  <summary>Example with focusing text input</summary>
+  <summary>Example with focusing text input 🔥</summary>
 
 ```js
 class CustomTextInput extends Component {
@@ -76,7 +123,7 @@ class CustomTextInput extends Component {
 </details>
 
 <details>
-  <summary>Example with React.forwardRef</summary>
+  <summary>Example with React.forwardRef 🔥</summary>
 
 ```js
 const FancyButton = React.forwardRef((props, ref) => ( // highlight-line
@@ -96,7 +143,7 @@ const ref = React.createRef()                           // highlight-line
 Way that gives more fine-grain control over when refs are set and unset.
 
 <details>
-  <summary>Example with focusing text input</summary>
+  <summary> Example with focusing text input 🔥</summary>
 
 ```js
 class CustomTextInput extends Component {
@@ -137,7 +184,29 @@ More examples in [react-refs-cheatsheet](https://react-refs-cheatsheet.netlify.c
 ## E:
 ## F:
 
-```Fiber```
+#### ```Fiber```
+
+New ```reconciliation``` engine. Fiber’s architecture provides a convenient way to track, schedule, pause and abort the work.
+
+Main concept:
+
+```RequestIdleCallback``` - global function that can be used to queue a function to be called during a browser’s idle periods. 
+
+The previos engine used the synchronous recursive model that relied on the built-in stack to walk the tree. Each recursive call adds a frame to the stack. And it does so synchronously.
+
+Fiber offers linked list for getting a opportunity to stop traversal at some point and  resume it later. That’s exactly the condition we wanted to achieve to be able to use the new ```requestIdleCallback``` API. Each iltem of list has 3 items: ```child```, ```sibling```, ```return```.
+
+React performs work in two main phases: render (asynchronously) and commit (synchronously).
+
+* ```Render phase```:
+
+React applies updates to components scheduled through ```setState``` or ```React.render``` and figures out what needs to be updated in the UI. The result of the phase is a tree of fiber nodes marked with ```side-effects```.
+
+* ```Commit phase```:
+
+When React gets to this phase, it has 2 trees (```current```, ```finishedWork```) and the effects list (subset of nodes from the ```finishedWork``` tree linked through the ```nextEffect``` pointer). The whole point of rendering was to determine which nodes need to be inserted, updated, or deleted, and which components need to have their lifecycle methods called. And that’s what the effect list tells us. And it’s exactly the set of nodes that’s iterated during the commit phase.
+
+Read more in article [Inside Fiber](https://indepth.dev/inside-fiber-in-depth-overview-of-the-new-reconciliation-algorithm-in-react/).
 
 ## G:
 ## H:
@@ -160,8 +229,6 @@ More examples in [react-refs-cheatsheet](https://react-refs-cheatsheet.netlify.c
 
 <!-- https://gist.github.com/alexeyraspopov/1233af30f77e553fc7c949acf5f61dad -->
 
-
-
 ## I:
 ## J:
 ## K:
@@ -177,7 +244,14 @@ When a key changes, React will create a new component instance rather than updat
 
 #### ```React.lazy```
 
-<!-- https://medium.com/@rossbulat/react-lazy-suspense-and-concorrent-react-breakdown-with-examples-2758de98cb1c -->
+API in React to aid in code splitting and importing components into your scripts:
+
+```js
+import React, { lazy } from 'react'
+const Product = lazy(() => import('./ProductHandler'))
+```
+
+Read more about [Suspense](/posts/react-glossary#suspense).
 
 #### ```Lifecycle Methods```
 
@@ -241,7 +315,9 @@ Store managment library.
 
 #### ```Reconciliation```
 
-<!-- https://reactjs.org/docs/reconciliation.html#recursing-on-children -->
+The process through which React updates the DOM. React then takes tree of components, process it and we get a Virtual DOM. When there is an update in our application (e.g. change in state or props) React will compare the updated Virtual DOM with the old one, then decides what and how should be changed.
+
+Read about new reconciliation engine - [Fiber](/posts/react-glossary#fiber).
 
 #### ```Refs```
 
@@ -249,11 +325,94 @@ Read more about [Callback Refs](/posts/react-glossary#reactcreateref).
 
 #### ```Render props```
 
+A technique for sharing code between React components using a prop whose value is a function.
+
+<details>
+  <summary>Example with Mouse 🔥</summary>
+
+```js
+class InnerComponent extends Component {
+  render() {
+    const { mouse } = this.props
+    return (
+      <div style={{ position: 'absolute', left: mouse.x, top: mouse.y }} />
+    )
+  }
+}
+
+class Mouse extends Component { 
+  this.state = { x: 0, y: 0 }
+
+  handleMouseMove = ({clientX: x,  clientY: y}) => {
+    this.setState({x, y})
+  }
+
+  render() {
+    return (
+      <div style={{ height: '100%' }} onMouseMove={this.handleMouseMove}>
+        {this.props.render(this.state)}
+      </div>
+    )
+  }
+}
+
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <div>lorem</div>
+        <Mouse render={(mouse) => (
+          <InnerComponent mouse={mouse} />
+        )}/>
+      </div>
+    )
+  }
+}
+```
+
+</details>
+
 #### ```Reselect```
 
 Library for creating a memoized function for selection data. Might be used for effective data computation from the Redux store (keep in your store minimum data and create derivatives data using selectors).
 
 ## S:
+
+#### ```Suspense```
+
+1. Suspense is not Component Tree sensitive:
+
+```js
+render() {
+  return(
+   <div className='product-list'>
+     <Suspense fallback={<h2>Product is loading...</h2>}>
+        <p>My product:</p>
+        <section>      
+           <Product id='1' />
+        </section>
+     </Suspense>
+   </div>
+  )
+}
+```
+
+2. We can have nested Suspense objects within other Suspense objects:
+
+```
+MainComponent
+  Suspense  
+     lazy ProductComponent
+        Suspense
+          lazy ProductImageComponent
+        Suspense
+           lazy ProductReviewsComponent
+```
+
+```ImageComponent``` and ```ReviewsComponent``` are independent of each other, and are initiated once ```ProductComponent``` has loaded.
+
+3. We can wrap multiple lazily loaded components under one Suspense object.
+
 ## T:
 ## U:
 ## V:
