@@ -13,21 +13,11 @@ Glossary of React Terms ⚛
 
 [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J](#j) [K](#k) [L](#l) [M](#m) [N](#n) [O](#o) [P](#p) [Q](#q) [R](#r) [S](#s) [T](#t) [U](#u) [V](#v) [W](#w) [X](#x) [Y](#y) [Z](#z)
 
-<!-- ## Categories: -->
-
-<!-- 1. [JS Core](/js-dictionary/js-core)
-1. [Design Patterns](/js-dictionary/design-patterns)
-1. [Architecture principles](/js-dictionary/architecture-principles)
-1. [Functional programming](/js-dictionary/functional-programming)
-1. [Testing in JS]() -->
-
 # Dictionary:
 
 <!-- https://overreacted.io/react-as-a-ui-runtime/ -->
 
 <!-- https://habr.com/ru/post/458916/ -->
-
-<!-- https://frontend-stuff.com/blog/react-16.9/ -->
 
 ## A:
 ## B:
