@@ -215,8 +215,77 @@ Read more in article [Inside Fiber](https://indepth.dev/inside-fiber-in-depth-ov
 
 #### ```Hooks```
 
-<!-- https://reactjs.org/docs/hooks-state.html -->
-<!-- https://reactjs.org/docs/hooks-effect.html -->
+Are a special functions that let you “hook into” React features.
+
+Hooks let us split the code based on what it is doing rather than a lifecycle method name. React will apply every effect used by the component, in the order they were specified.
+
+#### ```useState```
+
+Is a Hook that lets you add React state to function components.
+
+<details>
+  <summary> Example with useState 🔥</summary>
+
+```js
+import React, { useState } from 'react'
+
+const Example = () => {
+  const [count, setCount] = useState(0) // highlight-line
+
+  return (
+    <div>
+      <p>You clicked {count} times</p> // highlight-line
+      <button onClick={() => setCount(count + 1)}> // highlight-line
+        Click me
+      </button>
+    </div>
+  )
+}
+```
+</details>
+
+#### ```useEffect```
+
+By using this Hook, you tell ```React``` that your component needs to do something after render (after performing the DOM updates).
+
+Tip: Unlike ```componentDidMount```/```componentDidUpdate```, effects scheduled with ```useEffect``` don’t block the browser from updating the screen.
+
+React **cleans up** the previous effects before applying the next effects.
+
+<details>
+  <summary> Example with useEffect 🔥</summary>
+
+```js
+import React, { useState, useEffect } from 'react'
+
+const FriendStatus = (props) => {
+  const [isOnline, setIsOnline] = useState(null) // highlight-line
+
+  useEffect(() => { // highlight-line
+    const handleStatusChange = (status) => {
+      setIsOnline(status.isOnline)
+    }
+
+    ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange)
+    // Specify how to clean up after this effect:
+    return () => {
+      ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange)
+    }
+    // Only re-subscribe if props.friend.id changes
+  } [props.friend.id]) // highlight-line
+
+  if (isOnline === null) {
+    return 'Loading...'
+  }
+  return isOnline ? 'Online' : 'Offline'
+}
+```
+</details>
+
+#### Custom Hook
+
+Is a JavaScript function whose name starts with ”use” and that may call other Hooks.
+
 <!-- https://reactjs.org/docs/hooks-faq.html#how-do-lifecycle-methods-correspond-to-hooks -->
 
 <!-- https://www.youtube.com/watch?v=dpw9EHDh2bM -->
@@ -224,8 +293,6 @@ Read more in article [Inside Fiber](https://indepth.dev/inside-fiber-in-depth-ov
 <!-- https://blog.jakoblind.no/react-redux-hooks/ -->
 
 <!-- examples -->
-
-<!-- https://gist.github.com/alexeyraspopov/205eecdc57b0f8e0d2f462609b25ba0d -->
 
 <!-- https://gist.github.com/alexeyraspopov/1233af30f77e553fc7c949acf5f61dad -->
 
@@ -308,6 +375,8 @@ Only rerender if at least one state or prop value changes, it performs a shallow
 #### ```Recompose```
 
 Utility belt for function components and HOCs (```pure```, ```shouldUpdate```). Use React Hooks instead of it.
+
+<!-- https://gist.github.com/alexeyraspopov/205eecdc57b0f8e0d2f462609b25ba0d -->
 
 #### ```Redux```
 
