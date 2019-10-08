@@ -69,7 +69,7 @@ A ```pattern``` that defines action and parameters as an object (like assuming a
 Is a concept that allows you to combine two or more functions into a new function. Composition has a companion concept ```Piping```. ```Pipe``` also composes functions, but in reverse order.
 
 <details>
-  <summary>Code sample:</summary>
+  <summary>🔎 code sample</summary>
 
 ```js
 const compose = (...fns) => (x) => fns.reduceRight((x, fn) => fn(x), x)
@@ -94,7 +94,7 @@ capitalize(s) // Foo Bar
 Is a technique of taking a function with multiple arguments and turning it into a sequence of functions each with only a single argument. Can be implemented using ```Partial application```.
 
 <details>
-  <summary>Code sample:</summary>
+  <summary>🔎 code sample</summary>
 
 ```js
 const curry = fn => (...args) => {
@@ -120,7 +120,7 @@ Abstraction that has a bounded set of available values and operations that can b
 An optimization technique that enforces that a function not be called again until a certain amount of time has passed without it being called (execute this function only if N milliseconds have passed without it being called).
 
 <details>
-  <summary>Debounce implementation</summary>
+  <summary>🔎 debounce implementation</summary>
 
 ```js
 const debounce = (delay, fn) => {
@@ -283,7 +283,7 @@ Is a technique of fixing a number of arguments to a function, producing another 
 Is a concept that allows you to combine two or more functions into a new function.
 
 <details>
-  <summary>Code sample:</summary>
+  <summary>🔎 code sample</summary>
 
 ```js
 const pipe = (...fns) => (x) => fns.reduce((x, fn) => fn(x), x)
@@ -392,7 +392,7 @@ A ```pattern``` that selects one of interchangeable classes that contain a behav
 An optimization technique that enforces a maximum number of times a function can be called over time (execute this function at most once every ```N``` milliseconds).
 
 <details>
-  <summary>Throttle implementation</summary>
+  <summary>🔎 throttle implementation</summary>
 
 ```js
 const throttle = (delay, fn) => {
@@ -447,7 +447,7 @@ Means that compiler can use ```implicit cast```. [Dynamic typing](#dynamic-typin
 
 A function that wraps a function by adding new behaviour.
 <details>
-  <summary>Example of Cancelable wrapper</summary>
+  <summary>🔎 example of Cancelable wrapper</summary>
 
 ```js
 const cancelable = fn => {
