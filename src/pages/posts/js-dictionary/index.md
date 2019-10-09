@@ -24,7 +24,7 @@ Place with explanations for each buzzword in the JS world.😀
 
 #### ```Array```
 
-Basic composing data type. More on in [complete guide to Arrays](/posts/arrays-in-javascript-complete-guide).
+Basic composing data type. *More on in* [```complete guide to Arrays```](/posts/arrays-in-javascript-complete-guide).
 
 #### ```AST```
 *Abstract syntax tree*.
@@ -52,7 +52,7 @@ Condition                                | Return                     | Example 
 -                                        |                            |```{} == '[object Object]'```|```true``` |
 </details>
 
-More on in ```ECMA-262``` [7.2.12 Abstract Equality Comparison](http://www.ecma-international.org/ecma-262/6.0/#sec-abstract-equality-comparison).
+*More on in* ```ECMA-262``` [```7.2.12 Abstract Equality Comparison```](http://www.ecma-international.org/ecma-262/6.0/#sec-abstract-equality-comparison).
 
 #### ```Adapter```
 
@@ -88,7 +88,7 @@ A ```pattern``` that defines action and parameters as an object (like assuming a
 
 #### ```Composition```
 
-Is a concept that allows you to combine two or more functions into a new function. Composition has a companion concept ```Piping```. ```Pipe``` also composes functions, but in reverse order.
+Is a concept that allows you to combine two or more functions into a new function. Composition has a companion concept [```Piping```](/js-dictionary#piping). ```Pipe``` also composes functions, but in reverse order.
 
 <details>
   <summary>🔎 code sample ...</summary>
@@ -173,18 +173,18 @@ A form of ```IoC```, where implementations are passed into an object through con
 
 #### ```Dynamic typing```
 
-Means that ariable can represents any value of any type. Read also: [Duck typing](#duck-typing), [Weak typing](#weak-typing).
+Means that variable can represents any value of any type. *Related terms*: [```Duck typing```](#duck-typing), [```Weak typing```](#weak-typing).
 
 #### ```Duck typing```
 General term for "type checks" that make assumptions about a value's "type"
 based on its shape (what properties are present).
-"If it looks like a duck, and quacks like a duck, it must be a duck". Read also: [Dynamic typing](#dynamic-typing), [Weak typing](#weak-typing).
+"If it looks like a duck, and quacks like a duck, it must be a duck". *Related terms*: [```Dynamic typing```](#dynamic-typing), [```Weak typing```](#weak-typing).
 
 
 ## E:
 
 #### ```Event loop```
-The mechanism that performs moving functions from the ```event queue``` to ```call stack``` when it becomes empty. Read more about [event loop](/posts/event-loop-in-javascript).
+The mechanism that performs moving functions from the ```event queue``` to ```call stack``` when it becomes empty. *Read more about* [```event loop```](/posts/event-loop-in-javascript).
 
 ## F:
 
