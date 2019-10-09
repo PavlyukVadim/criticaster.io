@@ -17,8 +17,6 @@ Glossary of React Terms ⚛
 
 <!-- https://overreacted.io/react-as-a-ui-runtime/ -->
 
-<!-- https://habr.com/ru/post/458916/ -->
-
 ## A:
 ## B:
 ## C:

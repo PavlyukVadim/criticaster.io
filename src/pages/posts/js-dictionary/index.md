@@ -32,6 +32,28 @@ Basic composing data type. More on in [complete guide to Arrays](/posts/arrays-i
 #### ```Abstract Equality```
 Comparison operator (```x == y```, where x and y are values, produces ```true``` or ```false```).
 
+<details>
+  <summary>🔎 Rules table</summary>
+
+Condition                                | Return                     | Example                     | Result    |
+:----------------------------------------|:---------------------------|:----------------------------|:----------|
+1. ```type(x)``` equals to ```type(y)``` | ```x === y```              |```{} == {}```               |```false```|
+-                                        |                            |```[] == {}```               |```false```|
+-                                        |                            |```[] == []```               |```false```|
+2. ```null``` with ```undefined```       | ```true```                 |```null == undefined```      |```true``` |
+-                                        |                            |```undefined == null```      |```true``` |
+3. ```Number``` with ```String```        | ```x == toNumber(y)```     |```4 == '3'```               |```false```|
+-                                        |                            |```'4' == 3```               |```false```|
+4. ```x is Boolean```                    | ```toNumber(x) == y```     |```true == 1```              |```true``` |
+-                                        |                            |```true == 2```              |```false```|
+-                                        |                            |```2 == true```              |```false```|
+5. ```Str/Num/Symb``` with ```Obj```     | ```x == toPrimitive(x)```  |```1 == {}```                |```false```|
+-                                        |                            |```[] == 0```                |```true``` |
+-                                        |                            |```{} == '[object Object]'```|```true``` |
+</details>
+
+More on in ```ECMA-262``` [7.2.12 Abstract Equality Comparison](http://www.ecma-international.org/ecma-262/6.0/#sec-abstract-equality-comparison).
+
 #### ```Adapter```
 
 A ```pattern``` for attainment compatibility that allows converting a class, function, or other components into the component with the interface we need.

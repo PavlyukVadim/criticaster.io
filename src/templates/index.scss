@@ -153,6 +153,18 @@
   table {
     width: 100%;
     margin-bottom: 30px;
+    border-spacing: 0;
+
+    th {
+      font-weight: lighter;
+      padding-bottom: .3em;
+      padding-left: .3em;
+    }
+
+    th, td {
+      border-right: 1px solid black;
+      border-bottom: 1px solid black;
+    }
   }
 }
 
@@ -196,9 +208,11 @@
     }
 
     summary {
+      margin-bottom: 5px;
+
       &:focus {
         outline: none;
-      } 
+      }
     }
   }
 }
