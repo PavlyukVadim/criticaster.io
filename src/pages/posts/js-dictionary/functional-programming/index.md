@@ -134,6 +134,8 @@ capitalize(s) // Foo Bar
 
 #### ```Pure Function```
 
+A function where the return value is only determined by its input values, without ```side effects```.
+
 ## Q:
 
 ## R:

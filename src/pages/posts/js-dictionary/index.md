@@ -33,7 +33,7 @@ Basic composing data type. More on in [complete guide to Arrays](/posts/arrays-i
 Comparison operator (```x == y```, where x and y are values, produces ```true``` or ```false```).
 
 <details>
-  <summary>🔎 Rules table</summary>
+  <summary>🔎 rules table ... </summary>
 
 Condition                                | Return                     | Example                     | Result    |
 :----------------------------------------|:---------------------------|:----------------------------|:----------|
@@ -91,7 +91,7 @@ A ```pattern``` that defines action and parameters as an object (like assuming a
 Is a concept that allows you to combine two or more functions into a new function. Composition has a companion concept ```Piping```. ```Pipe``` also composes functions, but in reverse order.
 
 <details>
-  <summary>🔎 code sample</summary>
+  <summary>🔎 code sample ...</summary>
 
 ```js
 const compose = (...fns) => (x) => fns.reduceRight((x, fn) => fn(x), x)
@@ -116,7 +116,7 @@ capitalize(s) // Foo Bar
 Is a technique of taking a function with multiple arguments and turning it into a sequence of functions each with only a single argument. Can be implemented using ```Partial application```.
 
 <details>
-  <summary>🔎 code sample</summary>
+  <summary>🔎 code sample ...</summary>
 
 ```js
 const curry = fn => (...args) => {
@@ -142,7 +142,7 @@ Abstraction that has a bounded set of available values and operations that can b
 An optimization technique that enforces that a function not be called again until a certain amount of time has passed without it being called (execute this function only if N milliseconds have passed without it being called).
 
 <details>
-  <summary>🔎 debounce implementation</summary>
+  <summary>🔎 debounce implementation ...</summary>
 
 ```js
 const debounce = (delay, fn) => {
@@ -305,7 +305,7 @@ Is a technique of fixing a number of arguments to a function, producing another 
 Is a concept that allows you to combine two or more functions into a new function.
 
 <details>
-  <summary>🔎 code sample</summary>
+  <summary>🔎 code sample ...</summary>
 
 ```js
 const pipe = (...fns) => (x) => fns.reduce((x, fn) => fn(x), x)
@@ -330,6 +330,8 @@ capitalize(s) // Foo Bar
 ES6 feature that allows boxing software component with an interception of component handlers, like getting/setting/deleting/enumeration object properties, applying arguments to functions, etc.
 
 #### ```Pure Function```
+
+A function where the return value is only determined by its input values, without ```side effects```.
 
 ## Q:
 
@@ -366,29 +368,39 @@ New data type offered by ES6, a unique identifier for special object properties.
 
 #### ```SOLID```
 
-* #### Single Responsibility Principle
+<details>
+  <summary>🔎 Single Responsibility Principle ...</summary>
 
 "There should never be more than one reason for a class to change". Ask yourself what does your class do? If the answer is a list of things your class probably don't satisfies SRP (like ```printReport``` method inside ```Employee``` class).
+</details>
 
-* #### Open/Closed Principle
+<details>
+  <summary>🔎 Open/Closed Principle ...</summary>
 
 "Software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification." It promotes using an abstractions for linking entities (like area method for each Shape for using area in some entity, so you can easily create another shape).
+</details>
 
-* #### Liskov Substitution Principle
+<details>
+  <summary>🔎 Liskov Substitution Principle ...</summary>
 
 "If S is a subtype of T, then objects of type T may be replaced with objects of type S without altering any of the desirable properties of that program." So if you have a parent class and a child class, then the base class and child class can be used interchangeably without getting incorrect results. (It's better to extend Reactangle and Squre from Shape).
+</details>
 
-* #### Interface Segregation Principle
+<details>
+  <summary>🔎 Interface Segregation Principle ...</summary>
 
 "Clients should not be forced to depend upon interfaces that they do not use."
 Split your interfaces to smaller for using only ones that you need.
+</details>
 
-* #### Dependency Inversion Principle
+<details>
+  <summary>🔎 Dependency Inversion Principle ...</summary>
 
 Gives recommendations on what dependencies should be:
 
   - High-level modules should not depend on low-level modules. Both should depend on abstractions.
   - Abstractions should not depend upon details. Details should depend on abstractions.
+</details>
 
 #### ```Spies```
 
@@ -414,7 +426,7 @@ A ```pattern``` that selects one of interchangeable classes that contain a behav
 An optimization technique that enforces a maximum number of times a function can be called over time (execute this function at most once every ```N``` milliseconds).
 
 <details>
-  <summary>🔎 throttle implementation</summary>
+  <summary>🔎 throttle implementation ...</summary>
 
 ```js
 const throttle = (delay, fn) => {
@@ -469,7 +481,7 @@ Means that compiler can use ```implicit cast```. [Dynamic typing](#dynamic-typin
 
 A function that wraps a function by adding new behaviour.
 <details>
-  <summary>🔎 example of Cancelable wrapper</summary>
+  <summary>🔎 example of Cancelable wrapper ...</summary>
 
 ```js
 const cancelable = fn => {
