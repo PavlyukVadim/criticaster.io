@@ -24,7 +24,7 @@ Place with explanations for each buzzword in the JS world.😀
 
 #### ```Array```
 
-Basic composing data type. *More on in* [```complete guide to Arrays```](/posts/arrays-in-javascript-complete-guide).
+Basic composing data type. *More on in* [```Complete guide to Arrays```](/posts/arrays-in-javascript-complete-guide).
 
 #### ```AST```
 *Abstract syntax tree*.
@@ -79,8 +79,15 @@ What you are allowed to do (```permissions```).
 #### ```Call stack```
 A stack data structure that keeps information about active function call.
 
-#### ```Cohesion```
+#### ```Cast```
 
+Explicit conversion a value from one [```data type```](#data-type) to another: ```String(42)```.
+
+#### ```Coercion```
+
+Implicit conversion a value from one [```data type```](#data-type) to another: ```42 + ''```. *Related terms*: [```weak typing```](#weak-typing).
+
+#### ```Cohesion```
 
 #### ```Command```
 
@@ -88,7 +95,7 @@ A ```pattern``` that defines action and parameters as an object (like assuming a
 
 #### ```Composition```
 
-Is a concept that allows you to combine two or more functions into a new function. Composition has a companion concept [```Piping```](/js-dictionary#piping). ```Pipe``` also composes functions, but in reverse order.
+Is a concept that allows you to combine two or more functions into a new function. *Composition has a companion concept*: [```piping```](/js-dictionary#piping).
 
 <details>
   <summary>🔎 code sample ...</summary>
@@ -113,7 +120,7 @@ capitalize(s) // Foo Bar
 
 #### ```Currying```
 
-Is a technique of taking a function with multiple arguments and turning it into a sequence of functions each with only a single argument. Can be implemented using ```Partial application```.
+Is a technique of taking a function with multiple arguments and turning it into a sequence of functions each with only a single argument. Can be implemented using [```partial application```](partial-application).
 
 <details>
   <summary>🔎 code sample ...</summary>
@@ -198,7 +205,7 @@ A ```pattern``` for hiding the complexity, it offers a common interface for cont
 
 #### ```First-class Function```
 
-Functions are treated as values – you can assign a function into a variable, pass it around etc. Read also: [Higher-order Function](#higher-order-function).
+Functions are treated as values – you can assign a function into a variable, pass it around etc. *Related terms*: [```higher-order function```](#higher-order-function).
 
 ## G:
 
@@ -213,7 +220,7 @@ Function that can be paused in mid-completion with saving inner state ([example]
 
 #### ```Higher-order Function```
 
-A function that takes a function as an argument, or returns a function. Read also: [First-class Function](#first-class-function).
+A function that takes a function as an argument, or returns a function. *Related terms*: [```first-class function```](#first-class-function).
 
 #### ```Hoisting```
 Moving all declarations to their respective scopes.
@@ -229,7 +236,7 @@ A programming principle by which the control of objects or portions of a program
 
 #### ```Introspection```
 
-The ability of a program to examine the type or properties of an object at runtime. Read more in the [Complete Guide to Objects](/posts/objects-in-javascript-complete-guide#introspection-in-js).
+The ability of a program to examine the type or properties of an object at runtime. *Read more in the* [```Complete Guide to Objects```](/posts/objects-in-javascript-complete-guide#introspection-in-js).
 
 #### ```Iterable```
 
@@ -253,7 +260,7 @@ Not JSON-safe: ```undefined```s, ```function```s, ```symbol```s, ```object```s w
 ## L:
 
 #### ```Lexical scope```
-[Scope](#scope) that defined during the lexing time.
+[```Scope```](#scope) that defined during the lexing time.
 
 #### ```Let```
 
@@ -282,13 +289,13 @@ to test different parts of a processes.
 
 #### ```Number```
 
-Numeric data type, that represents both integer and fractional numbers. Read more in the [Complete Guide to Numbers](/posts/numbers-in-javascript-complete-guide).
+Numeric data type, that represents both integer and fractional numbers. *Read more in the* [```Complete Guide to Numbers```](/posts/numbers-in-javascript-complete-guide).
 
 ## O:
 
 #### ```Object```
 
-Basic data type. More on in [complete guide to Objects](/posts/objects-in-javascript-complete-guide).
+Basic data type. *More on in* [```Complete Guide to Objects```](/posts/objects-in-javascript-complete-guide).
 
 
 
@@ -322,6 +329,7 @@ capitalize(s) // Foo Bar
 ```
 </details>
 
+#### ```Programming paradigms```
 
 #### ```Promise```
 
@@ -331,7 +339,7 @@ ES6 feature that allows boxing software component with an interception of compon
 
 #### ```Pure Function```
 
-A function where the return value is only determined by its input values, without ```side effects```.
+A function where the return value is only determined by its input values, without [```side effects```](#side-effects).
 
 ## Q:
 
@@ -357,6 +365,8 @@ The accessibility of objects (variables/functions) in some part of your program.
 #### ```Service workers```
 
 #### ```Set```
+
+#### ```Side effects```
 
 #### ```Singleton```
 
@@ -405,7 +415,7 @@ Gives recommendations on what dependencies should be:
 #### ```Spies```
 
 #### ```Stack frame```
-Block of the [stack](#call-stack) corresponds to some function call that keeps relative information about this call (local variables, parameters, a location where to be returned).
+Block of the [```stack```](#call-stack) corresponds to some function call that keeps relative information about this call (local variables, parameters, a location where to be returned).
 
 #### ```Strategy```
 
@@ -417,7 +427,7 @@ A ```pattern``` that selects one of interchangeable classes that contain a behav
 ## T:
 
 #### ```TCO```
-*Tail Call Optimization*. Read more about [TCO in JavaScript](/posts/tail-call-optimization-in-javascript).
+*Tail Call Optimization*. *Read more about* [```Tail call optimization in JavaScript```](/posts/tail-call-optimization-in-javascript).
 
 #### ```TDD```
 
@@ -469,7 +479,7 @@ setTimeout(() => clearInterval(timer), 1000)
 ## W:
 
 #### ```Weak typing```
-Means that compiler can use ```implicit cast```. [Dynamic typing](#dynamic-typing), [Duck typing](#duck-typing).
+Means that compiler can use [```coercion```](#coercion). *Related terms*: [```dynamic typing```](#dynamic-typing), [```duck typing```](#duck-typing).
 
 #### ```WeakMap```
 
