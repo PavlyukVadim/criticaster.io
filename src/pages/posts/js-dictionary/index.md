@@ -95,7 +95,7 @@ A ```pattern``` that defines action and parameters as an object (like assuming a
 
 #### ```Composition```
 
-Is a concept that allows you to combine two or more functions into a new function. *Composition has a companion concept*: [```piping```](/js-dictionary#piping).
+Is a concept that allows you to combine two or more functions into a new function. *Composition has a companion concept*: [```piping```](#piping).
 
 <details>
   <summary>🔎 code sample ...</summary>
@@ -120,7 +120,7 @@ capitalize(s) // Foo Bar
 
 #### ```Currying```
 
-Is a technique of taking a function with multiple arguments and turning it into a sequence of functions each with only a single argument. Can be implemented using [```partial application```](partial-application).
+Is a technique of taking a function with multiple arguments and turning it into a sequence of functions each with only a single argument. Can be implemented using [```partial application```](#partial-application).
 
 <details>
   <summary>🔎 code sample ...</summary>
@@ -176,7 +176,7 @@ setTimeout(() => console.log('bar'), 300)
 
 #### ```Dependency Injection```
 
-A form of ```IoC```, where implementations are passed into an object through constructors/setters, which the object will 'depend' on in order to behave correctly.
+A form of [```IoC```](#inversion-of-control), where implementations are passed into an object through constructors/setters, which the object will 'depend' on in order to behave correctly.
 
 #### ```Dynamic typing```
 
@@ -191,7 +191,7 @@ based on its shape (what properties are present).
 ## E:
 
 #### ```Event loop```
-The mechanism that performs moving functions from the ```event queue``` to ```call stack``` when it becomes empty. *Read more about* [```event loop```](/posts/event-loop-in-javascript).
+The mechanism that performs moving functions from the ```event queue``` to [```call stack```](#call-stack) when it becomes empty. *Read more about* [```Event loop in JS```](/posts/event-loop-in-javascript).
 
 ## F:
 
@@ -254,8 +254,7 @@ An object that has the ```next(..)``` method on its interface ([example](/posts/
 JSON-safe values consist of values that can be represented as JSON.
 Not JSON-safe: ```undefined```s, ```function```s, ```symbol```s, ```object```s with circular references, ```Date```s, ```Infinity```, ```RegExp```s, ```Map```s, ```Set```s, ```Blob```s, ```FileList```s, sparse ```Array```s, ```Typed Array```s or other complex types.
 
-## K:
-
+<!-- ## K: -->
 
 ## L:
 
@@ -296,7 +295,6 @@ Numeric data type, that represents both integer and fractional numbers. *Read mo
 #### ```Object```
 
 Basic data type. *More on in* [```Complete Guide to Objects```](/posts/objects-in-javascript-complete-guide).
-
 
 
 ## P:
@@ -341,8 +339,7 @@ ES6 feature that allows boxing software component with an interception of compon
 
 A function where the return value is only determined by its input values, without [```side effects```](#side-effects).
 
-## Q:
-
+<!-- ## Q: -->
 
 ## R:
 
@@ -474,7 +471,7 @@ setTimeout(() => clearInterval(timer), 1000)
 *Uniform Resource Locator*. URL is a reference to a web resource that specifies its location and a mechanism for retrieving it.
 
 
-## V:
+<!-- ## V: -->
 
 ## W:
 
@@ -511,6 +508,6 @@ f() // ignored
 ```
 </details>
 
-## X:
-## Y:
-## Z:
+<!-- ## X: -->
+<!-- ## Y: -->
+<!-- ## Z: -->

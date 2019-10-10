@@ -17,16 +17,16 @@ Place with explanations for each buzzword in the JS world.😀
 
 #### ```Arrow Functions```
 
-## B:
+<!-- ## B: -->
 
 ## C:
 
 #### ```Composition```
 
-Is a concept that allows you to combine two or more functions into a new function. Composition has a companion concept ```Piping```. ```Pipe``` also composes functions, but in reverse order.
+Is a concept that allows you to combine two or more functions into a new function. *Composition has a companion concept*: [```piping```](#piping).
 
 <details>
-  <summary>Code sample:</summary>
+  <summary>🔎 code sample ...</summary>
 
 ```js
 const compose = (...fns) => (x) => fns.reduceRight((x, fn) => fn(x), x)
@@ -46,10 +46,10 @@ capitalize(s) // Foo Bar
 
 #### ```Currying```
 
-Is a technique of taking a function with multiple arguments and turning it into a sequence of functions each with only a single argument. Can be implemented using ```Partial application```.
+Is a technique of taking a function with multiple arguments and turning it into a sequence of functions each with only a single argument. Can be implemented using [```partial application```](#partial-application).
 
 <details>
-  <summary>Code sample:</summary>
+  <summary>🔎 code sample ...</summary>
 
 ```js
 const curry = fn => (...args) => {
@@ -64,33 +64,33 @@ const curry = fn => (...args) => {
 </details>
 
 
-## D:
+<!-- ## D: -->
 
-## E:
+<!-- ## E: -->
 
 ## F:
 
 #### ```First-class Function```
 
-Functions are treated as values – you can assign a function into a variable, pass it around etc. Read also: [Higher-order Function](#higher-order-function).
+Functions are treated as values – you can assign a function into a variable, pass it around etc. *Related terms*: [```higher-order function```](#higher-order-function).
 
-## G:
+<!-- ## G: -->
 
 ## H:
 
 #### ```Higher-order Function```
 
-A function that takes a function as an argument, or returns a function. Read also: [First-class Function](#first-class-function).
+A function that takes a function as an argument, or returns a function. *Related terms*: [```first-class function```](#first-class-function).
 
 ## I:
 
 #### ```Immutable Data```
 
-## J:
+<!-- ## J: -->
 
-## K:
+<!-- ## K: -->
 
-## L:
+<!-- ## L: -->
 
 ## M:
 
@@ -100,9 +100,9 @@ A function that takes a function as an argument, or returns a function. Read als
 
 An optimization technique by storing the results of expensive function calls and returning the cached result when the same inputs occur again.
 
-## N:
+<!-- ## N: -->
 
-## O:
+<!-- ## O: -->
 
 ## P:
 
@@ -115,7 +115,7 @@ Is a technique of fixing a number of arguments to a function, producing another 
 Is a concept that allows you to combine two or more functions into a new function.
 
 <details>
-  <summary>Code sample:</summary>
+  <summary>🔎 code sample ...</summary>
 
 ```js
 const pipe = (...fns) => (x) => fns.reduce((x, fn) => fn(x), x)
@@ -134,19 +134,21 @@ capitalize(s) // Foo Bar
 
 #### ```Pure Function```
 
-A function where the return value is only determined by its input values, without ```side effects```.
+A function where the return value is only determined by its input values, without [```side effects```](#side-effects).
 
-## Q:
+<!-- ## Q: -->
 
-## R:
+<!-- ## R: -->
 
 ## S:
 
-## T:
+#### ```Side effects```
 
-## U:
+<!-- ## T: -->
 
-## V:
+<!-- ## U: -->
+
+<!-- ## V: -->
 
 ## W:
 
@@ -154,7 +156,7 @@ A function where the return value is only determined by its input values, withou
 
 A function that wraps a function by adding new behaviour.
 <details>
-  <summary>Example of Cancelable wrapper</summary>
+  <summary>🔎 example of Cancelable wrapper ...</summary>
 
 ```js
 const cancelable = fn => {
@@ -174,6 +176,6 @@ f() // ignored
 ```
 </details>
 
-## X:
-## Y:
-## Z:
+<!-- ## X: -->
+<!-- ## Y: -->
+<!-- ## Z: -->

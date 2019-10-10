@@ -13,9 +13,9 @@ Place with explanations for each buzzword in the JS world.😀
 
 # Architecture principles:
 
-## A:
+<!-- ## A: -->
 
-## B:
+<!-- ## B: -->
 
 ## C:
 
@@ -31,15 +31,15 @@ Place with explanations for each buzzword in the JS world.😀
 
 A form of ```IoC```, where implementations are passed into an object through constructors/setters, which the object will 'depend' on in order to behave correctly.
 
-## E:
+<!-- ## E: -->
 
-## F:
+<!-- ## F: -->
 
 ## G:
 
 #### ```GRASP```
 
-## H:
+<!-- ## H: -->
 
 ## I:
 
@@ -47,23 +47,23 @@ A form of ```IoC```, where implementations are passed into an object through con
 
 A programming principle by which the control of objects or portions of a program is transferred to a container or framework.
 
-## J:
+<!-- ## J: -->
 
-## K:
+<!-- ## K: -->
 
-## L:
+<!-- ## L: -->
 
-## M:
+<!-- ## M: -->
 
-## N:
+<!-- ## N: -->
 
-## O:
+<!-- ## O: -->
 
-## P:
+<!-- ## P: -->
 
-## Q:
+<!-- ## Q: -->
 
-## R:
+<!-- ## R: -->
 
 ## S:
 
@@ -93,14 +93,10 @@ Gives recommendations on what dependencies should be:
   - High-level modules should not depend on low-level modules. Both should depend on abstractions.
   - Abstractions should not depend upon details. Details should depend on abstractions.
 
-## T:
-
-## U:
-
-## V:
-
-## W:
-
-## X:
-## Y:
-## Z:
+<!-- ## T: -->
+<!-- ## U: -->
+<!-- ## V: -->
+<!-- ## W: -->
+<!-- ## X: -->
+<!-- ## Y: -->
+<!-- ## Z: -->
