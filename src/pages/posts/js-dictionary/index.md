@@ -378,26 +378,36 @@ New data type offered by ES6, a unique identifier for special object properties.
 <details>
   <summary>🔎 Single Responsibility Principle ...</summary>
 
-"There should never be more than one reason for a class to change". Ask yourself what does your class do? If the answer is a list of things your class probably don't satisfies SRP (like ```printReport``` method inside ```Employee``` class).
+  "There should never be more than **one reason** for a class **to change**".
+
+Ask yourself what does your class do?
+
+If the answer is a list of things your class probably don't satisfies SRP (like ```printReport``` method inside ```Employee``` class).
+
 </details>
 
 <details>
   <summary>🔎 Open/Closed Principle ...</summary>
 
-"Software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification." It promotes using an abstractions for linking entities (like area method for each Shape for using area in some entity, so you can easily create another shape).
+"Software entities (classes, modules, functions, etc.) should be **open for extension**, but **closed for modification**."
+
+It promotes using an abstractions for linking entities (like area method for each Shape for using area in some entity, so you can easily create another shape).
 </details>
 
 <details>
   <summary>🔎 Liskov Substitution Principle ...</summary>
 
-"If S is a subtype of T, then objects of type T may be replaced with objects of type S without altering any of the desirable properties of that program." So if you have a parent class and a child class, then the base class and child class can be used interchangeably without getting incorrect results. (It's better to extend Reactangle and Squre from Shape).
+"If *S* is a subtype of *T*, then objects of type *T* may be replaced with objects of type *S* without altering any of the desirable properties of that program".
+
+So if you have a parent class and a child class, then the **base class** and **child class** can be **used interchangeably** without getting incorrect results. (It's better to extend Reactangle and Squre from Shape).
 </details>
 
 <details>
   <summary>🔎 Interface Segregation Principle ...</summary>
 
 "Clients should not be forced to depend upon interfaces that they do not use."
-Split your interfaces to smaller for using only ones that you need.
+
+**Split** your **interfaces** to smaller for using only ones that you need.
 </details>
 
 <details>
@@ -405,8 +415,10 @@ Split your interfaces to smaller for using only ones that you need.
 
 Gives recommendations on what dependencies should be:
 
-  - High-level modules should not depend on low-level modules. Both should depend on abstractions.
-  - Abstractions should not depend upon details. Details should depend on abstractions.
+**High-level** modules should **not depend** on **low-level** modules. Both should depend on **abstractions**.
+
+**Abstractions** should **not depend** upon **details**. Details should depend on abstractions.
+
 </details>
 
 #### ```Spies```
@@ -511,3 +523,6 @@ f() // ignored
 <!-- ## X: -->
 <!-- ## Y: -->
 <!-- ## Z: -->
+
+<br/>
+<br/>

@@ -211,6 +211,18 @@
       outline: none;
     }
 
+    &[open] {
+      padding-bottom: 5px;
+
+      p {
+        // padding-left: 15px;
+      }
+
+      summary {
+        margin-bottom: 10px;
+      }
+    }
+
     summary {
       margin-bottom: 5px;
 

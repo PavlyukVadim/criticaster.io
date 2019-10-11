@@ -35,3 +35,6 @@ A ```pattern``` that provides existing of a single instance of a class.
 #### ```Strategy```
 
 A ```pattern``` that selects one of interchangeable classes that contain a behavior that is similar in functionality and implements a common interface (example for ```FP``` is ```Array.prototype.sort``` method).
+
+<br/>
+<br/>
