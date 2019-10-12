@@ -87,6 +87,58 @@ Explicit conversion a value from one [```data type```](#data-type) to another: `
 
 Implicit conversion a value from one [```data type```](#data-type) to another: ```42 + ''```. *Related terms*: [```weak typing```](#weak-typing).
 
+<details>
+  <summary>🔎 coercion rules ... </summary>
+
+  Operator ```+``` becomes a concatenation in the follows cases:
+  
+  1. ```String``` with ```String```:
+
+  ```js
+  '1' + '1' // '11'
+  ```
+
+  2. ```String``` with any other type (except [```symbol```](#symbol)):
+
+  ```js
+  1 + '2' // '12'
+  '2' + 1 // '21'
+
+  true + '_foo' // 'true_foo'
+  ```
+
+  3. ```Object``` with any other type (except [```symbol```](#symbol)):
+
+  ```js
+  [] + {} // '[object Object]'
+  [] + true // 'true'
+  [1, 2] + [3] // '1,23'
+
+  // !gotchas, here {} is empty block instead of object
+  {} + [] // 0
+  ```
+
+  In other cases ```+``` returns ```number```:
+
+  ```js
+  2 + true // 3
+  true + true // 2
+  ```
+
+  Operators ```-```, ```*```, ```/``` always return ```number```:
+
+  ```js
+  '1' * '2' // 2
+  [2] * [3] // 6
+  [2] * true // 6
+  true * false // 0
+  'foo' * true // NaN
+  5 * { valueOf: () => 5 } // 25
+  5 * { toString: () => '7' } // 35
+  5 * { valueOf: () => 5, toString: () => '7' } // 25
+  ```
+</details>
+
 #### ```Cohesion```
 
 #### ```Command```
