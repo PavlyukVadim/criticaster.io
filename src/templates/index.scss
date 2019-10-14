@@ -180,6 +180,12 @@
   }
 
   ol {
+    margin-top: 35px;
+
+    li {
+      margin-bottom: 3px;
+    }
+
     a {
       font-weight: lighter !important;
     }
@@ -189,16 +195,17 @@
     border-bottom: 1px solid #eaecef;
     padding-bottom: .3em;
     font-weight: lighter;
+    margin-bottom: -20px;
   }
 
   h4 {
-    margin-top: 5px;
+    margin-top: 30px;
     margin-bottom: 12px;
   }
 
   code {
     border-radius: 3px;
-    font-size: 85%;
+    font-size: 14px !important;
     margin: 0;
     padding: .2em .4em;
   }

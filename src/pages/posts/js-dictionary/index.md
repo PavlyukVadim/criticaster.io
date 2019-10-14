@@ -7,7 +7,7 @@ metaKeywords: 'javascript, html5, canvas'
 wrapperClass: dictionary
 ---
 
-Place with explanations for each buzzword in the JS world.😀
+Place of explanations for each ```buzzword``` in the JS world.😀
 
 [A](#a) [B](#b) [C](#c) [D](#d) [E](#e) [F](#f) [G](#g) [H](#h) [I](#i) [J](#j) [K](#k) [L](#l) [M](#m) [N](#n) [O](#o) [P](#p) [Q](#q) [R](#r) [S](#s) [T](#t) [U](#u) [V](#v) [W](#w) [X](#x) [Y](#y) [Z](#z)
 
@@ -292,11 +292,129 @@ The ability of a program to examine the type or properties of an object at runti
 
 #### ```Iterable```
 
-An object that contains an iterator that can iterate over its values ([example](/posts/iterators-in-javascript#iterable)).
+An [```object```](#object) that contains an [```iterator```](#iterator) that can iterate over its values ([example](/posts/iterators-in-javascript#iterable)).
+
+<details>
+  <summary>🔎 example of Iterable ...</summary>
+
+```js
+const iterable = {
+  [Symbol.iterator]() {
+    let counter = 0
+    const iterator = {
+      next() {
+        return {
+          value: counter++,
+          done: counter > 5,
+        }
+      },
+    }
+    return iterator
+  }
+}
+
+for (const step of iterable) {
+  console.log(step)
+}
+
+// 0
+// 1
+// ...
+```
+</details>
+
+<details>
+  <summary>🔎 example of async Iterable ...</summary>
+
+```js
+const iterable = {
+  [Symbol.asyncIterator]() {
+    let counter = 0
+    const iterator = {
+      async next() {
+        return {
+          value: counter++,
+          done: counter > 5,
+        }
+      },
+    }
+    return iterator
+  }
+}
+
+;(async () => {
+  for await (const step of iterable) {
+    console.log(step)
+  }
+})()
+
+// 0
+// ...
+```
+</details>
+
+<details>
+  <summary>🔎 example of Iterable & Iterator at the same time ...</summary>
+
+```js
+let counter = 0
+const iterable = {
+  [Symbol.iterator]() { return this },
+  next: () => {
+    return {
+      done: counter > 5,
+      value:  counter++,
+    }
+  }
+}
+
+console.log(...iterable) // 0 1 2 3 4 5
+```
+</details>
 
 #### ```Iterator```
 
-An object that has the ```next(..)``` method on its interface ([example](/posts/iterators-in-javascript#iterator)).
+An [```object```](#object) that has the ```next(..)``` method on its interface.
+
+<details>
+  <summary>🔎 example of Iterator ...</summary>
+
+```js
+const iterator = {
+  counter: 0,
+  next() {
+    return {
+      value: this.counter++,
+      done: this.counter > 5,
+    }
+  },
+}
+
+const step1 = iterator.next() // { value: 0, done: false }
+const step2 = iterator.next() // { value: 1, done: false }
+```
+
+</details>
+
+<details>
+  <summary>🔎 example of async Iterator ...</summary>
+
+```js
+const asyncIterator = {
+  counter: 0,
+  async next() {
+    return {
+      value: this.counter++,
+      done: this.counter > 5,
+    }
+  },
+}
+
+const step1 = asyncIterator.next() // Promise
+const step2 = asyncIterator.next() // Promise
+```
+
+</details>
 
 ## J:
 

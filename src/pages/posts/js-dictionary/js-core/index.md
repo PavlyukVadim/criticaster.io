@@ -64,6 +64,58 @@ Explicit conversion a value from one [```data type```](#data-type) to another: `
 
 Implicit conversion a value from one [```data type```](#data-type) to another: ```42 + ''```. *Related terms*: [```weak typing```](#weak-typing).
 
+<details>
+  <summary>🔎 coercion rules ... </summary>
+
+  Operator ```+``` becomes a concatenation in the follows cases:
+  
+  1. ```String``` with ```String```:
+
+  ```js
+  '1' + '1' // '11'
+  ```
+
+  2. ```String``` with any other type (except [```symbol```](#symbol)):
+
+  ```js
+  1 + '2' // '12'
+  '2' + 1 // '21'
+
+  true + '_foo' // 'true_foo'
+  ```
+
+  3. ```Object``` with any other type (except [```symbol```](#symbol)):
+
+  ```js
+  [] + {} // '[object Object]'
+  [] + true // 'true'
+  [1, 2] + [3] // '1,23'
+
+  // !gotchas, here {} is empty block instead of object
+  {} + [] // 0
+  ```
+
+  In other cases ```+``` returns ```number```:
+
+  ```js
+  2 + true // 3
+  true + true // 2
+  ```
+
+  Operators ```-```, ```*```, ```/``` always return ```number```:
+
+  ```js
+  '1' * '2' // 2
+  [2] * [3] // 6
+  [2] * true // 6
+  true * false // 0
+  'foo' * true // NaN
+  5 * { valueOf: () => 5 } // 25
+  5 * { toString: () => '7' } // 35
+  5 * { valueOf: () => 5, toString: () => '7' } // 25
+  ```
+</details>
+
 ## D:
 
 #### ```Data type```
@@ -115,11 +167,129 @@ The ability of a program to examine the type or properties of an object at runti
 
 #### ```Iterable```
 
-An object that contains an iterator that can iterate over its values ([example](/posts/iterators-in-javascript#iterable)).
+An [```object```](#object) that contains an [```iterator```](#iterator) that can iterate over its values ([example](/posts/iterators-in-javascript#iterable)).
+
+<details>
+  <summary>🔎 example of Iterable ...</summary>
+
+```js
+const iterable = {
+  [Symbol.iterator]() {
+    let counter = 0
+    const iterator = {
+      next() {
+        return {
+          value: counter++,
+          done: counter > 5,
+        }
+      },
+    }
+    return iterator
+  }
+}
+
+for (const step of iterable) {
+  console.log(step)
+}
+
+// 0
+// 1
+// ...
+```
+</details>
+
+<details>
+  <summary>🔎 example of async Iterable ...</summary>
+
+```js
+const iterable = {
+  [Symbol.asyncIterator]() {
+    let counter = 0
+    const iterator = {
+      async next() {
+        return {
+          value: counter++,
+          done: counter > 5,
+        }
+      },
+    }
+    return iterator
+  }
+}
+
+;(async () => {
+  for await (const step of iterable) {
+    console.log(step)
+  }
+})()
+
+// 0
+// ...
+```
+</details>
+
+<details>
+  <summary>🔎 example of Iterable & Iterator at the same time ...</summary>
+
+```js
+let counter = 0
+const iterable = {
+  [Symbol.iterator]() { return this },
+  next: () => {
+    return {
+      done: counter > 5,
+      value:  counter++,
+    }
+  }
+}
+
+console.log(...iterable) // 0 1 2 3 4 5
+```
+</details>
 
 #### ```Iterator```
 
-An object that has the ```next(..)``` method on its interface ([example](/posts/iterators-in-javascript#iterator)).
+An [```object```](#object) that has the ```next(..)``` method on its interface.
+
+<details>
+  <summary>🔎 example of Iterator ...</summary>
+
+```js
+const iterator = {
+  counter: 0,
+  next() {
+    return {
+      value: this.counter++,
+      done: this.counter > 5,
+    }
+  },
+}
+
+const step1 = iterator.next() // { value: 0, done: false }
+const step2 = iterator.next() // { value: 1, done: false }
+```
+
+</details>
+
+<details>
+  <summary>🔎 example of async Iterator ...</summary>
+
+```js
+const asyncIterator = {
+  counter: 0,
+  async next() {
+    return {
+      value: this.counter++,
+      done: this.counter > 5,
+    }
+  },
+}
+
+const step1 = asyncIterator.next() // Promise
+const step2 = asyncIterator.next() // Promise
+```
+
+</details>
 
 ## J:
 
