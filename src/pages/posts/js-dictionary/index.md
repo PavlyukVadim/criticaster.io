@@ -17,7 +17,7 @@ Place of explanations for each ```buzzword``` in the JS world.😀
 1. [Design Patterns](/js-dictionary/design-patterns)
 1. [Architecture principles](/js-dictionary/architecture-principles)
 1. [Functional programming](/js-dictionary/functional-programming)
-1. [Testing in JS]()
+<!-- 1. [Testing in JS]() -->
 
 # Dictionary:
 ## A:
@@ -75,6 +75,7 @@ What you are allowed to do (```permissions```).
 
 #### ```BDD```
 
+*Behavior Driven Development*
 
 ## C:
 
@@ -535,6 +536,7 @@ An optimization technique by storing the results of expensive function calls and
 ```Mocks``` or ```Fakes``` are faking certain modules or behaviors
 to test different parts of a processes.
 
+*Related terms*: [```spy```](#spy), [```stub```](#stub)
 
 ## N:
 
@@ -677,7 +679,26 @@ Gives recommendations on what dependencies should be:
 
 </details>
 
-#### ```Spies```
+#### ```Spy```
+
+Is a function that records arguments, return value, the value of this and exception thrown (if any) for all its calls. 
+
+<details>
+  <summary>🔎 spy example ...</summary>
+
+```js
+  const object = { method: () => ({}) }
+  const spy = sinon.spy(object, 'method')
+
+  object.method(42)
+  object.method(1)
+
+  assert(spy.withArgs(42).calledOnce)
+  assert(spy.withArgs(1).calledOnce)
+```
+</details>
+
+*Related terms*: [```stub```](#stub), [```mock```](#mock)
 
 #### ```Stack frame```
 Block of the [```stack```](#call-stack) corresponds to some function call that keeps relative information about this call (local variables, parameters, a location where to be returned).
@@ -688,6 +709,28 @@ A ```pattern``` that selects one of interchangeable classes that contain a behav
 
 #### ```Stub```
 
+Is function ([```spy```](#spy)) with pre-programmed behavior:
+
+<details>
+  <summary>🔎 stub example ...</summary>
+
+```js
+  const callback = sinon.stub()
+  callback.withArgs(42)
+    .onFirstCall().returns(1)
+    .onSecondCall().returns(2);
+  callback.returns(0)
+
+  callback(1) // 0
+  callback(42) // 1
+  callback(1) // 0
+  callback(42) // 2
+  callback(1) // 0
+  callback(42) // 0
+```
+</details>
+
+*Related terms*: [```spy```](#spy), [```mock```](#mock)
 
 ## T:
 
@@ -697,6 +740,8 @@ A ```pattern``` that selects one of interchangeable classes that contain a behav
 *Read more about* [```Tail call optimization in JavaScript```](/posts/tail-call-optimization-in-javascript)
 
 #### ```TDD```
+
+*Test Driven Development*
 
 #### ```Throttling```
 
@@ -735,6 +780,10 @@ setTimeout(() => clearInterval(timer), 1000)
 *Related terms*: [```debouncing```](#debouncing)
 
 ## U:
+
+#### ```Unit Tests```
+
+Testing of individual units (functions/classes) by supplying input and making sure the output is as expected.
 
 #### ```URI```
 *Uniform Resource Identifier*. URIs are a standard for identifying documents using a short string of numbers, letters, and symbols. ```URLs```, ```URNs```, and ```URCs``` are all types of URI.
