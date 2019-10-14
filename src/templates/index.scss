@@ -179,6 +179,11 @@
     // font-weight: lighter !important;
   }
 
+  p + p {
+    // color: red;
+    margin-top: -10px;
+  }
+
   ol {
     margin-top: 35px;
 
@@ -205,9 +210,13 @@
 
   code {
     border-radius: 3px;
-    font-size: 14px !important;
+    font-size: 85%;
     margin: 0;
     padding: .2em .4em;
+  }
+
+  .language-js {
+    font-size: 14px !important;
   }
 
   details {

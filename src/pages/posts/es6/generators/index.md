@@ -6,6 +6,7 @@ category: es6
 metaTitle: Generators in JavaScript
 metaDescription: Generators in JavaScript
 metaKeywords: 'javascript, js, js core, closure, array, number, string, bool'
+hidden: true
 ---
 
 ### Generator

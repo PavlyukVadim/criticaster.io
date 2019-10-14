@@ -24,13 +24,15 @@ Place of explanations for each ```buzzword``` in the JS world.😀
 
 #### ```Array```
 
-Basic composing data type. *More on in* [```Complete guide to Arrays```](/posts/arrays-in-javascript-complete-guide).
+Basic composing data type.
+
+*More on in* [```Complete guide to Arrays```](/posts/arrays-in-javascript-complete-guide)
 
 #### ```AST```
 *Abstract syntax tree*.
 
 #### ```Abstract Equality```
-Comparison operator (```x == y```, where x and y are values, produces ```true``` or ```false```).
+Comparison operator (```x == y```, where x and y are values, produces ```true``` or ```false```):
 
 <details>
   <summary>🔎 rules table ... </summary>
@@ -52,7 +54,7 @@ Condition                                | Return                     | Example 
 -                                        |                            |```{} == '[object Object]'```|```true``` |
 </details>
 
-*More on in* ```ECMA-262``` [```7.2.12 Abstract Equality Comparison```](http://www.ecma-international.org/ecma-262/6.0/#sec-abstract-equality-comparison).
+*More on in* ```ECMA-262``` [```7.2.12 Abstract Equality Comparison```](http://www.ecma-international.org/ecma-262/6.0/#sec-abstract-equality-comparison)
 
 #### ```Adapter```
 
@@ -81,11 +83,13 @@ A stack data structure that keeps information about active function call.
 
 #### ```Cast```
 
-Explicit conversion a value from one [```data type```](#data-type) to another: ```String(42)```.
+Explicit conversion a value from one [```data type```](#data-type) to another (```String(42)```).
+
+#### ```Closure```
 
 #### ```Coercion```
 
-Implicit conversion a value from one [```data type```](#data-type) to another: ```42 + ''```. *Related terms*: [```weak typing```](#weak-typing).
+Implicit conversion a value from one [```data type```](#data-type) to another (```42 + ''```):
 
 <details>
   <summary>🔎 coercion rules ... </summary>
@@ -139,6 +143,8 @@ Implicit conversion a value from one [```data type```](#data-type) to another: `
   ```
 </details>
 
+*Related terms*: [```weak typing```](#weak-typing)
+
 #### ```Cohesion```
 
 #### ```Command```
@@ -147,7 +153,7 @@ A ```pattern``` that defines action and parameters as an object (like assuming a
 
 #### ```Composition```
 
-Is a concept that allows you to combine two or more functions into a new function. *Composition has a companion concept*: [```piping```](#piping).
+Is a concept that allows you to combine two or more functions into a new function:
 
 <details>
   <summary>🔎 code sample ...</summary>
@@ -167,12 +173,13 @@ capitalize(s) // Foo Bar
 ```
 </details>
 
+*Composition has a companion concept*: [```piping```](#piping)
 
 #### ```Coupling```
 
 #### ```Currying```
 
-Is a technique of taking a function with multiple arguments and turning it into a sequence of functions each with only a single argument. Can be implemented using [```partial application```](#partial-application).
+Is a technique of taking a function with multiple arguments and turning it into a sequence of functions each with only a single argument. Can be implemented using [```partial application```](#partial-application):
 
 <details>
   <summary>🔎 code sample ...</summary>
@@ -198,7 +205,7 @@ Abstraction that has a bounded set of available values and operations that can b
 
 #### ```Debouncing```
 
-An optimization technique that enforces that a function not be called again until a certain amount of time has passed without it being called (execute this function only if N milliseconds have passed without it being called).
+An optimization technique that enforces that a function not be called again until a certain amount of time has passed without it being called (execute this function only if N milliseconds have passed without it being called):
 
 <details>
   <summary>🔎 debounce implementation ...</summary>
@@ -226,24 +233,32 @@ setTimeout(() => console.log('bar'), 300)
 ```
 </details>
 
+*Related terms*: [```throttling```](#throttling)
+
 #### ```Dependency Injection```
 
 A form of [```IoC```](#inversion-of-control), where implementations are passed into an object through constructors/setters, which the object will 'depend' on in order to behave correctly.
 
 #### ```Dynamic typing```
 
-Means that variable can represents any value of any type. *Related terms*: [```Duck typing```](#duck-typing), [```Weak typing```](#weak-typing).
+Means that variable can represents any value of any type.
+
+*Related terms*: [```Duck typing```](#duck-typing), [```Weak typing```](#weak-typing)
 
 #### ```Duck typing```
 General term for "type checks" that make assumptions about a value's "type"
 based on its shape (what properties are present).
-"If it looks like a duck, and quacks like a duck, it must be a duck". *Related terms*: [```Dynamic typing```](#dynamic-typing), [```Weak typing```](#weak-typing).
+"If it looks like a duck, and quacks like a duck, it must be a duck".
+
+*Related terms*: [```Dynamic typing```](#dynamic-typing), [```Weak typing```](#weak-typing)
 
 
 ## E:
 
 #### ```Event loop```
-The mechanism that performs moving functions from the ```event queue``` to [```call stack```](#call-stack) when it becomes empty. *Read more about* [```Event loop in JS```](/posts/event-loop-in-javascript).
+The mechanism that performs moving functions from the ```event queue``` to [```call stack```](#call-stack) when it becomes empty.
+
+*Read more about* [```Event loop in JS```](/posts/event-loop-in-javascript)
 
 ## F:
 
@@ -257,13 +272,75 @@ A ```pattern``` for hiding the complexity, it offers a common interface for cont
 
 #### ```First-class Function```
 
-Functions are treated as values – you can assign a function into a variable, pass it around etc. *Related terms*: [```higher-order function```](#higher-order-function).
+Functions are treated as values – you can assign a function into a variable, pass it around etc.
+
+*Related terms*: [```higher-order function```](#higher-order-function)
 
 ## G:
 
 #### ```Generator```
 
-Function that can be paused in mid-completion with saving inner state ([example](/posts/generators-in-javascript#generator)).
+Function that can be paused in mid-completion with saving inner state:
+
+<details>
+  <summary>🔎 example of Generator ...</summary>
+
+```js
+function *foo(a) {
+  const sum = a + (yield)
+  return sum
+}
+
+const it = foo(1)
+// start
+it.next()
+// pass value instead of yield
+const res = it.next(2) // { value: 3, done: true }
+res.value // 3
+```
+</details>
+
+<details>
+  <summary>🔎 getting data from Generator ...</summary>
+
+```js
+function *foo(a) {
+  const sum = a + (yield 'bar')
+  return sum
+}
+
+const it = foo(1)
+// start
+const passedValue = it.next() // { value: 'bar', done: false }
+// pass value instead of yield
+const res = it.next(2) // { value: 3, done: true }
+```
+</details>
+
+<details>
+  <summary>🔎 generators for handling async code ...</summary>
+
+```js
+function *main() {
+  try {
+    const data = yield fetch('foo.bar')
+    console.log(data)
+  }
+    catch (err) {
+    console.error(err)
+  }
+}
+
+const it = main()
+const promise = it.next().value
+
+promise
+  .then((data) => it.next(data))
+  .catch((err) => it.throw(err))
+```
+</details>
+
+*Related terms*: [```iterator```](#iterator)
 
 #### ```GRASP```
 
@@ -272,7 +349,9 @@ Function that can be paused in mid-completion with saving inner state ([example]
 
 #### ```Higher-order Function```
 
-A function that takes a function as an argument, or returns a function. *Related terms*: [```first-class function```](#first-class-function).
+A function that takes a function as an argument, or returns a function.
+
+*Related terms*: [```first-class function```](#first-class-function)
 
 #### ```Hoisting```
 Moving all declarations to their respective scopes.
@@ -288,11 +367,13 @@ A programming principle by which the control of objects or portions of a program
 
 #### ```Introspection```
 
-The ability of a program to examine the type or properties of an object at runtime. *Read more in the* [```Complete Guide to Objects```](/posts/objects-in-javascript-complete-guide#introspection-in-js).
+The ability of a program to examine the type or properties of an object at runtime. 
+
+*Read more in the* [```Complete Guide to Objects```](/posts/objects-in-javascript-complete-guide#introspection-in-js)
 
 #### ```Iterable```
 
-An [```object```](#object) that contains an [```iterator```](#iterator) that can iterate over its values ([example](/posts/iterators-in-javascript#iterable)).
+An [```object```](#object) that contains an [```iterator```](#iterator) that can iterate over its values:
 
 <details>
   <summary>🔎 example of Iterable ...</summary>
@@ -374,7 +455,7 @@ console.log(...iterable) // 0 1 2 3 4 5
 
 #### ```Iterator```
 
-An [```object```](#object) that has the ```next(..)``` method on its interface.
+An [```object```](#object) that has the ```next(..)``` method on its interface:
 
 <details>
   <summary>🔎 example of Iterator ...</summary>
@@ -413,8 +494,9 @@ const asyncIterator = {
 const step1 = asyncIterator.next() // Promise
 const step2 = asyncIterator.next() // Promise
 ```
-
 </details>
+
+*Related terms*: [```generator```](#generator)
 
 ## J:
 
@@ -458,13 +540,17 @@ to test different parts of a processes.
 
 #### ```Number```
 
-Numeric data type, that represents both integer and fractional numbers. *Read more in the* [```Complete Guide to Numbers```](/posts/numbers-in-javascript-complete-guide).
+Numeric data type, that represents both integer and fractional numbers.
+
+*Read more in the* [```Complete Guide to Numbers```](/posts/numbers-in-javascript-complete-guide)
 
 ## O:
 
 #### ```Object```
 
-Basic data type. *More on in* [```Complete Guide to Objects```](/posts/objects-in-javascript-complete-guide).
+Basic data type.
+
+*More on in* [```Complete Guide to Objects```](/posts/objects-in-javascript-complete-guide)
 
 
 ## P:
@@ -477,7 +563,7 @@ Is a technique of fixing a number of arguments to a function, producing another 
 
 #### ```Piping```
 
-Is a concept that allows you to combine two or more functions into a new function.
+Is a concept that allows you to combine two or more functions into a new function:
 
 <details>
   <summary>🔎 code sample ...</summary>
@@ -606,13 +692,15 @@ A ```pattern``` that selects one of interchangeable classes that contain a behav
 ## T:
 
 #### ```TCO```
-*Tail Call Optimization*. *Read more about* [```Tail call optimization in JavaScript```](/posts/tail-call-optimization-in-javascript).
+*Tail Call Optimization*
+
+*Read more about* [```Tail call optimization in JavaScript```](/posts/tail-call-optimization-in-javascript)
 
 #### ```TDD```
 
 #### ```Throttling```
 
-An optimization technique that enforces a maximum number of times a function can be called over time (execute this function at most once every ```N``` milliseconds).
+An optimization technique that enforces a maximum number of times a function can be called over time (execute this function at most once every ```N``` milliseconds):
 
 <details>
   <summary>🔎 throttle implementation ...</summary>
@@ -644,6 +732,8 @@ setTimeout(() => clearInterval(timer), 1000)
 ```
 </details>
 
+*Related terms*: [```debouncing```](#debouncing)
+
 ## U:
 
 #### ```URI```
@@ -658,7 +748,9 @@ setTimeout(() => clearInterval(timer), 1000)
 ## W:
 
 #### ```Weak typing```
-Means that compiler can use [```coercion```](#coercion). *Related terms*: [```dynamic typing```](#dynamic-typing), [```duck typing```](#duck-typing).
+Means that compiler can use [```coercion```](#coercion).
+
+*Related terms*: [```dynamic typing```](#dynamic-typing), [```duck typing```](#duck-typing)
 
 #### ```WeakMap```
 
@@ -668,7 +760,7 @@ Means that compiler can use [```coercion```](#coercion). *Related terms*: [```dy
 
 #### ```Wrapper```
 
-A function that wraps a function by adding new behaviour.
+A function that wraps a function by adding new behaviour:
 <details>
   <summary>🔎 example of Cancelable wrapper ...</summary>
 

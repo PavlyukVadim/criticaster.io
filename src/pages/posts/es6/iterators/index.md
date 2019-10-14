@@ -6,6 +6,7 @@ category: es6
 metaTitle: Iterators in JavaScript
 metaDescription: Iterators in JavaScript
 metaKeywords: 'javascript, js, js core, closure, array, number, string, bool'
+hidden: true
 ---
 
 ### Iterator

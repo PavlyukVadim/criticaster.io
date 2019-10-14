@@ -146,8 +146,65 @@ Functions are treated as values – you can assign a function into a variable, p
 
 #### ```Generator```
 
-Function that can be paused in mid-completion with saving inner state ([example](/posts/generators-in-javascript#generator)). 
+Function that can be paused in mid-completion with saving inner state. *Related terms*: [```iterator```](#iterator).
 
+<details>
+  <summary>🔎 example of Generator ...</summary>
+
+```js
+function *foo(a) {
+  const sum = a + (yield)
+  return sum
+}
+
+const it = foo(1)
+// start
+it.next()
+// pass value instead of yield
+const res = it.next(2) // { value: 3, done: true }
+res.value // 3
+```
+</details>
+
+<details>
+  <summary>🔎 getting data from Generator ...</summary>
+
+```js
+function *foo(a) {
+  const sum = a + (yield 'bar')
+  return sum
+}
+
+const it = foo(1)
+// start
+const passedValue = it.next() // { value: 'bar', done: false }
+// pass value instead of yield
+const res = it.next(2) // { value: 3, done: true }
+```
+</details>
+
+<details>
+  <summary>🔎 generators for handling async code ...</summary>
+
+```js
+function *main() {
+  try {
+    const data = yield fetch('foo.bar')
+    console.log(data)
+  }
+    catch (err) {
+    console.error(err)
+  }
+}
+
+const it = main()
+const promise = it.next().value
+
+promise
+  .then((data) => it.next(data))
+  .catch((err) => it.throw(err))
+```
+</details>
 
 ## H:
 
@@ -167,7 +224,7 @@ The ability of a program to examine the type or properties of an object at runti
 
 #### ```Iterable```
 
-An [```object```](#object) that contains an [```iterator```](#iterator) that can iterate over its values ([example](/posts/iterators-in-javascript#iterable)).
+An [```object```](#object) that contains an [```iterator```](#iterator) that can iterate over its values.
 
 <details>
   <summary>🔎 example of Iterable ...</summary>
@@ -249,7 +306,7 @@ console.log(...iterable) // 0 1 2 3 4 5
 
 #### ```Iterator```
 
-An [```object```](#object) that has the ```next(..)``` method on its interface.
+An [```object```](#object) that has the ```next(..)``` method on its interface. *Related terms*: [```generator```](#generator).
 
 <details>
   <summary>🔎 example of Iterator ...</summary>
