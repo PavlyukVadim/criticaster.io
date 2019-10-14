@@ -17,8 +17,8 @@ Glossary of React Terms ⚛
 
 <!-- https://overreacted.io/react-as-a-ui-runtime/ -->
 
-## A:
-## B:
+<!-- ## A: -->
+<!-- ## B: -->
 ## C:
 
 #### ```Context```
@@ -168,8 +168,8 @@ Callback refs are preferable when dealing with dynamic refs.
 
 More examples in [react-refs-cheatsheet](https://react-refs-cheatsheet.netlify.com).
 
-## D:
-## E:
+<!-- ## D: -->
+<!-- ## E: -->
 ## F:
 
 #### ```Fiber```
@@ -196,7 +196,7 @@ When React gets to this phase, it has 2 trees (```current```, ```finishedWork```
 
 Read more in article [Inside Fiber](https://indepth.dev/inside-fiber-in-depth-overview-of-the-new-reconciliation-algorithm-in-react/).
 
-## G:
+<!-- ## G: -->
 ## H:
 
 #### ```HOCs```
@@ -209,10 +209,10 @@ Hooks let us split the code based on what it is doing rather than a lifecycle me
 
 #### ```useState```
 
-Is a Hook that lets you add React state to function components.
+Is a Hook that lets you add React state to function components:
 
 <details>
-  <summary> Example with useState 🔥</summary>
+  <summary> 🔎 example with useState ...</summary>
 
 ```js
 import React, { useState } from 'react'
@@ -241,7 +241,7 @@ Tip: Unlike ```componentDidMount```/```componentDidUpdate```, effects scheduled 
 React **cleans up** the previous effects before applying the next effects.
 
 <details>
-  <summary> Example with useEffect 🔥</summary>
+  <summary> 🔎 example with useEffect ...</summary>
 
 ```js
 import React, { useState, useEffect } from 'react'
@@ -270,9 +270,131 @@ const FriendStatus = (props) => {
 ```
 </details>
 
-#### Custom Hook
+#### ```useContext```
 
-Is a JavaScript function whose name starts with ”use” and that may call other Hooks.
+Accepts a context object and returns the current context value for that context:
+
+<details>
+  <summary> 🔎 example with useContext ...</summary>
+
+```js
+const value = useContext(MyContext)
+```
+</details>
+
+#### ```useReducer```
+
+An alternative to [```useState```](#useState). Accepts a reducer of type ```(state, action) => newState```, and returns the current state paired with a ```dispatch``` method.
+
+<details>
+  <summary> 🔎 example with useReducer ...</summary>
+
+```js
+const initialState = { count: 0 }
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'increment':
+      return { count: state.count + 1 }
+    case 'decrement':
+      return { count: state.count - 1 }
+    default:
+      throw new Error()
+  }
+}
+
+function Counter() {
+  const [state, dispatch] = useReducer(reducer, initialState)
+  return (
+    <>
+      Count: {state.count}
+      <button onClick={() => dispatch({type: 'decrement'})}>-</button>
+      <button onClick={() => dispatch({type: 'increment'})}>+</button>
+    </>
+  )
+}
+```
+</details>
+
+#### ```useCallback```
+
+Returns a memoized version of the callback that only changes if one of the dependencies has changed:
+
+<details>
+  <summary> 🔎 example with useCallback ...</summary>
+
+```js
+const memoizedCallback = useCallback(
+  () => {
+    doSomething(a, b)
+  },
+  [a, b],
+)
+
+// useCallback(fn, deps) is equivalent to useMemo(() => fn, deps)
+```
+</details>
+
+
+#### ```useMemo```
+
+Recomputes the memoized value when one of the dependencies has changed. This optimization helps to avoid expensive calculations on every render.
+
+Attention: a function passed to ```useMemo``` runs during rendering. Don’t do anything there that you wouldn’t normally do while rendering, so ```side effects``` belong in [```useEffect```](#useEffect).
+
+<details>
+  <summary> 🔎 example with useMemo ...</summary>
+
+```js
+const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b])
+```
+</details>
+
+#### ```useRef```
+
+Returns a mutable ```ref``` object whose ```.current``` property is initialized to the passed argument (initialValue):
+
+<details>
+  <summary> 🔎 example with useRef ...</summary>
+
+```js
+const TextInputWithFocusButton = () => {
+  const inputEl = useRef(null)
+  const onButtonClick = () => {
+    // `current` points to the mounted text input element
+    inputEl.current.focus()
+  }
+  return (
+    <>
+      <input ref={inputEl} type="text" />
+      <button onClick={onButtonClick}>Focus the input</button>
+    </>
+  )
+}
+```
+</details>
+
+#### ```Custom Hook```
+
+A function whose name starts with ”use” and that may call other Hooks:
+
+<details>
+  <summary> 🔎 example of useReducer as Custom hook...</summary>
+
+```js
+const useReducer = (reducer, initialState) => {
+  const [state, setState] = useState(initialState)
+
+  function dispatch(action) {
+    const nextState = reducer(state, action)
+    setState(nextState)
+  }
+
+  return [state, dispatch]
+}
+```
+</details>
+
 
 <!-- https://reactjs.org/docs/hooks-faq.html#how-do-lifecycle-methods-correspond-to-hooks -->
 
@@ -284,8 +406,8 @@ Is a JavaScript function whose name starts with ”use” and that may call othe
 
 <!-- https://gist.github.com/alexeyraspopov/1233af30f77e553fc7c949acf5f61dad -->
 
-## I:
-## J:
+<!-- ## I: -->
+<!-- ## J: -->
 ## K:
 
 #### ```Keys```
@@ -344,8 +466,8 @@ Is invoked right before calling the ```componentDidUpdate``` method. It uses to 
 
 #### ```MobX```
 
-## N:
-## O:
+<!-- ## N: -->
+<!-- ## O: -->
 ## P:
 
 #### ```Profiler```
@@ -357,7 +479,7 @@ Measures how often a React application renders and what the “cost” of render
 Only rerender if at least one state or prop value changes, it performs a shallow comparison of props and state, and reduces the chance that you’ll skip a necessary update.
 
 
-## Q:
+<!-- ## Q: -->
 ## R:
 
 #### ```Recompose```
@@ -470,10 +592,10 @@ MainComponent
 
 3. We can wrap multiple lazily loaded components under one Suspense object.
 
-## T:
-## U:
-## V:
-## W:
-## X:
-## Y:
-## Z:
+<!-- ## T: -->
+<!-- ## U: -->
+<!-- ## V: -->
+<!-- ## W: -->
+<!-- ## X: -->
+<!-- ## Y: -->
+<!-- ## Z: -->
