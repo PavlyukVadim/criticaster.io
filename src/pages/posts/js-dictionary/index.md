@@ -240,6 +240,10 @@ setTimeout(() => console.log('bar'), 300)
 
 A form of [```IoC```](#inversion-of-control), where implementations are passed into an object through constructors/setters, which the object will 'depend' on in order to behave correctly.
 
+#### DSL
+
+*Domain Specific Language*
+
 #### ```Dynamic typing```
 
 Means that variable can represents any value of any type.
@@ -371,6 +375,8 @@ A programming principle by which the control of objects or portions of a program
 The ability of a program to examine the type or properties of an object at runtime. 
 
 *Read more in the* [```Complete Guide to Objects```](/posts/objects-in-javascript-complete-guide#introspection-in-js)
+
+*Related terms*: [```reflection```](#reflection)
 
 #### ```Iterable```
 
@@ -524,6 +530,8 @@ Not JSON-safe: ```undefined```s, ```function```s, ```symbol```s, ```object```s w
 
 #### ```Meta Programming```
 
+Programming where the operation targets the behavior of the program itself (*programming the programming of your program*).
+
 #### ```Mixins```
 
 A form of object composition, where component features get mixed into a composite object: ```Object.assing(compositeObject, ..)```.
@@ -603,9 +611,40 @@ A function where the return value is only determined by its input values, withou
 
 #### ```Reflect```
 
+Object that contain static functions which correspond to [```meta programming```](#meta-programming) tasks:
+
+
+<details>
+  <summary>🔎 short list of Reflect methods ...</summary>
+
+The same names as on ```Object```:
+
+* ```Reflect.getOwnPropertyDescriptor(..)```
+* ```Reflect.defineProperty(..)```
+* ```Reflect.getPrototypeOf(..)```
+* ```Reflect.setPrototypeOf(..)```
+* ```Reflect.preventExtensions(..)```
+* ```Reflect.isExtensible(..)```
+
+Relative methods to ```Object``` utilities:
+
+* ```Reflect.ownKeys(..)```  - ```Object.getOwnPropertyNames(..)```
+* ```Reflect.enumerate(..)```  - ```for ... in```
+* ```Reflect.has(..)```  - ```in```
+
+Object property access, setting, and deletion:
+
+* ```Reflect.get(..)```
+* ```Reflect.set(..)```
+* ```Reflect.deleteProperty(..)```
+
+</details>
+
 #### ```Reflection```
 
 The ability for a program to manipulate the values, meta-data, properties and/or functions of an object at runtime.
+
+*Related terms*: [```introspection```](#introspection)
 
 #### ```Regular Expressions```
 
