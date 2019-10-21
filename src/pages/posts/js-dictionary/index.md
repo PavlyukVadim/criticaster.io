@@ -178,6 +178,10 @@ capitalize(s) // Foo Bar
 
 #### ```Coupling```
 
+#### ```CSRF```
+
+*Сross Site Request Forgery*.
+
 #### ```Currying```
 
 Is a technique of taking a function with multiple arguments and turning it into a sequence of functions each with only a single argument. Can be implemented using [```partial application```](#partial-application):
@@ -870,7 +874,12 @@ f() // ignored
 ```
 </details>
 
-<!-- ## X: -->
+## X:
+
+#### ```XSS```
+
+*Cross-Site Scripting*.
+
 <!-- ## Y: -->
 <!-- ## Z: -->
 
