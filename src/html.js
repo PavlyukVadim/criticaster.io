@@ -12,6 +12,7 @@ module.exports = class HTML extends React.Component {
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
           />
           {this.props.headComponents}
+          <meta name="google-site-verification" content="qvi1UC_wcc_9i-Y8wS0MHckX0KKK7azeDaJPeFFUeug" />
         </head>
         <body {...this.props.bodyAttributes}>
           {this.props.preBodyComponents}
