@@ -26,6 +26,11 @@ const config = {
     },
   ],
   categories: {
+    'react-hooks': {
+      title: 'React Hooks',
+      position: 1,
+      reversion: true,
+    },
     'js-core': {
       title: 'Js Core',
       position: 1,

@@ -1,17 +1,18 @@
 ---
-path: /posts/promises-in-javascript
+path: /javascript-promise
 date: '2019-08-26'
-title: ⏰ Promises in JavaScript
+title: ⏰ Promise in JavaScript
 category: async-js
-metaTitle: Promises in JavaScript
-metaDescription: Promises in JavaScript
+metaTitle: JavaScript Promise - What is a promise? How promises work? | Criticaster
+metaDescription: Promise is a new way to handle async code offered by ES6. Learn more what is promise in JavaScript, how does promise work, promise then and catch ...
 metaKeywords: 'javascript, js, js core, promise, closure, array, number, string, bool'
 ---
 
-## Table of content:
+##### Table of content:
 
-* [Promises overview](#promises-overview)
-* [Promise immutability](#promises-immutability)
+<!-- * [Promises overview](#promises-overview) -->
+
+<!-- * [Promise immutability](#promises-immutability)
 * [Immediately resolved Promise](#immediately-resolved-promise)
 * [Built-in Promise patterns](#built-in-promise-patterns)
 
@@ -21,9 +22,197 @@ metaKeywords: 'javascript, js, js core, promise, closure, array, number, string,
 * [How to implement own Promise](#how-to-implement-own-promise)
 * [Cancellable Promise](#cancellable-promise)
 * [Custom Promise patterns](#custom-promise-patterns)
-* [Decorator of Promises chaining](#decorator-of-promises-chaining)
+* [Decorator of Promises chaining](#decorator-of-promises-chaining) -->
 
-### Promises overview
+* [What is promise in JavaScript](#what-is-promise-in-javascript)
+* [Why do we need promises in JavaScript](#why-do-we-need-promises-in-javascript)
+* [How does promise work in JavaScript](#how-does-promise-work-in-javascript)
+* [What is promise then](#what-is-promise-then)
+* [JavaScript promise catch](#javascript-promise-catch)
+
+## What is promise in JavaScript?
+
+The promise is a new way to handle the `async code` offered by ES6. A promise in javascript is an object with the inner state that represents a future value. The promise could be in one of there states: `pending`, `fulfilled`, `rejected`.
+
+We can compare the javascript promise with an example of real-life situation when you don’t have something but you are in a process to get it, like when you ordered new stuff in the e-shop (promise created) and waiting when the courier will deliver it (`pending` status), after that the courier could be delivered stuff, you paid for it and transaction is done (`fulfilled`) or you could be notified that there’s no any available stuff (`rejected`).
+
+The only difference between javascript promise and our example that promise is [`immutable`](/js-dictionary#immutable-data), it means that when promise gets status either fulfilled or rejected it couldn’t change it anymore.
+
+### Why do we need promises in JavaScript?
+
+Promise presents a new abstraction to work with `async code`. The difference between promise and callback in an organization of matching handlers to the async code execution result. So when we compare `javascript promise vs callback`, callbacks are a very simple way to execute some function as a result of performing an asynchronous code with error handling as an `error-first contract`, promises propose a rich interface to adding multiple handlers for successful or for unsuccessful async task completion.
+
+Also, promises solve main callbacks problems like:
+* `callback hell`
+* security problems of callback due to an [`inversion of control`](/js-dictionary#inversion-of-control)
+* calling handlers in the wrong way or the wrong number of times
+
+### How does promise work in JavaScript?
+
+A promise is just an object, that has a state. When some events are triggered, the inner state is changes and handlers to depend on the state are called.
+To create promise you have to use built-in constructor `Promise`:
+
+```js
+const promise = new Promise()
+```
+
+If you try to launch that example you’ll catch an error: `Uncaught TypeError: Promise resolver undefined is not a function`. Promise constructor should be called with function executor, which is immediately executed by the constructor. That pattern is called `revealing constructor`.
+
+
+#### JavaScript promise example
+
+```js
+const promise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve('foo')
+  }, 1000)
+})
+```
+
+Here you can see promise timeout, with will be resolved in 1000ms with ‘foo’ value.
+
+### What is promise then?
+
+The promise has a special method then for adding handlers that will be called when promise status changes to `resolve`. Promise `then` takes two arguments (onFulfilled, onRejected): `onFulfilled` function to call when promise fulfills and `onRejected` when promise rejects:
+
+```js
+promise.then((data) => { console.log(data) }) // 'foo'
+```
+ 
+With `then` method, you can make a `promise chain`:
+
+```js
+const promise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve('foo')
+  }, 1000)
+})
+
+promise.then((data) => data.toUpperCase())
+  .then((data) => console.log(data)) // 'FOO'
+```
+
+To make it possible `then` method return a promise:
+
+```js
+const promise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve('foo')
+  }, 1000)
+})
+
+const p2 = promise.then((data) => data.toUpperCase())
+console.log(p2 instanceof Promise) // true
+```
+
+Note: if `then` handler returns a new promise, the handler of followed next method will be activated with real value when that promise resolves.
+Let’s create a function that produces a promises:
+
+```js
+const asyncFn = (params) => new Promise((resolve) => {
+  setTimeout(() => {
+    resolve(params)
+  }, Math.random() * 100)
+})
+```
+
+So the calls of `asyncFn` you can chain like that:
+```js
+asyncFn(1).
+  then((data) => {
+    console.log('data', data)
+    return asyncFn(2)
+  }).
+  then((data) => {
+    console.log('data', data)
+  })
+
+// data 1
+// data 2
+```
+
+Also, you can get the last promise from the chain:
+```js
+const promise = asyncFn(1).
+  then((data) => {
+    console.log('data', data)
+    return asyncFn(2)
+  })
+
+promise
+  .then((data) => {
+    console.log('data', data)
+  })
+
+// data 1
+// data 2
+```
+ 
+When you return from `then` method not an immediate value, but a new promise, it will be asynchronously unwrap:
+
+```js
+const p3 = new Promise((resolve, reject) => resolve('B'))
+const p1 = new Promise((resolve, reject) => resolve(p3))
+const p2 = new Promise((resolve, reject) => resolve('A'))
+
+p1.then((data) => console.log(data))
+p2.then((data) => console.log(data))
+
+// A B
+```
+
+Note: all non-function types in then method are silent ignored:
+
+```js
+const promise = asyncFn(1).
+  then((data) => {
+    console.log('data', data)
+    return asyncFn(2)
+  }).
+  then('foo').
+  then({})
+
+promise
+  .then((data) => {
+    console.log('data', data)
+  })
+
+// data 1
+// data 2
+```
+
+### JavaScript promise catch
+
+To handle error you can either use `onRejected` function inside method `then` or use the `catch` method:
+
+```js
+const promise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    reject(new Error('foo'))
+  }, 1000)
+})
+
+promise
+  .then((data) => { console.log(data) })
+  .catch((err) => { console.log(err) }) // Error: foo
+```
+
+Method `catch` as method `then` returns a promise, and after calling `catch` handler you can work with a returned promise as you want (in most cases you just have to handle and log an error):
+
+```js
+const promise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    reject('foo')
+  }, 1000)
+})
+
+const p2 = promise.catch((data) => data.toUpperCase())
+console.log(p2 instanceof Promise) // true
+console.log(promise) // Promise <rejected foo>
+console.log(p2) // Promise <resolved FOO>
+```
+
+<!-- ### Promises overview
 
 Promises are a new way to handle async code offered by ES6.
 It's an object with the inner state (pending, fulfilled, rejected)  that represents a future value.
@@ -138,8 +327,9 @@ const promise = new Promise((resolve, reject) => {
 promise
   .then((data) => { console.log(data) })
   .catch((err) => { console.log(err) }) // Error: foo
-```
+``` -->
 
+<!-- 
 ### Promise's immutability
 
 The very important Promise feature, that when it resolves(rejects), it becomes an ```immutable``` value that can be observed many times:
@@ -497,4 +687,4 @@ chainedFn(1), chainedFn(2), chainedFn(3), chainedFn(4), chainedFn(5)
 // params 3
 // params 4
 // params 5
-```
+``` -->
