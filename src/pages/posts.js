@@ -20,11 +20,16 @@ const PostsPage = ({ data: { allMarkdownRemark: { edges } } }) => {
     		</li>
     	)
     )
+  
+  const numberOfPosts = posts.length
 
   return (
     <TemplateWrapper>
       <div className="postsPage">
-        <h2>Blog posts: </h2>
+        <h2 className="title">
+          Blog posts
+          <span className="numberOfPosts"> (<b>{numberOfPosts}</b>)</span>: 
+        </h2>
         <ul>
           {posts}
         </ul>
