@@ -2,3 +2,4 @@
 
 # Redirect default Netlify subdomain to primary domain
 https://amadev.netlify.com/* https://criticaster.io/:splat 301!
+https://criticaster.io/posts/promises-in-javascript/ https://criticaster.io/javascript-promise
