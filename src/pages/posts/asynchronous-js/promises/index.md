@@ -265,9 +265,9 @@ promise
   .catch((err) => { console.log(err) }) // ignored
 ```
 
-##### For further reading:
+<!-- ##### For further reading:
 
 * [JavaScript Jobs Queue](/promise-jobs-queue)
 * [JavaScript Promise Patterns](/javascript-promise-patterns)
 * [JavaScript Promise Implementation](/javascript-promise-implementation)
-* [JavaScript Promise Cancellable](/javascript-promise-cancellable)
+* [JavaScript Promise Cancellable](/javascript-promise-cancellable) -->
